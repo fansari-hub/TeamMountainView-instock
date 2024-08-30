@@ -34,6 +34,8 @@
     color: $colSupportRed;
   }
   &__size1 {
+    //The ToRem Function allows you to input pixel values and it will be automatically converted to REM CSS by SASS. 
+    //No more manual calculations needed.
     width: toRem(400);
     border: 1px solid $colPrimaryInstock-Black;
   }
