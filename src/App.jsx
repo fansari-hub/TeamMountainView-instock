@@ -20,6 +20,30 @@ function App() {
         <Routes>
           <Route path="/" element={<SassExamplePage />}></Route>
           <Route path="/warehouses" element={<WarehouseListPage />}></Route>
+          <Route
+            path="/warehouses/:id"
+            element={<WarehouseDetailPage />}
+          ></Route>
+          <Route
+            path="/warehouses/:id/edit"
+            element={<EditWarehousePage />}
+          ></Route>
+          <Route path="/warehouses/add" element={<AddWarehousePage />}></Route>
+          <Route
+            path="/warehouses/:id/delete"
+            element={<DeleteWarehousePage />}
+          ></Route>
+          <Route path="inventory" element={<InventoryListPage />}></Route>
+          <Route path="inventory/:id" element={<InventoryDetailPage />}></Route>
+          <Route
+            path="/inventory/:id/edit"
+            element={<EditInventoryPage />}
+          ></Route>
+          <Route path="/inventory/add" element={<AddInventoryPage />}></Route>
+          <Route
+            path="/inventory/:id/delete"
+            element={<DeleteInventoryPage />}
+          ></Route>
         </Routes>
       </Router>
     </>
