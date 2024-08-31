@@ -1,0 +1,133 @@
+@use "colors" as *;
+@use "mixins" as *;
+@use "variables" as *;
+@use "functions" as *;
+
+@font-face {
+  font-family: "Titillium Web", sans-serif;
+  src: url("../../assets/fonts/TitilliumWeb-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Titillium Web", sans-serif;
+  src: url("../../assets/fonts/TitilliumWeb-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-H1-PageHeader {
+  font-size: toRem(28);
+  line-height: toRem(36);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  margin: 0px;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(32);
+    line-height: toRem(40);
+  }
+  @include displayDesktop {
+    font-size: toRem(32);
+    line-height: toRem(40);
+  }
+}
+
+.font-H2-SubHeader {
+  font-size: toRem(20);
+  line-height: toRem(28);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(24);
+    line-height: toRem(32);
+  }
+  @include displayDesktop {
+    font-size: toRem(24);
+    line-height: toRem(32);
+  }
+}
+
+.font-H3-label {
+  font-size: tomRem(13);
+  line-height: toRem(20);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(14);
+    line-height: toRem(22);
+  }
+  @include displayDesktop {
+    font-size: toRem(14);
+    line-height: toRem(22);
+  }
+}
+
+.font-H4-TableHeader {
+  font-size: toRem(11);
+  line-height: toRem(16);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(12);
+    line-height: toRem(18);
+  }
+  @include displayDesktop {
+    font-size: toRem(12);
+    line-height: toRem(18);
+  }
+}
+
+.font-P1-BodyLarge {
+  font-size: toRem(15);
+  line-height: toRem(26);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(16);
+    line-height: toRem(28);
+  }
+  @include displayDesktop {
+    font-size: toRem(16);
+    line-height: toRem(28);
+  }
+}
+
+.font-P2-BodyMedium {
+  font-size: toRem(13);
+  line-height: toRem(20);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(14);
+    line-height: toRem(22);
+  }
+  @include displayDesktop {
+    font-size: toRem(14);
+    line-height: toRem(22);
+  }
+}
+
+.font-P3-BodySmall {
+  font-size: toRem(11);
+  line-height: toRem(16);
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  color: $colPrimaryInstock-Black;
+  @include displayTablet {
+    font-size: toRem(12);
+    line-height: toRem(18);
+  }
+  @include displayDesktop {
+    font-size: toRem(12);
+    line-height: toRem(18);
+  }
+}

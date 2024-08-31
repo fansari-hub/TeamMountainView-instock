@@ -1,0 +1,20 @@
+@use "functions" as *;
+
+//display breakpoint variables
+$breakpoint-desktop-s: 1280px;
+$breakpoint-tablet-s: 768px;
+$breakpoint-tablet-e: 1279px;
+$breakpoint-mobile-s: 0px;
+$breakpoint-mobile-e: 767px;
+
+//standard padding increment per style guide 
+$pad-1: toRem(4);
+$pad-2: toRem(8);
+$pad-3: toRem(16);
+$pad-4: toRem(24);
+$pad-5: toRem(32);
+$pad-6: toRem(40);
+$pad-7: toRem(48);
+$pad-8: toRem(56);
+$pad-9: toRem(64);
+$pad-10:toRem(90);
