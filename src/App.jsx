@@ -13,13 +13,21 @@ import DeleteInventoryPage from "./pages/DeleteInventoryPage/DeleteInventoryPage
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
 
+// note that data were added only for testing UI;
+// to be replaced with backend calls after we build out backend
+import warehouseData from "./data/01_warehouses.json";
+import inventoryData from "./data/02_inventories.json";
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<SassExamplePage />}></Route>
-          <Route path="/warehouses" element={<WarehouseListPage />}></Route>
+          <Route
+            path="/warehouses"
+            element={<WarehouseListPage warehouseData={warehouseData} />}
+          ></Route>
           <Route
             path="/warehouses/:id"
             element={<WarehouseDetailPage />}
@@ -33,7 +41,10 @@ function App() {
             path="/warehouses/:id/delete"
             element={<DeleteWarehousePage />}
           ></Route>
-          <Route path="inventory" element={<InventoryListPage />}></Route>
+          <Route
+            path="inventory"
+            element={<InventoryListPage inventoryData={inventoryData} />}
+          ></Route>
           <Route path="inventory/:id" element={<InventoryDetailPage />}></Route>
           <Route
             path="/inventory/:id/edit"
