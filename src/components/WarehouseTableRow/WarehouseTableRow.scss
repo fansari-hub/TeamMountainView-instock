@@ -55,11 +55,12 @@
 
   &__warehouse-address {
     // width: 140px;
-    max-width: 140px;
+    max-width: 40%;
     margin-right: 24px;
   }
   &__contact-info {
-    max-width: 136px;
+    max-width: 50%;
+    flex-grow: 1;
   }
 
   &__group {
