@@ -17,7 +17,7 @@ const WarehouseListPage = ({ warehouseData }) => {
         </div>
         <table className="table__container">
           <thead>
-            <tr>
+            <tr className="table__header-container">
               <th className="table__header">
                 <span className="font-H4-TableHeader">WAREHOUSE</span>
                 <img

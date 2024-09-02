@@ -3,6 +3,7 @@
 @use "src/styles/partials/colors" as *;
 @use "src/styles/partials/functions" as *;
 @use "src/styles/partials/variables" as *;
+@use "src/styles/partials/mixins" as *;
 
 .main {
   //comment out the next 4 lines when combined with rest of page
@@ -18,10 +19,16 @@
     padding: 36px 24px 24px 24px;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
+    @include displayTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
   &__title {
     margin-bottom: 16px; //this somehow doesn't get applied
+    @include displayTablet {
+    }
   }
   &__search {
     // width: 295px;
@@ -38,6 +45,15 @@
     text-indent: 1rem;
     font-size: 1rem;
     margin-bottom: 16px;
+    @include displayTablet {
+      width: 240px;
+      margin-left: 80px;
+      height: 38px;
+    }
+    @include displayDesktop {
+      width: 340px;
+      margin-right: -300px;
+    }
   }
   &__button {
     height: 36px;
@@ -48,6 +64,11 @@
     flex-grow: 0;
     border: none;
     color: white;
+    @include displayTablet {
+      width: 200px;
+      font-size: toRem(16);
+      height: 38px;
+    }
   }
 }
 
@@ -57,5 +78,18 @@
   }
   &__header {
     display: none;
+    @include displayTablet {
+      display: flex;
+      align-items: center;
+      &-container {
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px;
+        background: rgba(247, 248, 249, 0.7);
+      }
+    }
   }
 }
