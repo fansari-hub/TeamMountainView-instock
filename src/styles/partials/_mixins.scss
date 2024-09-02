@@ -11,8 +11,8 @@
     @content;
   }
 }
-@mixin displayMobile {
-  @media (min-width: $breakpoint-mobile-s) and (max-width: $breakpoint-mobile-e) {
-    @content;
-  }
-}
+// @mixin displayMobile {
+//   @media (min-width: $breakpoint-mobile-s) and (max-width: $breakpoint-mobile-e) {
+//     @content;
+//   }
+// }

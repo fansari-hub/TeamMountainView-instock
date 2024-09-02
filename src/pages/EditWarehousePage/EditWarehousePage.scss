@@ -3,10 +3,64 @@
 @use "/src/styles/partials/variables" as *;
 @use "/src/styles/partials/mixins" as *;
 
-.main {
+.main-container {
   //comment out the next 4 lines when combined with rest of page
   position: absolute;
   left: 4.27%;
   right: 4.27%;
   top: 7.53%;
+
+  background: $colPrimaryWhite;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    margin: 36px 24px 0 24px;
+  }
+  &__divider {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: $colSecondaryCloud;
+    margin: 24px 0;
+  }
+  &__footer {
+    background: rgba(247, 248, 249, 0.7);
+    border-radius: 0px 0px 3px 3px;
+
+    padding: 24px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &-cancel {
+      background: $colPrimaryWhite;
+      border: 1px solid $colSecondaryCloud;
+      border-radius: 20px;
+      width: 45%;
+      height: 36px;
+      flex-grow: 0;
+      @include displayTablet {
+        height: 38px;
+      }
+    }
+    &-save {
+      background: $colPrimaryInstock-Indigo;
+      color: $colPrimaryWhite;
+      border: 1px solid $colSecondaryCloud;
+      border-radius: 20px;
+      width: 45%;
+      height: 36px;
+      flex-grow: 0;
+      @include displayTablet {
+        height: 38px;
+      }
+    }
+  }
+}
+
+.whitespace {
+  height: 24px;
 }
