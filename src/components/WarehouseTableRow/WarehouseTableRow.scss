@@ -7,6 +7,13 @@
 .row {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: $colSecondaryCloud;
+    margin-bottom: 16px;
+  }
 
   &__title {
     &--action {
@@ -14,13 +21,22 @@
     }
   }
   &__value {
-    font-size: 13px; //for some reason toRem(13) wouldn't work
+    font-size: toRem(13);
     font-weight: 400;
+    line-height: toRem(20);
+
     &--warehouse {
-      font-size: 13px;
+      font-size: toRem(13);
       font-weight: 600;
       //   color: $colPrimaryInstock-Indigo;
       color: #2e66e5;
+      line-height: toRem(20);
+    }
+    &--contact-name {
+      font-size: toRem(13); //for some reason toRem(13) wouldn't work
+      font-weight: 400;
+      line-height: toRem(20);
+      margin-bottom: 16px;
     }
   }
 
@@ -28,19 +44,38 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+  }
+  //   &__contact-info {
+  //     display: flex;
+  //     flex-direction: column;
+  //     max-width: 50%;
+  //   }
+
+  &__warehouse-address {
+    // width: 140px;
+    max-width: 140px;
+    margin-right: 24px;
+  }
+  &__contact-info {
+    max-width: 136px;
   }
 
-  &__cell {
-    &--warehouse-address {
-      width: 140px;
-      margin-right: 16px;
-    }
-    &--contact-info {
-      //   max-width: 50%;
-    }
-  }
   &__group {
     display: flex;
     flex-direction: column;
+  }
+  &__warehouse-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  &__action-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin: 12px 0 16px 0;
   }
 }

@@ -14,20 +14,19 @@
   /* Card Shadow */
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
-  padding: 0 24px;
   &__header {
-    padding: 36px 0 24px 0;
+    padding: 36px 24px 24px 24px;
     display: flex;
     flex-direction: column;
     // justify-content: space-between;
   }
   &__title {
-    margin-bottom: 16px;
+    margin-bottom: 16px; //this somehow doesn't get applied
   }
   &__search {
     // width: 295px;
     height: 36px;
-
+    margin-top: 16px;
     background: $colPrimaryWhite;
     /* Cloud */
     border: 1px solid #bdc5d5;
@@ -42,12 +41,13 @@
   }
   &__button {
     height: 36px;
+    font-family: "Titillium Web", sans-serif;
     width: 100%;
     background: $colPrimaryInstock-Indigo;
     border-radius: 20px;
     flex-grow: 0;
     border: none;
-    color: $colPrimaryWhite;
+    color: white;
   }
 }
 

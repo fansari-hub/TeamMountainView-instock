@@ -9,12 +9,10 @@ const WarehouseListPage = ({ warehouseData }) => {
       {/* <Header /> */}
       <main className="main">
         <div className="main__header">
-          <h2 className="main__title font-H1-PageHeader">Warehouses</h2>
+          <h2 className="font-H1-PageHeader main__title ">Warehouses</h2>
           <input className="main__search" placeholder="Search..." />
           <Link to="/warehouses/add">
-            <button className="main__button font-H3-label">
-              +Add New Warehouse
-            </button>
+            <button className="main__button">+Add New Warehouse</button>
           </Link>
         </div>
         <table className="table__container">
