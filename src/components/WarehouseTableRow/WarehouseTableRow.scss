@@ -1,0 +1,46 @@
+@use "src/styles/partials/fonts" as *;
+@use "src/styles/partials/global" as *;
+@use "src/styles/partials/colors" as *;
+@use "src/styles/partials/functions" as *;
+@use "src/styles/partials/variables" as *;
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    &--action {
+      display: none;
+    }
+  }
+  &__value {
+    font-size: 13px; //for some reason toRem(13) wouldn't work
+    font-weight: 400;
+    &--warehouse {
+      font-size: 13px;
+      font-weight: 600;
+      //   color: $colPrimaryInstock-Indigo;
+      color: #2e66e5;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__cell {
+    &--warehouse-address {
+      width: 140px;
+      margin-right: 16px;
+    }
+    &--contact-info {
+      //   max-width: 50%;
+    }
+  }
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+}

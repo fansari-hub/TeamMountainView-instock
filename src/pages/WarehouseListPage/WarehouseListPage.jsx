@@ -1,31 +1,64 @@
-import "./WarehouseListPage";
+import "./WarehouseListPage.scss";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import WarehouseTableRow from "../../components/WarehouseTableRow/WarehouseTableRow";
+// import Header from "../../components/Header/Header";
 const WarehouseListPage = ({ warehouseData }) => {
+  console.log(warehouseData);
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main className="main">
         <div className="main__header">
-          <h2 className="main__title font-H1-pageHeader">Warehouses</h2>
+          <h2 className="main__title font-H1-PageHeader">Warehouses</h2>
           <input className="main__search" placeholder="Search..." />
           <Link to="/warehouses/add">
-            <button className="main__button">+Add New Warehouse</button>
+            <button className="main__button font-H3-label">
+              +Add New Warehouse
+            </button>
           </Link>
         </div>
-        <table>
+        <table className="table__container">
           <thead>
             <tr>
-              <th>Warehouse</th>
-              <th>Address</th>
-              <th>Contact Name</th>
+              <th className="table__header">
+                <span className="font-H4-TableHeader">WAREHOUSE</span>
+                <img
+                  src="src/assets/images/Icons/sort-24px.svg"
+                  alt="search icon"
+                />
+              </th>
+              <th className="table__header">
+                <span className="font-H4-TableHeader">ADDRESS</span>
+                <img
+                  src="src/assets/images/Icons/sort-24px.svg"
+                  alt="search icon"
+                />
+              </th>
+              <th className="table__header">
+                <span className="font-H4-TableHeader">CONTACT NAME</span>
+                <img
+                  src="src/assets/images/Icons/sort-24px.svg"
+                  alt="search icon"
+                />
+              </th>
+              <th className="table__header">
+                <span className="font-H4-TableHeader">CONTACT INFORMATION</span>
+                <img
+                  src="src/assets/images/Icons/sort-24px.svg"
+                  alt="search icon"
+                />
+              </th>
+              <th className="table__header">
+                <span className="font-H4-TableHeader">ACTIONS</span>
+              </th>
             </tr>
           </thead>
-          {/* <tbody>
-            {warehouseData.map((row, index) => (
-              <RowComponent key={index} rowData={row} />
+
+          <tbody>
+            {warehouseData.map((warehouse) => (
+              <WarehouseTableRow key={warehouse.id} warehouse={warehouse} />
             ))}
-          </tbody> */}
+          </tbody>
         </table>
       </main>
     </>
