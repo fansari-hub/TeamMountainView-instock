@@ -1,6 +1,7 @@
 import "./WarehouseListPage.scss";
 import { Link } from "react-router-dom";
 import WarehouseTableRow from "../../components/WarehouseTableRow/WarehouseTableRow";
+
 // import Header from "../../components/Header/Header";
 const WarehouseListPage = ({ warehouseData }) => {
   console.log(warehouseData);
@@ -21,29 +22,29 @@ const WarehouseListPage = ({ warehouseData }) => {
               <th className="table__header">
                 <span className="font-H4-TableHeader">WAREHOUSE</span>
                 <img
-                  src="src/assets/images/Icons/sort-24px.svg"
-                  alt="search icon"
+                  src="/src/assets/images/Icons/sort-24px.svg"
+                  alt="sort icon"
                 />
               </th>
               <th className="table__header">
                 <span className="font-H4-TableHeader">ADDRESS</span>
                 <img
-                  src="src/assets/images/Icons/sort-24px.svg"
-                  alt="search icon"
+                  src="/src/assets/images/Icons/sort-24px.svg"
+                  alt="sort icon"
                 />
               </th>
               <th className="table__header">
                 <span className="font-H4-TableHeader">CONTACT NAME</span>
                 <img
-                  src="src/assets/images/Icons/sort-24px.svg"
-                  alt="search icon"
+                  src="/src/assets/images/Icons/sort-24px.svg"
+                  alt="sort icon"
                 />
               </th>
               <th className="table__header">
                 <span className="font-H4-TableHeader">CONTACT INFORMATION</span>
                 <img
-                  src="src/assets/images/Icons/sort-24px.svg"
-                  alt="search icon"
+                  src="/src/assets/images/Icons/sort-24px.svg"
+                  alt="sort icon"
                 />
               </th>
               <th className="table__header">

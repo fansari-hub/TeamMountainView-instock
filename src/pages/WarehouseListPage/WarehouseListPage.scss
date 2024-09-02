@@ -1,9 +1,9 @@
-@use "src/styles/partials/fonts" as *;
-@use "src/styles/partials/global" as *;
-@use "src/styles/partials/colors" as *;
-@use "src/styles/partials/functions" as *;
-@use "src/styles/partials/variables" as *;
-@use "src/styles/partials/mixins" as *;
+// @use "src/styles/partials/fonts" as *;
+// @use "src/styles/partials/global" as *;
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
 
 .main {
   //comment out the next 4 lines when combined with rest of page

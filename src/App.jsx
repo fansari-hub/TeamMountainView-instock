@@ -34,7 +34,7 @@ function App() {
           ></Route>
           <Route
             path="/warehouses/:id/edit"
-            element={<EditWarehousePage />}
+            element={<EditWarehousePage warehouseData={warehouseData} />}
           ></Route>
           <Route path="/warehouses/add" element={<AddWarehousePage />}></Route>
           <Route

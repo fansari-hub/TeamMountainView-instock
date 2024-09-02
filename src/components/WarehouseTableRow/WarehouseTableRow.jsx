@@ -16,7 +16,7 @@ const WarehouseTableRow = ({ warehouse }) => {
                   {warehouse.warehouse_name}
                 </span>
                 <img
-                  src="src/assets/images/Icons/chevron_right-24px.svg"
+                  src="/src/assets/images/Icons/chevron_right-24px.svg"
                   alt="link icon"
                   className="row__icon"
                 />
@@ -58,10 +58,10 @@ const WarehouseTableRow = ({ warehouse }) => {
           <div className="row__action-icons">
             <img
               className="row__action-icons-delete"
-              src="src/assets/images/Icons/delete_outline-24px.svg"
+              src="/src/assets/images/Icons/delete_outline-24px.svg"
               alt="delete icon"
             />
-            <img src="src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
+            <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
           </div>
         </td>
       </td>
