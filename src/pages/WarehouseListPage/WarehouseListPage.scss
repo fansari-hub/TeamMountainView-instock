@@ -1,0 +1,98 @@
+// @use "src/styles/partials/fonts" as *;
+// @use "src/styles/partials/global" as *;
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.main {
+  //comment out the next 4 lines when combined with rest of page
+  position: absolute;
+  left: 4.27%;
+  right: 4.27%;
+  top: 7.53%;
+
+  background: $colPrimaryWhite;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+  &__header {
+    padding: 36px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    @include displayTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__title {
+    margin-bottom: 16px; //this somehow doesn't get applied
+    @include displayTablet {
+    }
+  }
+  &__search {
+    // width: 295px;
+    height: 36px;
+    margin-top: 16px;
+    background: $colPrimaryWhite;
+
+    border: 1px solid #bdc5d5;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-image: url("src/assets/images/Icons/search-24px.svg");
+    background-repeat: no-repeat;
+    background-position: 99% center;
+    text-indent: 1rem;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    @include displayTablet {
+      width: 240px;
+      margin-left: 80px;
+      height: 38px;
+    }
+    @include displayDesktop {
+      width: 340px;
+      margin-right: -300px;
+    }
+  }
+  &__button {
+    height: 36px;
+    font-family: "Titillium Web", sans-serif;
+    width: 100%;
+    background: $colPrimaryInstock-Indigo;
+    border-radius: 20px;
+    flex-grow: 0;
+    border: none;
+    color: white;
+    &:hover {
+      background: $colPrimaryInstock-Black;
+    }
+    @include displayTablet {
+      width: 200px;
+      font-size: toRem(16);
+      height: 38px;
+    }
+  }
+}
+
+.table {
+  &__container {
+    width: 100%;
+  }
+  &__header {
+    display: none;
+    @include displayTablet {
+      display: flex;
+      align-items: center;
+      &-container {
+        height: 36px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px;
+        background: rgba(247, 248, 249, 0.7);
+      }
+    }
+  }
+}
