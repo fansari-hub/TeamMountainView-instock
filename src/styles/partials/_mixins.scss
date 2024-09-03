@@ -7,7 +7,7 @@
   }
 }
 @mixin displayTablet {
-  @media (min-width: $breakpoint-tablet-s) and (max-width: $breakpoint-tablet-e) {
+  @media (min-width: $breakpoint-tablet-s) {
     @content;
   }
 }
