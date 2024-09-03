@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./App.scss";
+import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
   return (
     <>
+      <HeaderComponent />
       <div className="App">
         <h1>welcome to the instock app</h1>
         <br />
