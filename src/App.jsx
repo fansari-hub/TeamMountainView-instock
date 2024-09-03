@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
+import FooterComponent from "./components/Footer/footerComponent";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <div className="App__pad2">Padding Example 2</div>
         
       </div>
+      <FooterComponent />
     </>
   );
 }
