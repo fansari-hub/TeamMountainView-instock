@@ -9,9 +9,12 @@
     margin-top: 24px;
   }
   &__field-title {
-    font-size: toRem(13);
+    font-size: toRem(13); //for some reason defalut in font size didn't render
     margin-bottom: 4px;
     margin-top: 24px;
+    @include displayTablet {
+      font-size: toRem(14);
+    }
   }
   &__input {
     box-sizing: border-box;
