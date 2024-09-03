@@ -64,6 +64,9 @@
     flex-grow: 0;
     border: none;
     color: white;
+    &:hover {
+      background: $colPrimaryInstock-Black;
+    }
     @include displayTablet {
       width: 200px;
       font-size: toRem(16);

@@ -45,6 +45,12 @@
       width: 45%;
       height: 36px;
       flex-grow: 0;
+
+      &:hover {
+        border: 1px solid $colPrimaryInstock-Indigo;
+        color: $colPrimaryInstock-Indigo;
+      }
+
       @include displayTablet {
         height: 38px;
         width: 72px;
@@ -59,6 +65,9 @@
       width: 45%;
       height: 36px;
       flex-grow: 0;
+      &:hover {
+        background: $colPrimaryInstock-Black;
+      }
       @include displayTablet {
         height: 38px;
         width: 72px;
