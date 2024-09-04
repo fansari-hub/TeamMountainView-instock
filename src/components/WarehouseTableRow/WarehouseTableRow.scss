@@ -1,0 +1,123 @@
+// @use "src/styles/partials/fonts" as *;
+// @use "src/styles/partials/global" as *;
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.row {
+  &__divider {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: $colSecondaryCloud;
+    margin-bottom: 16px;
+  }
+  &__main-info-action {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include displayTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+  }
+
+  &__title {
+    &--action {
+      display: none;
+    }
+    @include displayTablet {
+      display: none;
+    }
+  }
+  &__value {
+    font-size: toRem(13);
+    font-weight: 400;
+    line-height: toRem(20);
+    @include displayTablet {
+      font-size: toRem(14);
+    }
+
+    // text-align: left;
+
+    &--warehouse {
+      font-size: toRem(13);
+      font-weight: 600;
+      //   color: $colPrimaryInstock-Indigo;
+      color: #2e66e5;
+      line-height: toRem(20);
+      @include displayTablet {
+        font-size: toRem(14);
+      }
+    }
+    &--contact-name {
+      font-size: toRem(13); //for some reason toRem(13) wouldn't work
+      font-weight: 400;
+      line-height: toRem(20);
+      margin-bottom: 16px;
+      @include displayTablet {
+        font-size: toRem(14);
+      }
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+    @include displayTablet {
+      display: contents;
+    }
+  }
+  //   &__contact-info {
+  //     display: flex;
+  //     flex-direction: column;
+  //     max-width: 50%;
+  //   }
+
+  &__warehouse-address {
+    // width: 140px;
+    max-width: 40%;
+    margin-right: 24px;
+    @include displayTablet {
+      display: contents;
+    }
+  }
+  &__contact-info {
+    max-width: 50%;
+    flex-grow: 1;
+    @include displayTablet {
+      display: contents;
+
+      // font-size: toRem(14);
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+  &__warehouse-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  &__action-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin: 12px 0 16px 0;
+    @include displayTablet {
+      padding: 0;
+      margin: 0;
+    }
+    &-delete {
+      margin: 0 8px 0 -8px;
+    }
+  }
+}
