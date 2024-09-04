@@ -17,12 +17,12 @@ import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
 // to be replaced with backend calls after we build out backend
 import warehouseData from "./data/01_warehouses.json";
 import inventoryData from "./data/02_inventories.json";
-import HeaderComponent from "./components/Header/headerComponent";
+// import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
   return (
     <>
-      <HeaderComponent />
+      {/* <HeaderComponent /> */}
       <Router>
         <Routes>
           <Route path="/" element={<SassExamplePage />}></Route>
