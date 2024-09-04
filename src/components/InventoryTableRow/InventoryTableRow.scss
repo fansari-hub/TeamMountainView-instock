@@ -1,0 +1,83 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.InventoryTableRow {
+  &__divider {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: $colSecondaryCloud;
+    margin-bottom: 16px;
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include displayTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    &__info {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: $pad-9;
+      width: 100%;
+      padding: 0 24px;
+
+      @include displayTablet {
+        display: contents;
+        justify-content: space-between;
+        gap: 0px;
+      }
+      &__col {
+        display: flex;
+        flex-direction: column;
+        @include displayTablet {
+          flex-direction: row;
+          flex-grow: 1;
+          &--typeA{
+            max-width: 27%;
+            justify-content: space-between;
+          }
+          &--typeB{
+            max-width: 40%;
+            justify-content: space-between;
+          }
+        }
+        &__field {
+          &__label {
+            color: $colSecondarySlate;
+            margin-bottom: $pad-1;
+            @include displayTablet {
+              display: none;
+            }
+          }
+          &__data {
+            margin-bottom: $pad-3;
+            background-color: none;
+          }
+        }
+      }
+    }
+  }
+  &__actionContainer {
+    &__icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 24px;
+      margin: 12px 0 16px 0;
+      @include displayTablet {
+        padding: 0;
+        margin: 0;
+      }
+      &__delete {
+        margin: 0 8px 0 -8px;
+      }
+    }
+  }
+}
