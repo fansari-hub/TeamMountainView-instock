@@ -1,0 +1,89 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.InventoryListWarehousePage {
+  &__main {
+    background: $colPrimaryWhite;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    &__header {
+      padding: $pad-5 $pad-4 $pad-4 $pad-4;
+      display: flex;
+      flex-direction: column;
+      @include displayTablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    &__title {
+      margin-bottom: $pad-3;
+      @include displayTablet {
+      }
+    }
+    &__search {
+      height: 36px;
+      margin-top: $pad-3;
+      background: $colPrimaryWhite;
+
+      border: 1px solid #bdc5d5;
+      border-radius: 20px;
+      box-sizing: border-box;
+      background-image: url("src/assets/images/Icons/search-24px.svg");
+      background-repeat: no-repeat;
+      background-position: 99% center;
+      text-indent: 1rem;
+      font-size: 1rem;
+      margin-bottom: $pad-3;
+      @include displayTablet {
+        width: toRem(240);
+        margin-left: $pad-9;
+        height: 38px;
+      }
+      @include displayDesktop {
+        width: toRem(300);
+        margin-right: -300px;
+      }
+    }
+    &__button {
+      height: 36px;
+      width: 100%;
+      background: $colPrimaryInstock-Indigo;
+      border-radius: 20px;
+      flex-grow: 0;
+      border: none;
+      color: white;
+      &:hover {
+        background: $colPrimaryInstock-Black;
+      }
+      @include displayTablet {
+        width: 200px;
+        height: 38px;
+      }
+    }
+  }
+
+  &__table {
+    &__container {
+      width: 100%;
+    }
+    &__header {
+      display: none;
+      @include displayTablet {
+        display: flex;
+        align-items: center;
+        &-container {
+          height: 36px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 $pad-4;
+          background: rgba(247, 248, 249, 0.7);
+        }
+      }
+    }
+  }
+}

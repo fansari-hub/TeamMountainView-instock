@@ -5,6 +5,7 @@ import SassExamplePage from "./pages/SassExamplePage/SassExamplePage";
 import WarehouseListPage from "./pages/WarehouseListPage/WarehouseListPage";
 import WarehouseDetailPage from "./pages/WarehouseDetailPage/WarehouseDetailPage";
 import InventoryListPage from "./pages/InventoryListPage/InventoryListPage";
+import InventoryListWarehousePage from "./pages/InventoryListWarehousePage/InventoryListWarehousePage";
 import InventoryDetailPage from "./pages/InventoryDetailPage/InventoryDetailPage";
 import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage";
 import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
@@ -45,7 +46,7 @@ function App() {
           ></Route>
           <Route
             path="inventory"
-            element={<InventoryListPage inventoryData={inventoryData} />}
+            element={<InventoryListPage inventoryData={inventoryData}/>}
           ></Route>
           <Route path="inventory/:id" element={<InventoryDetailPage />}></Route>
           <Route
@@ -56,6 +57,10 @@ function App() {
           <Route
             path="/inventory/:id/delete"
             element={<DeleteInventoryPage />}
+          ></Route>
+           <Route
+            path="/inventory/warehouse/:id"
+            element={<InventoryListWarehousePage inventoryData={inventoryData}/>}
           ></Route>
         </Routes>
       </Router>

@@ -1,7 +1,17 @@
 import "./InventoryTableRow.scss";
 import { NavLink } from "react-router-dom";
 
-const InventoryTableRow = ({ inventory }) => {
+const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
+  let wareHouseDiv;
+  if (warehouse_filtered !== true) {
+     wareHouseDiv = <>      <div className="InventoryTableRow__main__info__col__field">
+     <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">WAREHOUSE</div>
+     <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.warehouse_id}</div>
+   </div>
+     </>;
+  }else{
+    const wareHouseDiv = <></>;
+  }
   return (
     <>
       <tr className="InventoryTableRow">
@@ -11,7 +21,7 @@ const InventoryTableRow = ({ inventory }) => {
             <div className="InventoryTableRow__main__info__col">
               <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">INVENTORY ITEM</div>
-                <NavLink to={inventory.id+"/"} className="InventoryTableRow__main__info__col__field__label__link">
+                <NavLink to={inventory.id + "/"} className="InventoryTableRow__main__info__col__field__label__link">
                   <div className="InventoryTableRow__main__info__col__field__data InventoryTableRow__main__info__col__field__data--link font-H3-label">{inventory.item_name}</div>
                   <img src="/src/assets/images/Icons/chevron_right-24px.svg" alt="link icon" className="InventoryTableRow__main__info__col__field__label__link__icon" />
                 </NavLink>
@@ -30,17 +40,22 @@ const InventoryTableRow = ({ inventory }) => {
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">QTY</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.quantity}</div>
               </div>
-              <div className="InventoryTableRow__main__info__col__field">
+              {/* <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">WAREHOUSE</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.warehouse_id}</div>
-              </div>
+              </div> */}
+              {wareHouseDiv}
             </div>
           </td>
 
           <td className="InventoryTableRow__actionContainer">
             <div className="InventoryTableRow__actionContainer__icons">
-              <NavLink to={inventory.id+"/delete/"}><img className="InventoryTableRow__actionContainer__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" /></NavLink>
-              <NavLink to={inventory.id+"/edit/"}><img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" /></NavLink>
+              <NavLink to={inventory.id + "/delete/"}>
+                <img className="InventoryTableRow__actionContainer__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
+              </NavLink>
+              <NavLink to={inventory.id + "/edit/"}>
+                <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
+              </NavLink>
             </div>
           </td>
         </td>
