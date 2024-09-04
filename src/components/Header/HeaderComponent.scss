@@ -1,6 +1,5 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 
 .headerConfig {
@@ -38,7 +37,6 @@
     &__location{
         display: flex;
         justify-content: center;
-        @extend .font-P3-BodySmall;
         color: $colSecondarySlate;
         padding: $pad-2 $pad-3;
         border-radius: 16px;

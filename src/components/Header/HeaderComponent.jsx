@@ -9,8 +9,8 @@ const HeaderComponent = () => {
                 <img src={logo} alt="InStock Logo"/>
             </div>
             <div className="headerConfig--nav">
-                <NavLink className={({isActive}) => (isActive? 'headerConfig__location activeLink' : 'headerConfig__location')}  to="/warehouse">Warehouses</NavLink>
-                <NavLink className={({isActive}) => (isActive? 'headerConfig__location activeLink' : 'headerConfig__location')} to="/inventory">Inventory</NavLink>
+                <NavLink className={({isActive}) => (isActive? 'headerConfig__location activeLink font-P3-BodySmall' : 'headerConfig__location font-P3-BodySmall')}  to="/Warehouses">Warehouses</NavLink>
+                <NavLink className={({isActive}) => (isActive? 'headerConfig__location activeLink font-P3-BodySmall' : 'headerConfig__location font-P3-BodySmall')} to="/Inventory">Inventory</NavLink>
             </div>
         </div>
      );
