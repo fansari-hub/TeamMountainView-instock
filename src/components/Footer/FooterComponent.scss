@@ -1,10 +1,8 @@
-@use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 
 .footerConfig{
-    @extend .font-P3-BodySmall;
     display: flex;
     justify-content: center;
     align-items: center;
