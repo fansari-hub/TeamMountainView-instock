@@ -5,7 +5,6 @@ import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 
 const InventoryListPage = ({inventoryData}) => {
-  console.log(inventoryData);
   return (
     <>
       <HeaderComponent />

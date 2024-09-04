@@ -2,14 +2,13 @@ import "./InventoryTableRow.scss";
 import { Link } from "react-router-dom";
 
 const InventoryTableRow = ({ inventory }) => {
-  console.log(inventory);
   return (
     <>
       <tr className="InventoryTableRow">
         <hr className="InventoryTableRow__divider" />
         <td className="InventoryTableRow__main">
           <td className="InventoryTableRow__main__info">
-            <div className="InventoryTableRow__main__info__col InventoryTableRow__main__info__col--typeA">
+            <div className="InventoryTableRow__main__info__col">
               <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">INVENTORY ITEM</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.item_name}</div>
@@ -19,7 +18,7 @@ const InventoryTableRow = ({ inventory }) => {
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.category}</div>
               </div>
             </div>
-            <div className="InventoryTableRow__main__info__col InventoryTableRow__main__info__col--typeB">
+            <div className="InventoryTableRow__main__info__col">
               <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">STATUS</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.status}</div>

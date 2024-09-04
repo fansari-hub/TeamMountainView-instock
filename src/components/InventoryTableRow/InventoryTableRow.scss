@@ -14,11 +14,11 @@
   &__main {
     display: flex;
     flex-direction: column;
+    padding-right: $pad-5;
     width: 100%;
     @include displayTablet {
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 24px;
     }
     &__info {
       display: flex;
@@ -30,23 +30,13 @@
 
       @include displayTablet {
         display: contents;
-        justify-content: space-between;
-        gap: 0px;
       }
       &__col {
         display: flex;
         flex-direction: column;
         @include displayTablet {
           flex-direction: row;
-          flex-grow: 1;
-          &--typeA{
-            max-width: 27%;
-            justify-content: space-between;
-          }
-          &--typeB{
-            max-width: 40%;
-            justify-content: space-between;
-          }
+          display: contents;
         }
         &__field {
           &__label {
@@ -58,7 +48,11 @@
           }
           &__data {
             margin-bottom: $pad-3;
-            background-color: none;
+            text-align: left;
+            @include displayTablet {
+              width: toRem(100);
+              margin-left: toRem(40);
+            }
           }
         }
       }
