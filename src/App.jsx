@@ -59,7 +59,7 @@ function App() {
             element={<DeleteInventoryPage />}
           ></Route>
            <Route
-            path="/inventory/warehouse/:id"
+            path="/warehouses/:id/inventories"
             element={<InventoryListWarehousePage inventoryData={inventoryData}/>}
           ></Route>
         </Routes>
