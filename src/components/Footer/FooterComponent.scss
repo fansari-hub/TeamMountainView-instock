@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footerConfig{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8em;
+    padding-bottom: $pad-2;
+    color: $colSecondarySlate;
+    @include displayTablet{
+        height: 10em;
+    }
+    @include displayDesktop{
+        padding-top: $pad-5;
+    }
+}

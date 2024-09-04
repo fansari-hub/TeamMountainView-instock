@@ -2,6 +2,7 @@ import "./WarehouseListPage.scss";
 import { Link } from "react-router-dom";
 import WarehouseTableRow from "../../components/WarehouseTableRow/WarehouseTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
+import FooterComponent from "../../components/Footer/FooterComponent";
 
 const WarehouseListPage = ({ warehouseData }) => {
   console.log(warehouseData);
@@ -60,6 +61,7 @@ const WarehouseListPage = ({ warehouseData }) => {
           </tbody>
         </table>
       </main>
+      <FooterComponent />
     </>
   );
 };
