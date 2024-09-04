@@ -45,13 +45,24 @@
             @include displayTablet {
               display: none;
             }
+            &__link{
+              display: flex;
+              align-items: flex-start;
+              &__icon{
+                display: flex;
+            }
+
+            }
           }
           &__data {
             margin-bottom: $pad-3;
             text-align: left;
             @include displayTablet {
-              width: toRem(100);
+              width: toRem(105);
               margin-left: toRem(40);
+            }
+            &--link{
+              color: $colPrimaryInstock-Indigo;
             }
           }
         }

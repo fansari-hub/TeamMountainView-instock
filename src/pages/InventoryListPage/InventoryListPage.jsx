@@ -1,5 +1,5 @@
 import "./InventoryListPage.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import InventoryTableRow from "../../components/InventoryTableRow/InventoryTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
@@ -12,9 +12,9 @@ const InventoryListPage = ({inventoryData}) => {
         <div className="InventoryListPage__main__header">
           <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
           <input className="InventoryListPage__main__search" placeholder="Search..." />
-          <Link to="/warehouses/add">
+          <NavLink to="/inventory/add">
             <button className="InventoryListPage__main__button">+Add New Item</button>
-          </Link>
+          </NavLink>
         </div>
         <table className="InventoryListPage__table__container">
           <thead>
