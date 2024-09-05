@@ -1,7 +1,7 @@
 import { useState, forwardRef } from "react";
-import "./DetailsForm.scss";
+import "./NewWarehouseForm.scss";
 
-const DetailsForm = forwardRef(
+const NewWarehouseForm = forwardRef(
   ({ warehouesToEdit, formType, className }, ref) => {
     const [formData, setFormData] = useState({ ...warehouesToEdit });
 
@@ -55,7 +55,7 @@ const DetailsForm = forwardRef(
           <div key={index}>
             <h3 className="font-H3-label form__field-title">{field.title}</h3>
             <input
-              className="form__input"
+              className="form__input-placeholder"
               name={field.name}
               defaultValue={field.value}
               onChange={handleChange}
@@ -67,4 +67,4 @@ const DetailsForm = forwardRef(
   }
 );
 
-export default DetailsForm;
+export default NewWarehouseForm;
