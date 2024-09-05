@@ -3,7 +3,7 @@
 @use "/src/styles/partials/variables" as *;
 @use "/src/styles/partials/mixins" as *;
 
-.InventoryListPage {
+.InventoryListWarehousePage {
   &__main {
     background: $colPrimaryWhite;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);

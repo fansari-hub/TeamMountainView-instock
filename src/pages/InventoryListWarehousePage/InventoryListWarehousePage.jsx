@@ -1,20 +1,28 @@
-import "./InventoryListPage.scss";
+import "./InventoryListWarehousePage.scss";
 import { NavLink } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import InventoryTableRow from "../../components/InventoryTableRow/InventoryTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 
 const InventoryListPage = ({inventoryData}) => {
+
+    const { id } = useParams();
+    const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id)
+
   return (
     <>
       <HeaderComponent />
       <main className="InventoryListPage__main">
         <div className="InventoryListPage__main__header">
-          <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
+          <h2 className="InventoryListPage__main__title font-H1-PageHeader">Warehouse: {id}</h2>
           <input className="InventoryListPage__main__search" placeholder="Search..." />
           <NavLink to="/inventory/add">
             <button className="InventoryListPage__main__button">+Add New Item</button>
           </NavLink>
+        </div>
+        <div>
+            <p>TODO: Warehouse details will go here</p>
         </div>
         <table className="InventoryListPage__table__container">
           <thead>
@@ -47,9 +55,9 @@ const InventoryListPage = ({inventoryData}) => {
                   alt="sort icon"
                 />
               </th>
-              <th className="InventoryListPage__table__header">
+              {/* <th className="InventoryListPage__table__header">
                 <span className="font-H4-TableHeader">WAREHOUSE</span>
-              </th>
+              </th> */}
               <th className="InventoryListPage__table__header">
                 <span className="font-H4-TableHeader">ACTIONS</span>
               </th>
@@ -57,8 +65,8 @@ const InventoryListPage = ({inventoryData}) => {
           </thead>
 
           <tbody>
-            {inventoryData.map((inventory) => (
-              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={false} />
+            {inventoryDataFiltered.map((inventory) => (
+              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} />
             ))}
           </tbody>
         </table>

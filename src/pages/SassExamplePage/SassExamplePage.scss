@@ -1,6 +1,6 @@
 //You don't need to import these into your component SCSS since there are global CSS
-@use "src/styles/partials/fonts" as *;
-@use "src/styles/partials/global" as *;
+// @use "src/styles/partials/fonts" as *;
+// @use "src/styles/partials/global" as *;
 
 //These are SASS variable partials and need to be imported into each component/page SCSS if used.
 @use "src/styles/partials/colors" as *;
