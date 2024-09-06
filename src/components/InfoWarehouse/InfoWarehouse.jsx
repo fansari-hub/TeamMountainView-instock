@@ -1,18 +1,6 @@
 import "./InfoWarehouse.scss";
 
 const InfoWarehouse = ({ SingleWarehouseDetails }) => {
-  // {
-  //     "id": 1,
-  //     "warehouse_name": "Manhattan",
-  //     "address": "503 Broadway",
-  //     "city": "New York",
-  //     "country": "USA",
-  //     "contact_name": "Parmin Aujla",
-  //     "contact_position": "Warehouse Manager",
-  //     "contact_phone": "+1 (646) 123-1234",
-  //     "contact_email": "paujla@instock.com"
-  //   },
-  console.log(SingleWarehouseDetails);
 
   return (
     <>

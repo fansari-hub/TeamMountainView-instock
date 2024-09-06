@@ -6,7 +6,7 @@ import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 import InfoWarehouse from "../../components/InfoWarehouse/InfoWarehouse";
 
-const InventoryListPage = ({ inventoryData, warehouseData }) => {
+const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
   const { id } = useParams();
   const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id);
   const warehouseIndex = warehouseData.findIndex((o) => o.id == id);
@@ -73,4 +73,4 @@ const InventoryListPage = ({ inventoryData, warehouseData }) => {
   );
 };
 
-export default InventoryListPage;
+export default InventoryListWarehousePage;
