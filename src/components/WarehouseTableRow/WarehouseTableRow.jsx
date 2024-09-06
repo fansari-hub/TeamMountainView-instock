@@ -11,7 +11,7 @@ const WarehouseTableRow = ({ warehouse }) => {
           <div className="row__warehouse-address">
             <div className="row__group">
               <span className="row__title font-H4-TableHeader">WAREHOUSE</span>
-              <Link className="row__warehouse-icon">
+              <Link className="row__warehouse-icon" to={"/warehouses/" + warehouse.id + "/inventories"} >
                 <span className="font-H3-label row__value--warehouse">
                   {warehouse.warehouse_name}
                 </span>

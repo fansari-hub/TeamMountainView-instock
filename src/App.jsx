@@ -60,7 +60,7 @@ function App() {
           ></Route>
            <Route
             path="/warehouses/:id/inventories"
-            element={<InventoryListWarehousePage inventoryData={inventoryData}/>}
+            element={<InventoryListWarehousePage inventoryData={inventoryData} warehouseData={warehouseData}/>}
           ></Route>
         </Routes>
       </Router>
