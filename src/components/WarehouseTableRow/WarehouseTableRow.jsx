@@ -1,9 +1,30 @@
+import { useState } from "react";
 import "./WarehouseTableRow.scss";
 import { Link } from "react-router-dom";
+import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 
 const WarehouseTableRow = ({ warehouse }) => {
+
+  const[isModalOpen, SetIsModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    SetIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    SetIsModalOpen(false);
+  }
+
+  const handleDeleteConfirm = () => {
+    console.log('you deleted the warhouse');
+    SetIsModalOpen(false);
+  }
+
+  const warehouseName = warehouse.warehouse_name;
+
   console.log(warehouse);
   return (
+    <>
     <tr className="row">
       <hr className="row__divider" />
       <td className="row__main-info-action">
@@ -56,7 +77,8 @@ const WarehouseTableRow = ({ warehouse }) => {
         <td className="row__action-container">
           <span className="row__title--action font-H4-TableHeader">ACTION</span>
           <div className="row__action-icons">
-            <img
+            <img 
+              onClick={handleDeleteClick}
               className="row__action-icons-delete"
               src="/src/assets/images/Icons/delete_outline-24px.svg"
               alt="delete icon"
@@ -66,6 +88,13 @@ const WarehouseTableRow = ({ warehouse }) => {
         </td>
       </td>
     </tr>
+    <DeleteWarehouse 
+      isOpen={isModalOpen}
+      onClose={handleCloseModal}
+      onDelete={handleDeleteConfirm}
+      warehouseName={warehouseName}
+    />
+    </>
   );
 };
 
