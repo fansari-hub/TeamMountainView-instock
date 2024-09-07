@@ -1,0 +1,57 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.InfoWarehouse {
+  margin: $pad-4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include displayTablet {
+    margin-right: $pad-10;
+  }
+  &__ruler {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: $colSecondaryCloud;
+    margin-bottom: 16px;
+    margin-top: 0px;
+    &--vertical {
+      display: none;
+      @include displayTablet {
+        display: flex;
+      }
+    }
+  }
+  &__section {
+    &--top {
+      flex-grow: 1;
+      width: 100%;
+      margin-bottom: $pad-4;
+      @include displayTablet {
+        flex-grow: 0;
+        width: 40%;
+        border-right: 1px solid $colSecondaryCloud;
+        margin-bottom: 0px;
+      }
+    }
+    &__label {
+      color: $colSecondarySlate;
+      margin: 0px;
+      margin-bottom: $pad-2;
+    }
+    &__group {
+        &--top{
+            display: flex;
+            @include displayTablet{
+                display: block;
+            }
+        }
+      &__value {
+        margin: 0px;
+      }
+    }
+  }
+}

@@ -11,56 +11,43 @@
     &__header {
       padding: $pad-5 $pad-4 $pad-4 $pad-4;
       display: flex;
-      flex-direction: column;
-      @include displayTablet {
-        flex-direction: row;
-        justify-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+      &__titlegroup {
+        margin-bottom: $pad-3;
+        display: flex;
+        justify-content: flex-start;
         align-items: center;
+        &__title {
+          margin-left: $pad-1;
+        }
       }
-    }
-    &__title {
-      margin-bottom: $pad-3;
-      @include displayTablet {
-      }
-    }
-    &__search {
-      height: 36px;
-      margin-top: $pad-3;
-      background: $colPrimaryWhite;
-
-      border: 1px solid #bdc5d5;
-      border-radius: 20px;
-      box-sizing: border-box;
-      background-image: url("src/assets/images/Icons/search-24px.svg");
-      background-repeat: no-repeat;
-      background-position: 99% center;
-      text-indent: 1rem;
-      font-size: 1rem;
-      margin-bottom: $pad-3;
-      @include displayTablet {
-        width: toRem(240);
-        margin-left: $pad-9;
-        height: 38px;
-      }
-      @include displayDesktop {
-        width: toRem(300);
-        margin-right: -300px;
-      }
-    }
-    &__button {
-      height: 36px;
-      width: 100%;
-      background: $colPrimaryInstock-Indigo;
-      border-radius: 20px;
-      flex-grow: 0;
-      border: none;
-      color: white;
-      &:hover {
-        background: $colPrimaryInstock-Black;
-      }
-      @include displayTablet {
-        width: 200px;
-        height: 38px;
+      &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $pad-1;
+        height: toRem(36);
+        background: $colPrimaryInstock-Indigo;
+        border-radius: 20px;
+        border: none;
+        color: white;
+        &:hover {
+          background: $colPrimaryInstock-Black;
+        }
+        @include displayTablet {
+          width: toRem(80);
+          height: toRem(38);
+        }
+        &__icon {
+          filter: brightness(100);
+        }
+        &__label {
+          display: none;
+          @include displayTablet {
+            display: inline-block;
+          }
+        }
       }
     }
   }
