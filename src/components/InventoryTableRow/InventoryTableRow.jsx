@@ -4,25 +4,26 @@ import { NavLink } from "react-router-dom";
 import DeleteInventoryComponent from "../DeleteInventoryComponent/DeleteInventoryComponent";
 
 const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
-  const[isModalOpen, SetIsModalOpen] = useState(false);
+  const [isModalOpen, SetIsModalOpen] = useState(false);
 
   const handleDeleteClick = () => {
     SetIsModalOpen(true);
-  }
+  };
 
   const handleCloseModal = () => {
     SetIsModalOpen(false);
-  }
+  };
 
   const handleDeleteConfirm = () => {
-    console.log('you deleted the warhouse');
+    console.log("you deleted the warhouse");
     SetIsModalOpen(false);
-  }
+  };
 
   const inventoryItem = inventory.item_name;
 
   let wareHouseDiv = <></>;
   let parentPathPrefix = "";
+  let stockTickerClass = "InventoryTableRow-stockTicker";
   if (warehouse_filtered !== true) {
     wareHouseDiv = (
       <>
@@ -35,6 +36,10 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
     );
   } else {
     parentPathPrefix = "../inventory/";
+  }
+
+  if (inventory.status.toUpperCase() === "OUT OF STOCK"){
+    stockTickerClass += " InventoryTableRow-stockTicker--nostock"
   }
   return (
     <>
@@ -58,7 +63,9 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
             <div className="InventoryTableRow__main__info__col">
               <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">STATUS</div>
-                <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.status}</div>
+                <div className={stockTickerClass}>
+                <div className="InventoryTableRow__main__info__col__field__data font-P3-BodySmall">{inventory.status.toUpperCase()}</div>
+                </div>
               </div>
               <div className="InventoryTableRow__main__info__col__field">
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">QTY</div>
@@ -66,26 +73,20 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
               </div>
               {wareHouseDiv}
             </div>
-          </td>
-
-          <td className="InventoryTableRow__actionContainer">
-            <div className="InventoryTableRow__actionContainer__icons">
-                <img 
-                onClick={handleDeleteClick}
-                className="InventoryTableRow__actionContainer__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
-              <NavLink to={parentPathPrefix + inventory.id + "/edit/"}>
-                <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
-              </NavLink>
+            <div className="InventoryTableRow__main__info__col InventoryTableRow__main__info__col--actions">
+              <div className="InventoryTableRow__main__info__col__field">
+                <div className="InventoryTableRow__main__info__col__field__icons">
+                  <img onClick={handleDeleteClick} className="InventoryTableRow__main__info__col__field__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
+                  <NavLink to={parentPathPrefix + inventory.id + "/edit/"}>
+                    <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
+                  </NavLink>
+                </div>
+              </div>
             </div>
           </td>
         </td>
       </tr>
-      <DeleteInventoryComponent
-      isOpen={isModalOpen}
-      onClose={handleCloseModal}
-      onDelete={handleDeleteConfirm}
-      inventoryItem={inventoryItem}
-    />   
+      <DeleteInventoryComponent isOpen={isModalOpen} onClose={handleCloseModal} onDelete={handleDeleteConfirm} inventoryItem={inventoryItem} />
     </>
   );
 };

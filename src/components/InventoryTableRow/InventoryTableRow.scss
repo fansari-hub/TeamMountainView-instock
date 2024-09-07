@@ -14,75 +14,96 @@
   &__main {
     display: flex;
     flex-direction: column;
-    padding-right: $pad-5;
+    padding-left: toRem(40);
     width: 100%;
     @include displayTablet {
+      padding-right: toRem(40);
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
     &__info {
       display: flex;
-      flex-direction: row;
       justify-content: flex-start;
-      gap: $pad-9;
-      width: 100%;
-      padding: 0 24px;
-
+      flex-wrap: wrap;
       @include displayTablet {
         display: contents;
       }
       &__col {
         display: flex;
         flex-direction: column;
+        gap: $pad-3;
         @include displayTablet {
-          flex-direction: row;
           display: contents;
         }
+        &--actions{
+          flex-grow: 1;
+          width: 100%;
+          @include displayTablet{
+            display: contents;
+          }
+        }
         &__field {
+          @include displayTablet {
+            width: 17%;
+          }
           &__label {
             color: $colSecondarySlate;
             margin-bottom: $pad-1;
+            padding-right: $pad-7;
             @include displayTablet {
               display: none;
             }
-            &__link{
+            &__link {
               display: flex;
               align-items: flex-start;
-              &__icon{
+              &__icon {
                 display: flex;
-            }
-
+              }
             }
           }
           &__data {
             margin-bottom: $pad-3;
             text-align: left;
             @include displayTablet {
-              width: toRem(105);
-              margin-left: toRem(40);
             }
-            &--link{
+            &--link {
               color: $colPrimaryInstock-Indigo;
+            }
+          }
+          &__icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 24px;
+            margin: 12px 0 16px 0;
+            @include displayTablet {
+              padding: 0px;
+              justify-content: flex-end;
+              margin: 0;
+            }
+            &__delete {
+              padding-right: $pad-4;
+              margin-left: -$pad-3;
             }
           }
         }
       }
     }
   }
-  &__actionContainer {
-    &__icons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0 24px;
-      margin: 12px 0 16px 0;
-      @include displayTablet {
-        padding: 0;
-        margin: 0;
-      }
-      &__delete {
-        margin: 0 8px 0 -8px;
-      }
+  &-stockTicker{
+    background-color: rgb(225, 250, 226);
+    color: $colSupportGreen;
+    border-radius: 20px;
+    height: toRem(22);
+    display: flex;
+    justify-content: center;
+    padding-top: toRem(2);
+    padding-left: toRem(10);
+    padding-right: toRem(10);
+    width: fit-content;
+    &--nostock{
+      background-color: rgb(250, 225, 225);
+      color: $colSupportRed;
     }
   }
 }

@@ -4,7 +4,7 @@ import InventoryTableRow from "../../components/InventoryTableRow/InventoryTable
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 
-const InventoryListPage = ({inventoryData}) => {
+const InventoryListPage = ({ inventoryData }) => {
   return (
     <>
       <HeaderComponent />
@@ -16,42 +16,43 @@ const InventoryListPage = ({inventoryData}) => {
             <button className="InventoryListPage__main__button">+Add New Item</button>
           </NavLink>
         </div>
-        <table className="InventoryListPage__table__container">
+        <table className="InventoryListPage__table">
           <thead>
-            <tr className="InventoryListPage__table__header-container">
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">INVENTORY ITEM</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+            <tr className="InventoryListPage__table__header">
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">CATEGORY</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">CATEGORY</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">STATUS</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">STATUS</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">QTY</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">QTY</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">WAREHOUSE</span>
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">WAREHOUSE</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListPage__table__header">
-                <span className="font-H4-TableHeader">ACTIONS</span>
+              <th className="InventoryListPage__table__header__col">
+                <div className="InventoryListPage__table__header__col__group InventoryListPage__table__header__col__group--actions">
+                  <div className="font-H4-TableHeader">ACTIONS</div>
+                </div>
               </th>
             </tr>
           </thead>
