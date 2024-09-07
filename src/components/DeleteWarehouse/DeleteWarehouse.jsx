@@ -1,4 +1,3 @@
-import "./DeleteWarehouse.scss";
 import close from "../../assets/images/Icons/close-24px.svg";
 
 const DeleteWarehouse = ({isOpen, onClose, onDelete, warehouseName}) => {
@@ -15,8 +14,8 @@ const DeleteWarehouse = ({isOpen, onClose, onDelete, warehouseName}) => {
             <p className="font-P2-BodyMedium modal__txt--paragraph">Please confirm that you'd like to delete the {`${warehouseName}`} from the list of warehouses. You won't be able to undo this action.</p>
          </div>
          <div className="modal__buttons">
-            <button className="btn--cancel font-P1-BodySmall" onClick={onClose}>Cancel</button>
-            <button className="btn--delete font-P1-BodySmall" onClick={onDelete}>Delete</button>
+            <button className="modal--btn--cancel font-P1-BodySmall" onClick={onClose}>Cancel</button>
+            <button className="modal--btn--delete font-P1-BodySmall" onClick={onDelete}>Delete</button>
          </div>
          </div>
     </div> );

@@ -1,5 +1,7 @@
 @use "colors" as *;
 @use "anims" as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 body {
   margin: 0px;
@@ -24,4 +26,113 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+//Modal SCSS
+.modal{
+  width: 100%;
+      background-color: $colBackgroundLight-Gray;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 4px;
+      padding: $pad-3;
+  @include displayTablet{
+  background-color: $colPrimaryWhite;
+  margin-top: 12em;
+  max-width: 720px;
+  height: 18em;
+  }
+  &__overlay{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $colBackgroundLight-Gray;
+      display: flex;
+      z-index: 1000;
+      color: $colPrimaryInstock-Black;
+      @include displayTablet{
+          display: flex;
+          
+          justify-content: center;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: $pad-3 $pad-4 $pad-3;
+      }
+}
+&__close{
+  display: flex;
+  justify-content: right;
+  background: none;
+  border: none;
+      text-align: right;
+  cursor: pointer;
+  @include displayTablet{
+      right: 30px;
+  }
+}
+&__txt{
+  &--paragraph{
+      @include displayTablet{
+          font-size: 1em;
+          max-width: 615px;
+          padding-left: 3.4em;
+      }
+      
+  }
+  @include displayTablet{
+  }
+  &--heading{
+      width: 75%;
+      @include displayTablet{
+          width: 100%;
+          font-size: 1.75em;
+          padding-left: 2em;
+      }
+  }
+}
+&__buttons{
+  display: flex;
+  justify-content: space-around;
+  height: 2em;
+  @include displayTablet{
+      justify-content: right;
+      width: 100%;
+      margin: 0 0 2em -4em;
+      height: 2.2em;
+  }
+}
+}
+
+.modal--btn{
+  
+  &--cancel{
+      background-color: $colBackgroundLight-Gray;
+      border: 1px solid $colSecondaryCloud;
+      border-radius: 16px;
+      width: 100%;
+      margin: 0 $pad-3 0 0;
+      padding: $pad-1 0;
+      color: $colSecondarySlate;
+      font-size: 0.8em;
+      cursor: pointer;
+      @include displayTablet{
+          width: 10%;
+      }
+      
+  }
+  &--delete{
+      background-color: $colSupportRed;
+      border: 1px solid $colSecondaryCloud;
+      border-radius: 16px;
+      width: 100%;
+      padding: $pad-1 0;
+      color: $colPrimaryWhite;
+      font-size: 0.8em;
+      cursor: pointer;
+      @include displayTablet{
+          width: 10%;
+      }
+  }
 }
