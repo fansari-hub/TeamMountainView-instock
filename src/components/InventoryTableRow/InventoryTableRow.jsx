@@ -1,7 +1,26 @@
+import { useState } from "react";
 import "./InventoryTableRow.scss";
 import { NavLink } from "react-router-dom";
+import DeleteInventoryComponent from "../DeleteInventoryComponent/DeleteInventoryComponent";
 
 const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
+  const[isModalOpen, SetIsModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    SetIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    SetIsModalOpen(false);
+  }
+
+  const handleDeleteConfirm = () => {
+    console.log('you deleted the warhouse');
+    SetIsModalOpen(false);
+  }
+
+  const inventoryItem = inventory.item_name;
+
   let wareHouseDiv = <></>;
   let parentPathPrefix = "";
   if (warehouse_filtered !== true) {
@@ -51,9 +70,9 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
 
           <td className="InventoryTableRow__actionContainer">
             <div className="InventoryTableRow__actionContainer__icons">
-              <NavLink to={parentPathPrefix + inventory.id + "/delete/"}>
-                <img className="InventoryTableRow__actionContainer__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
-              </NavLink>
+                <img 
+                onClick={handleDeleteClick}
+                className="InventoryTableRow__actionContainer__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
               <NavLink to={parentPathPrefix + inventory.id + "/edit/"}>
                 <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
               </NavLink>
@@ -61,6 +80,12 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
           </td>
         </td>
       </tr>
+      <DeleteInventoryComponent
+      isOpen={isModalOpen}
+      onClose={handleCloseModal}
+      onDelete={handleDeleteConfirm}
+      inventoryItem={inventoryItem}
+    />   
     </>
   );
 };
