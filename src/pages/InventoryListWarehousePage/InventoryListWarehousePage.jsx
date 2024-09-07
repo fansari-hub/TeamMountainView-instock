@@ -1,64 +1,61 @@
 import "./InventoryListWarehousePage.scss";
 import { NavLink } from "react-router-dom";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import InventoryTableRow from "../../components/InventoryTableRow/InventoryTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
+import InfoWarehouse from "../../components/InfoWarehouse/InfoWarehouse";
 
-const InventoryListPage = ({inventoryData}) => {
-
-    const { id } = useParams();
-    const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id)
+const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
+  const { id } = useParams();
+  const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id);
+  const warehouseIndex = warehouseData.findIndex((o) => o.id == id);
+  const SingleWarehouseDetails = warehouseData[warehouseIndex];
 
   return (
     <>
       <HeaderComponent />
-      <main className="InventoryListPage__main">
-        <div className="InventoryListPage__main__header">
-          <h2 className="InventoryListPage__main__title font-H1-PageHeader">Warehouse: {id}</h2>
-          <input className="InventoryListPage__main__search" placeholder="Search..." />
-          <NavLink to="/inventory/add">
-            <button className="InventoryListPage__main__button">+Add New Item</button>
+      <main className="InventoryListWarehousePage__main">
+        <div className="InventoryListWarehousePage__main__header">
+          <div className="InventoryListWarehousePage__main__header__titlegroup">
+          <NavLink to={"/warehouses"}>
+          <img className="InventoryListWarehousePage__main__header__titlegroup__backarrow" src="/src/assets/images/Icons/arrow_back-24px.svg" alt="back arrow" />
+          </NavLink>
+          <h2 className="InventoryListWarehousePage__main__header__titlegroup__title font-H1-PageHeader">{SingleWarehouseDetails.warehouse_name}</h2>
+          </div>
+          <NavLink to={"/warehouses/" + id + "/edit"}>
+            <button className="InventoryListWarehousePage__main__header__button">
+              <img className="InventoryListWarehousePage__main__header__button__icon" src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
+              <div className="InventoryListWarehousePage__main__header__button__label">Edit</div>
+            </button>
           </NavLink>
         </div>
         <div>
-            <p>TODO: Warehouse details will go here</p>
+          <InfoWarehouse SingleWarehouseDetails={SingleWarehouseDetails} />
         </div>
-        <table className="InventoryListPage__table__container">
+        <table className="InventoryListWarehousePage__table__container">
           <thead>
-            <tr className="InventoryListPage__table__header-container">
-              <th className="InventoryListPage__table__header">
+            <tr className="InventoryListWarehousePage__table__header-container">
+              <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">INVENTORY ITEM</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
               </th>
-              <th className="InventoryListPage__table__header">
+              <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">CATEGORY</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
               </th>
-              <th className="InventoryListPage__table__header">
+              <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">STATUS</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
               </th>
-              <th className="InventoryListPage__table__header">
+              <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">QTY</span>
-                <img
-                  src="/src/assets/images/Icons/sort-24px.svg"
-                  alt="sort icon"
-                />
+                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
               </th>
-              {/* <th className="InventoryListPage__table__header">
+              {/* <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">WAREHOUSE</span>
               </th> */}
-              <th className="InventoryListPage__table__header">
+              <th className="InventoryListWarehousePage__table__header">
                 <span className="font-H4-TableHeader">ACTIONS</span>
               </th>
             </tr>
@@ -76,4 +73,4 @@ const InventoryListPage = ({inventoryData}) => {
   );
 };
 
-export default InventoryListPage;
+export default InventoryListWarehousePage;

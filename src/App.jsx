@@ -48,7 +48,7 @@ function App() {
             path="inventory"
             element={<InventoryListPage inventoryData={inventoryData}/>}
           ></Route>
-          <Route path="inventory/:id" element={<InventoryDetailPage />}></Route>
+          <Route path="inventory/:id" element={<InventoryDetailPage inventoryData={inventoryData} warehouseData={warehouseData} />}></Route>
           <Route
             path="/inventory/:id/edit"
             element={<EditInventoryPage />}
@@ -60,7 +60,7 @@ function App() {
           ></Route>
            <Route
             path="/warehouses/:id/inventories"
-            element={<InventoryListWarehousePage inventoryData={inventoryData}/>}
+            element={<InventoryListWarehousePage inventoryData={inventoryData} warehouseData={warehouseData}/>}
           ></Route>
         </Routes>
       </Router>
