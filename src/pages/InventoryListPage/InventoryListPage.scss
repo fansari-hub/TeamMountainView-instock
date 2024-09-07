@@ -14,20 +14,20 @@
       flex-direction: column;
       @include displayTablet {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
       }
     }
     &__title {
       margin-bottom: $pad-3;
       @include displayTablet {
+        flex-grow: 1;
       }
     }
     &__search {
-      height: 36px;
+      height: toRem(36);
       margin-top: $pad-3;
       background: $colPrimaryWhite;
-
       border: 1px solid #bdc5d5;
       border-radius: 20px;
       box-sizing: border-box;
@@ -39,16 +39,15 @@
       margin-bottom: $pad-3;
       @include displayTablet {
         width: toRem(240);
-        margin-left: $pad-9;
-        height: 38px;
+        margin-right: $pad-3;
+        height: torRem(3);
       }
       @include displayDesktop {
         width: toRem(300);
-        margin-right: -300px;
       }
     }
     &__button {
-      height: 36px;
+      height: toRem(36);
       width: 100%;
       background: $colPrimaryInstock-Indigo;
       border-radius: 20px;
@@ -59,8 +58,8 @@
         background: $colPrimaryInstock-Black;
       }
       @include displayTablet {
-        width: 200px;
-        height: 38px;
+        width: toRem(125);
+        height: toRem(38);
       }
     }
   }
@@ -84,7 +83,7 @@
             display: flex;
             align-items: center;
             width: 100%;
-            &--actions{
+            &--actions {
               display: flex;
               justify-content: flex-end;
             }
