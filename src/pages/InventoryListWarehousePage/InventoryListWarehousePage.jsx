@@ -33,30 +33,37 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
         <div>
           <InfoWarehouse SingleWarehouseDetails={SingleWarehouseDetails} />
         </div>
-        <table className="InventoryListWarehousePage__table__container">
+        <table className="InventoryListWarehousePage__table">
           <thead>
-            <tr className="InventoryListWarehousePage__table__header-container">
-              <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">INVENTORY ITEM</span>
-                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+            <tr className="InventoryListWarehousePage__table__header">
+            <th className="InventoryListWarehousePage__table__header__col">
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">CATEGORY</span>
-                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+              <th className="InventoryListWarehousePage__table__header__col">
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">CATEGORY</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">STATUS</span>
-                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+              <th className="InventoryListWarehousePage__table__header__col">
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">STATUS</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">QTY</span>
-                <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+              <th className="InventoryListWarehousePage__table__header__col">
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">QUANTITY</div>
+                  <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                </div>
               </th>
-              {/* <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">WAREHOUSE</span>
-              </th> */}
-              <th className="InventoryListWarehousePage__table__header">
-                <span className="font-H4-TableHeader">ACTIONS</span>
+              <th className="InventoryListWarehousePage__table__header__col">
+                <div className="InventoryListWarehousePage__table__header__col__group InventoryListWarehousePage__table__header__col__group--actions">
+                  <div className="font-H4-TableHeader">ACTIONS</div>
+                </div>
               </th>
             </tr>
           </thead>

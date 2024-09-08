@@ -25,7 +25,6 @@
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
   margin: 0px;
-  color: $colPrimaryInstock-Black;
   @include displayTablet {
     font-size: toRem(32);
     line-height: toRem(40);
@@ -40,8 +39,7 @@
   font-size: toRem(20);
   line-height: toRem(28);
   font-family: "Titillium Web", sans-serif;
-  font-weight: 600;
-  color: $colPrimaryInstock-Black;
+  font-weight: 600;;
   @include displayTablet {
     font-size: toRem(24);
     line-height: toRem(32);
@@ -57,7 +55,6 @@
   line-height: toRem(20);
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
-  color: $colPrimaryInstock-Black;
   @include displayTablet {
     font-size: toRem(14);
     line-height: toRem(22);
@@ -73,7 +70,7 @@
   line-height: toRem(16);
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  color: $colPrimaryInstock-Black;
+  color: $colSecondarySlate;
   @include displayTablet {
     font-size: toRem(12);
     line-height: toRem(18);
@@ -89,7 +86,6 @@
   line-height: toRem(26);
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  color: $colPrimaryInstock-Black;
   @include displayTablet {
     font-size: toRem(16);
     line-height: toRem(28);
@@ -105,7 +101,6 @@
   line-height: toRem(20);
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  color: $colPrimaryInstock-Black;
   @include displayTablet {
     font-size: toRem(14);
     line-height: toRem(22);
@@ -121,7 +116,6 @@
   line-height: toRem(16);
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  color: $colPrimaryInstock-Black;
   @include displayTablet {
     font-size: toRem(12);
     line-height: toRem(18);
