@@ -13,6 +13,9 @@ const InventoryListPage = ({ inventoryData }) => {
     <>
       <HeaderComponent />
       <div className="InventoryListPage">
+      <div className="InventoryListPage__left">
+        <div className="InventoryListPage-spacer"></div>
+      </div>
       <main className="InventoryListPage__main">
         <div className="InventoryListPage__main__header">
           <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
@@ -69,6 +72,9 @@ const InventoryListPage = ({ inventoryData }) => {
           </tbody>
         </table>
       </main>
+      <div className="InventoryListPage__right">
+      <div className="InventoryListPage-spacer"></div>
+      </div>
       </div>
       <FooterComponent />
     </>

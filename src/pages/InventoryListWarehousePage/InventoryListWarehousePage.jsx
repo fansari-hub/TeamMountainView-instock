@@ -17,6 +17,9 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
     <>
       <HeaderComponent />
       <div className="InventoryListWarehousePage">
+      <div className="InventoryListWarehousePage__left">
+        <div className="InventoryListWarehousePage-spacer"></div>
+      </div>
       <main className="InventoryListWarehousePage__main">
         <div className="InventoryListWarehousePage__main__header">
           <div className="InventoryListWarehousePage__main__header__titlegroup">
@@ -77,6 +80,9 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </tbody>
         </table>
       </main>
+      <div className="InventoryListWarehousePage__right">
+        <div className="InventoryListWarehousePage-spacer"></div>
+      </div>
       </div>
       <FooterComponent />
     </>
