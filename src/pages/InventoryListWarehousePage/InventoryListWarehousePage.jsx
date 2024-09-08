@@ -11,7 +11,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
   const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id);
   const warehouseIndex = warehouseData.findIndex((o) => o.id == id);
   const SingleWarehouseDetails = warehouseData[warehouseIndex];
-  const colSizes = ["25%","25%","25%","15%","0%","10%"];
+  const colSizes = ["22%","22%","29%","15%","0%","10%"];
 
   return (  
     <>

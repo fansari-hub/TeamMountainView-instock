@@ -7,7 +7,7 @@ import FooterComponent from "../../components/Footer/FooterComponent";
 
 const InventoryListPage = ({ inventoryData }) => {
 
-  let colSizes = ["20%","20%","20%","15%","20%","5%"];
+  let colSizes = ["22%","18%","20%","10%","20%","10%"];
 
   return (
     <>

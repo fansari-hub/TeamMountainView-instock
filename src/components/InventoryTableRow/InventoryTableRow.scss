@@ -14,10 +14,10 @@
   &__main {
     display: flex;
     flex-direction: column;
-    padding-left: toRem(40);
+    padding-left: $pad-4;
     width: 100%;
     @include displayTablet {
-      padding-right: toRem(40);
+      padding-right: $pad-4;
       flex-direction: row;
       justify-content: flex-start;
     }
