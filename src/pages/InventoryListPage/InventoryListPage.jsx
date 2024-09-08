@@ -12,6 +12,7 @@ const InventoryListPage = ({ inventoryData }) => {
   return (
     <>
       <HeaderComponent />
+      <div className="InventoryListPage">
       <main className="InventoryListPage__main">
         <div className="InventoryListPage__main__header">
           <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
@@ -68,6 +69,7 @@ const InventoryListPage = ({ inventoryData }) => {
           </tbody>
         </table>
       </main>
+      </div>
       <FooterComponent />
     </>
   );

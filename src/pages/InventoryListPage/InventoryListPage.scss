@@ -4,7 +4,19 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryListPage {
+  display: flex;
+  margin-left: $pad-3;
+  margin-right: $pad-3;
+  @include displayTablet{
+    margin-left: $pad-5;
+    margin-right: $pad-5;
+  }
+  @include displayDesktop{
+    margin-left: toRem(140);
+    margin-right: toRem(140);
+  }  
   &__main {
+    flex-grow: 1;
     background: $colPrimaryWhite;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 3px;

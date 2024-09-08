@@ -16,6 +16,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
   return (  
     <>
       <HeaderComponent />
+      <div className="InventoryListWarehousePage">
       <main className="InventoryListWarehousePage__main">
         <div className="InventoryListWarehousePage__main__header">
           <div className="InventoryListWarehousePage__main__header__titlegroup">
@@ -76,6 +77,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </tbody>
         </table>
       </main>
+      </div>
       <FooterComponent />
     </>
   );
