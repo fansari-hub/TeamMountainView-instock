@@ -66,8 +66,8 @@ const InventoryListPage = ({ inventoryData }) => {
           </thead>
 
           <tbody>
-            {inventoryData.map((inventory) => (
-              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={false} colSizes={colSizes} />
+            {inventoryData.map((inventory, arrayIndex) => (
+              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={false} colSizes={colSizes} arrayIndex={arrayIndex} />
             ))}
           </tbody>
         </table>

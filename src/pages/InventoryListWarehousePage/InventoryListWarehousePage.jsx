@@ -74,8 +74,8 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </thead>
 
           <tbody>
-            {inventoryDataFiltered.map((inventory) => (
-              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} colSizes={colSizes} />
+            {inventoryDataFiltered.map((inventory, arrayIndex) => (
+              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} colSizes={colSizes} arrayIndex={arrayIndex} />
             ))}
           </tbody>
         </table>

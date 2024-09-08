@@ -3,7 +3,7 @@ import "./InventoryTableRow.scss";
 import { NavLink } from "react-router-dom";
 import DeleteInventoryComponent from "../DeleteInventoryComponent/DeleteInventoryComponent";
 
-const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes }) => {
+const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex }) => {
   const [isModalOpen, SetIsModalOpen] = useState(false);
 
   const handleDeleteClick = () => {
@@ -24,6 +24,7 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes }) => {
   let wareHouseDiv = <></>;
   let parentPathPrefix = "";
   let stockTickerClass = "InventoryTableRow-stockTicker";
+  let dividerClass = "InventoryTableRow__divider"
 
   if (warehouse_filtered !== true) {
     wareHouseDiv = (
@@ -39,10 +40,16 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes }) => {
   if (inventory.status.toUpperCase() === "OUT OF STOCK") {
     stockTickerClass += " InventoryTableRow-stockTicker--nostock";
   }
+
+  console.log(arrayIndex);
+
+  if (arrayIndex === 0){
+    dividerClass += " InventoryTableRow__divider--firstrow"
+  }
   return (
     <>
       <tr className="InventoryTableRow">
-        <hr className="InventoryTableRow__divider" />
+        <hr className={dividerClass}/>
         <td className="InventoryTableRow__main">
           <td className="InventoryTableRow__main__info">
             <div className="InventoryTableRow__main__info__col">

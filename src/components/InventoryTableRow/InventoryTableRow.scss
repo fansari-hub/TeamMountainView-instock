@@ -10,6 +10,12 @@
     border: none;
     background-color: $colSecondaryCloud;
     margin-bottom: 16px;
+    &--firstrow{
+      @include displayTablet{
+        height: 0px;
+        margin-bottom: $pad-1;
+      }
+    }
   }
   &__main {
     display: flex;
