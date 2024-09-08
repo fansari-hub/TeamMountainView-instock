@@ -10,14 +10,20 @@
     border: none;
     background-color: $colSecondaryCloud;
     margin-bottom: 16px;
+    &--firstrow{
+      @include displayTablet{
+        height: 0px;
+        margin-bottom: $pad-1;
+      }
+    }
   }
   &__main {
     display: flex;
     flex-direction: column;
-    padding-left: toRem(40);
+    padding-left: $pad-4;
     width: 100%;
     @include displayTablet {
-      padding-right: toRem(40);
+      padding-right: $pad-4;
       flex-direction: row;
       justify-content: flex-start;
     }
@@ -31,23 +37,22 @@
       &__col {
         display: flex;
         flex-direction: column;
-        gap: $pad-3;
+        gap: $pad-1;
         @include displayTablet {
           display: contents;
         }
         &--actions{
           flex-grow: 1;
           width: 100%;
+          display: flex;
           @include displayTablet{
             display: contents;
           }
         }
         &__field {
-          @include displayTablet {
-            width: 17%;
-            &--nowarehouse{
-              width: 20%;
-            }
+          display: contents;
+          @include displayTablet{
+            display:block;
           }
           &__label {
             color: $colSecondarySlate;
@@ -77,7 +82,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            padding: 0 24px;
+            padding-right: $pad-4;
             margin: 12px 0 16px 0;
             @include displayTablet {
               padding: 0px;
@@ -99,12 +104,16 @@
     color: $colSupportGreen;
     border-radius: 20px;
     height: toRem(22);
+    margin-bottom: toRem(10);
     display: flex;
     justify-content: center;
     padding-top: toRem(2);
     padding-left: toRem(10);
     padding-right: toRem(10);
-    width: fit-content;
+    width: max-content;
+    @include displayTablet{
+      margin-bottom: 0;
+    }
     &--nostock{
       background-color: rgb(250, 225, 225);
       color: $colSupportRed;

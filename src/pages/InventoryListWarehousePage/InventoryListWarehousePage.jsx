@@ -11,10 +11,15 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
   const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id);
   const warehouseIndex = warehouseData.findIndex((o) => o.id == id);
   const SingleWarehouseDetails = warehouseData[warehouseIndex];
+  const colSizes = ["22%","22%","29%","15%","0%","10%"];
 
-  return (
+  return (  
     <>
       <HeaderComponent />
+      <div className="InventoryListWarehousePage">
+      <div className="InventoryListWarehousePage__left">
+        <div className="InventoryListWarehousePage-spacer"></div>
+      </div>
       <main className="InventoryListWarehousePage__main">
         <div className="InventoryListWarehousePage__main__header">
           <div className="InventoryListWarehousePage__main__header__titlegroup">
@@ -36,31 +41,31 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
         <table className="InventoryListWarehousePage__table">
           <thead>
             <tr className="InventoryListWarehousePage__table__header">
-            <th className="InventoryListWarehousePage__table__header__col">
+            <th className="InventoryListWarehousePage__table__header__col" style={{width: colSizes[0]}}>
                 <div className="InventoryListWarehousePage__table__header__col__group">
                   <div className="font-H4-TableHeader">INVENTORY ITEM</div>
                   <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                 </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header__col">
+              <th className="InventoryListWarehousePage__table__header__col" style={{width: colSizes[1]}}>
                 <div className="InventoryListWarehousePage__table__header__col__group">
                   <div className="font-H4-TableHeader">CATEGORY</div>
                   <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                 </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header__col">
+              <th className="InventoryListWarehousePage__table__header__col" style={{width: colSizes[2]}}>
                 <div className="InventoryListWarehousePage__table__header__col__group">
                   <div className="font-H4-TableHeader">STATUS</div>
                   <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                 </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header__col">
+              <th className="InventoryListWarehousePage__table__header__col" style={{width: colSizes[3]}}>
                 <div className="InventoryListWarehousePage__table__header__col__group">
                   <div className="font-H4-TableHeader">QUANTITY</div>
                   <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                 </div>
               </th>
-              <th className="InventoryListWarehousePage__table__header__col">
+              <th className="InventoryListWarehousePage__table__header__col" style={{width: colSizes[5]}}>
                 <div className="InventoryListWarehousePage__table__header__col__group InventoryListWarehousePage__table__header__col__group--actions">
                   <div className="font-H4-TableHeader">ACTIONS</div>
                 </div>
@@ -69,12 +74,16 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </thead>
 
           <tbody>
-            {inventoryDataFiltered.map((inventory) => (
-              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} />
+            {inventoryDataFiltered.map((inventory, arrayIndex) => (
+              <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} colSizes={colSizes} arrayIndex={arrayIndex} />
             ))}
           </tbody>
         </table>
       </main>
+      <div className="InventoryListWarehousePage__right">
+        <div className="InventoryListWarehousePage-spacer"></div>
+      </div>
+      </div>
       <FooterComponent />
     </>
   );

@@ -10,6 +10,7 @@
     height: 8em;
     padding-bottom: $pad-2;
     color: $colSecondarySlate;
+    background-color: $colBackgroundLight-Gray;
     @include displayTablet{
         height: 10em;
     }
