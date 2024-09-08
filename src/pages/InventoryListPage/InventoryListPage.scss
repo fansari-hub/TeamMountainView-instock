@@ -12,7 +12,8 @@
       padding: $pad-5 $pad-4 $pad-4 $pad-4;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      flex-direction: column;
       @include displayTablet {
         flex-direction: row;
         justify-content: flex-end;
@@ -38,6 +39,7 @@
       text-indent: 1rem;
       font-size: 1rem;
       margin-bottom: $pad-3;
+      width: 100%;
       @include displayTablet {
         width: toRem(240);
         margin-right: $pad-3;
@@ -52,7 +54,6 @@
       width: 100%;
       background: $colPrimaryInstock-Indigo;
       border-radius: 20px;
-      flex-grow: 0;
       border: none;
       color: white;
       &:hover {
@@ -78,7 +79,6 @@
         &__col {
           display: flex;
           justify-content: flex-start;
-          width: 17%;
           &__group {
             height: toRem(36);
             display: flex;
