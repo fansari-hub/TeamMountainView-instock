@@ -48,10 +48,10 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
   }
   return (
     <>
-      <tr className="InventoryTableRow">
+      <div className="InventoryTableRow">
         <hr className={dividerClass}/>
-        <td className="InventoryTableRow__main">
-          <td className="InventoryTableRow__main__info">
+        <div className="InventoryTableRow__main">
+          <div className="InventoryTableRow__main__info">
             <div className="InventoryTableRow__main__info__col">
               <div className="InventoryTableRow__main__info__col__field" style={{width : colSizes[0]}}>
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">INVENTORY ITEM</div>
@@ -90,9 +90,9 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
                 </div>
               </div>
             </div>
-          </td>
-        </td>
-      </tr>
+          </div>
+        </div>
+      </div>
       <DeleteInventoryComponent isOpen={isModalOpen} onClose={handleCloseModal} onDelete={handleDeleteConfirm} inventoryItem={inventoryItem} />
     </>
   );

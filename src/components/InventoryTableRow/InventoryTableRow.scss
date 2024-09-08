@@ -4,16 +4,22 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryTableRow {
+  @include displayTablet{
+    &:hover{
+      background-color: rgba(156, 201, 238, 0.118);
+    }
+  }
   &__divider {
     width: 100%;
-    height: 1px;
-    border: none;
-    background-color: $colSecondaryCloud;
-    margin-bottom: 16px;
+    border: 0.5px solid $colSecondaryCloud;
+    @include displayTablet{
+      margin: 0px;
+      padding: 0px;
+    }
     &--firstrow{
+      margin-top: $pad-1;
       @include displayTablet{
-        height: 0px;
-        margin-bottom: $pad-1;
+        border: none;
       }
     }
   }
@@ -23,6 +29,7 @@
     padding-left: $pad-4;
     width: 100%;
     @include displayTablet {
+      padding-top: $pad-3;
       padding-right: $pad-4;
       flex-direction: row;
       justify-content: flex-start;
@@ -70,7 +77,7 @@
             }
           }
           &__data {
-            margin-bottom: $pad-3;
+            padding-bottom: $pad-3;
             text-align: left;
             @include displayTablet {
             }
@@ -83,7 +90,6 @@
             flex-direction: row;
             justify-content: space-between;
             padding-right: $pad-4;
-            margin: 12px 0 16px 0;
             @include displayTablet {
               padding: 0px;
               justify-content: flex-end;
