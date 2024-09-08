@@ -55,18 +55,18 @@
       box-sizing: border-box;
       background-image: url("src/assets/images/Icons/search-24px.svg");
       background-repeat: no-repeat;
-      background-position: 99% center;
+      background-position: 95% center;
       text-indent: 1rem;
       font-size: 1rem;
       margin-bottom: $pad-3;
       width: 100%;
       @include displayTablet {
-        width: toRem(240);
+        width: toRem(190);
         margin-right: $pad-3;
         height: torRem(3);
       }
       @include displayDesktop {
-        width: toRem(300);
+        width: toRem(250);
       }
     }
     &__button {
