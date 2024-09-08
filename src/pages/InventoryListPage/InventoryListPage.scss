@@ -11,7 +11,8 @@
     &__header {
       padding: $pad-5 $pad-4 $pad-4 $pad-4;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       @include displayTablet {
         flex-direction: row;
         justify-content: flex-end;
@@ -70,7 +71,7 @@
       display: none;
       @include displayTablet {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         background: rgba(247, 248, 249, 0.7);
         padding-left: toRem(40);
         padding-right: toRem(40);

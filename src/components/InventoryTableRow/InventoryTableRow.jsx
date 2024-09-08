@@ -24,11 +24,11 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
   let wareHouseDiv = <></>;
   let parentPathPrefix = "";
   let stockTickerClass = "InventoryTableRow-stockTicker";
+  let fieldClassNoWarehouse= ""
   if (warehouse_filtered !== true) {
     wareHouseDiv = (
       <>
-        {" "}
-        <div className="InventoryTableRow__main__info__col__field">
+      <div className="InventoryTableRow__main__info__col__field">
           <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">WAREHOUSE</div>
           <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.warehouse_id}</div>
         </div>
@@ -36,10 +36,11 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
     );
   } else {
     parentPathPrefix = "../inventory/";
+    fieldClassNoWarehouse += " InventoryTableRow__main__info__col__field--nowarehouse"
   }
 
-  if (inventory.status.toUpperCase() === "OUT OF STOCK"){
-    stockTickerClass += " InventoryTableRow-stockTicker--nostock"
+  if (inventory.status.toUpperCase() === "OUT OF STOCK") {
+    stockTickerClass += " InventoryTableRow-stockTicker--nostock";
   }
   return (
     <>
@@ -48,33 +49,33 @@ const InventoryTableRow = ({ inventory, warehouse_filtered }) => {
         <td className="InventoryTableRow__main">
           <td className="InventoryTableRow__main__info">
             <div className="InventoryTableRow__main__info__col">
-              <div className="InventoryTableRow__main__info__col__field">
+              <div className={"InventoryTableRow__main__info__col__field" + fieldClassNoWarehouse}>
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">INVENTORY ITEM</div>
                 <NavLink to={parentPathPrefix + inventory.id + "/"} className="InventoryTableRow__main__info__col__field__label__link">
                   <div className="InventoryTableRow__main__info__col__field__data InventoryTableRow__main__info__col__field__data--link font-H3-label">{inventory.item_name}</div>
                   <img src="/src/assets/images/Icons/chevron_right-24px.svg" alt="link icon" className="InventoryTableRow__main__info__col__field__label__link__icon" />
                 </NavLink>
               </div>
-              <div className="InventoryTableRow__main__info__col__field">
+              <div className={"InventoryTableRow__main__info__col__field" + fieldClassNoWarehouse}>
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">CATERGORY</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.category}</div>
               </div>
             </div>
             <div className="InventoryTableRow__main__info__col">
-              <div className="InventoryTableRow__main__info__col__field">
+              <div className={"InventoryTableRow__main__info__col__field" + fieldClassNoWarehouse}>
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">STATUS</div>
                 <div className={stockTickerClass}>
-                <div className="InventoryTableRow__main__info__col__field__data font-P3-BodySmall">{inventory.status.toUpperCase()}</div>
+                  <div className="InventoryTableRow__main__info__col__field__data font-P3-BodySmall">{inventory.status.toUpperCase()}</div>
                 </div>
               </div>
-              <div className="InventoryTableRow__main__info__col__field">
+              <div className={"InventoryTableRow__main__info__col__field" + fieldClassNoWarehouse}>
                 <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">QTY</div>
                 <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.quantity}</div>
               </div>
               {wareHouseDiv}
             </div>
             <div className="InventoryTableRow__main__info__col InventoryTableRow__main__info__col--actions">
-              <div className="InventoryTableRow__main__info__col__field">
+              <div className={"InventoryTableRow__main__info__col__field" + fieldClassNoWarehouse}>
                 <div className="InventoryTableRow__main__info__col__field__icons">
                   <img onClick={handleDeleteClick} className="InventoryTableRow__main__info__col__field__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
                   <NavLink to={parentPathPrefix + inventory.id + "/edit/"}>

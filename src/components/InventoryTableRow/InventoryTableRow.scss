@@ -45,6 +45,9 @@
         &__field {
           @include displayTablet {
             width: 17%;
+            &--nowarehouse{
+              width: 20%;
+            }
           }
           &__label {
             color: $colSecondarySlate;
@@ -80,6 +83,7 @@
               padding: 0px;
               justify-content: flex-end;
               margin: 0;
+              flex-grow: 1;
             }
             &__delete {
               padding-right: $pad-3;
