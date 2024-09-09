@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import SassExamplePage from "./pages/SassExamplePage/SassExamplePage";
@@ -13,14 +13,16 @@ import DeleteWarehousePage from "./pages/DeleteWarehousePage/DeleteWarehousePage
 import DeleteInventoryPage from "./pages/DeleteInventoryPage/DeleteInventoryPage";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
+import axios from "axios";
+const WEBAPI_URL = "http://localhost:8080/api";
 
 // note that data were added only for testing UI;
 // to be replaced with backend calls after we build out backend
 import warehouseData from "./data/01_warehouses.json";
-import inventoryData from "./data/02_inventories.json";
 // import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
+
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -46,9 +48,9 @@ function App() {
           ></Route>
           <Route
             path="inventory"
-            element={<InventoryListPage inventoryData={inventoryData}/>}
+            element={<InventoryListPage apiURL = {WEBAPI_URL}/>}
           ></Route>
-          <Route path="inventory/:id" element={<InventoryDetailPage inventoryData={inventoryData} warehouseData={warehouseData} />}></Route>
+          <Route path="inventory/:id" element={<InventoryDetailPage apiURL = {WEBAPI_URL}/>}></Route>
           <Route
             path="/inventory/:id/edit"
             element={<EditInventoryPage />}
@@ -60,7 +62,7 @@ function App() {
           ></Route>
            <Route
             path="/warehouses/:id/inventories"
-            element={<InventoryListWarehousePage inventoryData={inventoryData} warehouseData={warehouseData}/>}
+            element={<InventoryListWarehousePage apiURL = {WEBAPI_URL}/>}
           ></Route>
         </Routes>
       </Router>
