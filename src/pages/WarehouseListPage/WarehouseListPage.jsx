@@ -46,10 +46,10 @@ const WarehouseListPage = ({ apiURL }) => {
               </button>
             </Link>
           </div>
-          <table className="WarehouseListPage__table">
-            <thead>
-              <tr className="WarehouseListPage__table__header">
-                <th
+          <div className="WarehouseListPage__table">
+            <div>
+              <div className="WarehouseListPage__table__header">
+                <div
                   className="WarehouseListPage__table__header__col"
                   style={{ width: colSizes[0] }}
                 >
@@ -60,8 +60,8 @@ const WarehouseListPage = ({ apiURL }) => {
                       alt="sort icon"
                     />
                   </div>
-                </th>
-                <th
+                </div>
+                <div
                   className="WarehouseListPage__table__header__col"
                   style={{ width: colSizes[1] }}
                 >
@@ -72,8 +72,8 @@ const WarehouseListPage = ({ apiURL }) => {
                       alt="sort icon"
                     />
                   </div>
-                </th>
-                <th
+                </div>
+                <div
                   className="WarehouseListPage__table__header__col"
                   style={{ width: colSizes[2] }}
                 >
@@ -84,8 +84,8 @@ const WarehouseListPage = ({ apiURL }) => {
                       alt="sort icon"
                     />
                   </div>
-                </th>
-                <th
+                </div>
+                <div
                   className="WarehouseListPage__table__header__col"
                   style={{ width: colSizes[3] }}
                 >
@@ -98,20 +98,20 @@ const WarehouseListPage = ({ apiURL }) => {
                       alt="sort icon"
                     />
                   </div>
-                </th>
+                </div>
 
-                <th
+                <div
                   className="WarehouseListPage__table__header__col"
                   style={{ width: colSizes[5] }}
                 >
                   <div className="WarehouseListPage__table__header__col__group WarehouseListPage__table__header__col__group--actions">
                     <div className="font-H4-TableHeader">ACTIONS</div>
                   </div>
-                </th>
-              </tr>
-            </thead>
+                </div>
+              </div>
+            </div>
 
-            <tbody>
+            <div>
               {warehouseData.map((warehouse, arrayIndex) => (
                 <WarehouseTableRow
                   key={warehouse.id}
@@ -120,8 +120,8 @@ const WarehouseListPage = ({ apiURL }) => {
                   arrayIndex={arrayIndex}
                 />
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </main>
         <div className="WarehouseListPage__right">
           <div className="WarehouseListPage-spacer"></div>

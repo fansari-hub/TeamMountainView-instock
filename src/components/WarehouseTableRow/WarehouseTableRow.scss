@@ -44,6 +44,8 @@
       &__col {
         display: flex;
         flex-direction: column;
+        width: 45%;
+        padding-right: $pad-3;
         gap: $pad-1;
         @include displayTablet {
           display: contents;
@@ -78,11 +80,20 @@
           }
           &__data {
             padding-bottom: $pad-3;
+            padding-right: $pad-3;
             text-align: left;
             @include displayTablet {
             }
+            &--concact {
+              line-height: 0;
+              margin-top: -0.4rem;
+            }
             &--link {
+              font-size: toRem(13);
               color: $colPrimaryInstock-Indigo;
+              @include displayTablet {
+                font-size: toRem(14);
+              }
             }
           }
           &__icons {
@@ -103,26 +114,6 @@
           }
         }
       }
-    }
-  }
-  &-stockTicker {
-    background-color: rgb(225, 250, 226);
-    color: $colSupportGreen;
-    border-radius: 20px;
-    height: toRem(22);
-    margin-bottom: toRem(10);
-    display: flex;
-    justify-content: center;
-    padding-top: toRem(2);
-    padding-left: toRem(10);
-    padding-right: toRem(10);
-    width: max-content;
-    @include displayTablet {
-      margin-bottom: 0;
-    }
-    &--nostock {
-      background-color: rgb(250, 225, 225);
-      color: $colSupportRed;
     }
   }
 }

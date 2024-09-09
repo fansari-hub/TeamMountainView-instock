@@ -40,10 +40,10 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
                   WAREHOUSE
                 </div>
                 <Link
-                  to={"warehouses/" + warehouse.id + "/inventories"}
+                  to={warehouse.id + "/inventories"}
                   className="WarehouseTableRow__main__info__col__field__label__link"
                 >
-                  <div className="WarehouseTableRow__main__info__col__field__data WarehouseTableRow__main__info__col__field__data--link font-H3-label">
+                  <div className="font-H3-label WarehouseTableRow__main__info__col__field__data WarehouseTableRow__main__info__col__field__data--link">
                     {warehouse.warehouse_name}
                   </div>
                   <img
@@ -60,8 +60,8 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
                 <div className="WarehouseTableRow__main__info__col__field__label font-H4-TableHeader">
                   ADDRESS
                 </div>
-                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium">
-                  {`${warehouse.address},${warehouse.city},${warehouse.country}`}
+                <div className="font-P2-BodyMedium WarehouseTableRow__main__info__col__field__data">
+                  {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
                 </div>
               </div>
             </div>
@@ -70,10 +70,10 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
                 className="WarehouseTableRow__main__info__col__field"
                 style={{ width: colSizes[2] }}
               >
-                <div className="WarehouseTableRow__main__info__col__field__label font-H4-TableHeader">
+                <div className="WarehouseTableRow__main__info__col__field__label font-H4-TableHeader ">
                   CONTACT NAME
                 </div>
-                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium">
+                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium ">
                   {warehouse.contact_name}
                 </div>
               </div>
@@ -85,10 +85,10 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
                 <div className="WarehouseTableRow__main__info__col__field__label font-H4-TableHeader">
                   CONTACT INFORMATION
                 </div>
-                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium">
+                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium ">
                   {warehouse.contact_phone}
                 </div>
-                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium">
+                <div className="WarehouseTableRow__main__info__col__field__data font-P2-BodyMedium WarehouseTableRow__main__info__col__field__data--concact">
                   {warehouse.contact_email}
                 </div>
               </div>
