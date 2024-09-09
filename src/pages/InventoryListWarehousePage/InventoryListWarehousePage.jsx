@@ -1,17 +1,46 @@
 import "./InventoryListWarehousePage.scss";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import {useState, useEffect} from "react";
+import axios from "axios";
 import InventoryTableRow from "../../components/InventoryTableRow/InventoryTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 import InfoWarehouse from "../../components/InfoWarehouse/InfoWarehouse";
 
-const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
+const InventoryListWarehousePage = ({apiURL}) => {
   const { id } = useParams();
-  const inventoryDataFiltered = inventoryData.filter((e) => e.warehouse_id == id);
-  const warehouseIndex = warehouseData.findIndex((o) => o.id == id);
-  const SingleWarehouseDetails = warehouseData[warehouseIndex];
   const colSizes = ["22%","22%","29%","15%","0%","10%"];
+
+  let [warehouseInventoryData, setWarehouseInventoryData] = useState([]);
+  let [warehouseData, setWarehouseData] = useState({});
+
+  useEffect(() => {
+    const fetchDataWarehouseInventory = async() =>{
+      let response;
+      try{
+        response = await axios.get(apiURL + "/warehouses/" + id + "/inventories");
+        setWarehouseInventoryData(response.data);
+      } catch (error){
+        alert(`InventoryWarehousePage.useEffect().fetchDataWarehouseInventory() requested failed with error: ${error}`);
+        return -1;
+      };
+    }
+
+    const fetchDataWarehouse = async() =>{
+      let response;
+      try{
+        response = await axios.get(apiURL + "/warehouses/" + id );
+        setWarehouseData(response.data);
+      } catch (error){
+        alert(`InventoryWarehousePage.useEffect().fetchDataWarehose() requested failed with error: ${error}`);
+        return -1;
+      };
+    }
+
+    fetchDataWarehouseInventory();
+    fetchDataWarehouse();
+  },[apiURL]);
 
   return (  
     <>
@@ -26,7 +55,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           <NavLink to={"/warehouses"}>
           <img className="InventoryListWarehousePage__main__header__titlegroup__backarrow" src="/src/assets/images/Icons/arrow_back-24px.svg" alt="back arrow" />
           </NavLink>
-          <h2 className="InventoryListWarehousePage__main__header__titlegroup__title font-H1-PageHeader">{SingleWarehouseDetails.warehouse_name}</h2>
+          <h2 className="InventoryListWarehousePage__main__header__titlegroup__title font-H1-PageHeader">{warehouseData.warehouse_name}</h2>
           </div>
           <NavLink to={"/warehouses/" + id + "/edit"}>
             <button className="InventoryListWarehousePage__main__header__button">
@@ -36,7 +65,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </NavLink>
         </div>
         <div>
-          <InfoWarehouse SingleWarehouseDetails={SingleWarehouseDetails} />
+          <InfoWarehouse SingleWarehouseDetails={warehouseData} />
         </div>
         <table className="InventoryListWarehousePage__table">
           <thead>
@@ -74,7 +103,7 @@ const InventoryListWarehousePage = ({ inventoryData, warehouseData }) => {
           </thead>
 
           <tbody>
-            {inventoryDataFiltered.map((inventory, arrayIndex) => (
+            {warehouseInventoryData.map((inventory, arrayIndex) => (
               <InventoryTableRow key={inventory.id} inventory={inventory} warehouse_filtered={true} colSizes={colSizes} arrayIndex={arrayIndex} />
             ))}
           </tbody>

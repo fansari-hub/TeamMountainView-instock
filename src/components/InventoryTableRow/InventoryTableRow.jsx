@@ -30,7 +30,7 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
     wareHouseDiv = (
       <>
           <div className="InventoryTableRow__main__info__col__field__label font-H4-TableHeader">WAREHOUSE</div>
-          <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.warehouse_id}</div>
+          <div className="InventoryTableRow__main__info__col__field__data font-P2-BodyMedium">{inventory.warehouse_name}</div>
       </>
     );
   } else {
@@ -40,8 +40,6 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
   if (inventory.status.toUpperCase() === "OUT OF STOCK") {
     stockTickerClass += " InventoryTableRow-stockTicker--nostock";
   }
-
-  console.log(arrayIndex);
 
   if (arrayIndex === 0){
     dividerClass += " InventoryTableRow__divider--firstrow"

@@ -3,9 +3,27 @@ import { NavLink } from "react-router-dom";
 import InventoryTableRow from "../../components/InventoryTableRow/InventoryTableRow";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
+import {useState, useEffect} from "react";
+import axios from "axios";
 
 
-const InventoryListPage = ({ inventoryData }) => {
+const InventoryListPage = ({apiURL}) => {
+
+  let [inventoryData, setInventoryData] = useState([]);
+
+  useEffect(() => {
+    const fetchDataInventory = async() =>{
+      let response;
+      try{
+        response = await axios.get(apiURL + "/inventory");
+        setInventoryData(response.data);
+      } catch (error){
+        alert(`App.useEffect().fetchDataInventory() requested failed with error: ${error}`);
+        return -1;
+      };
+    }
+      fetchDataInventory();
+  },[apiURL]);
 
   let colSizes = ["22%","18%","20%","10%","20%","10%"];
 
