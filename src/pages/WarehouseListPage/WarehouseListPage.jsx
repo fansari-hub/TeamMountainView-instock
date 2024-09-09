@@ -6,9 +6,23 @@ import FooterComponent from "../../components/Footer/FooterComponent";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const WarehouseListPage = ({ warehousesData }) => {
+const WarehouseListPage = ({ apiURL }) => {
   const colSizes = ["22%", "22%", "22%", "24%", "0%", "10%"];
 
+  const [warehousesData, setWarehousesData] = useState([]);
+  useEffect(() => {
+    const fetchDataWarehouse = async () => {
+      try {
+        const response = await axios.get(apiURL + "/warehouses");
+        setWarehousesData(response.data);
+      } catch (error) {
+        alert(
+          `App.useEffect().fetchDataWarehouse() requested failed with error: ${error}`
+        );
+      }
+    };
+    fetchDataWarehouse();
+  }, []);
   return (
     <>
       <HeaderComponent />

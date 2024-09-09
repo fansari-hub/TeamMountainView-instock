@@ -3,10 +3,12 @@ import "./AddWarehousePage.scss";
 import NewWarehouseForm from "../../components/NewWarehouseForm/NewWarehouseForm";
 import { useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const AddWarehousePage = () => {
+const AddWarehousePage = ({ apiURL }) => {
   const warehouseFormRef = useRef();
   const contactFormRef = useRef();
+  const navigate = useNavigate();
 
   //crate placeholder object matching the properties of a warehouse project so that the styles can be streamlined
 
@@ -35,16 +37,19 @@ const AddWarehousePage = () => {
       contact_phone: contactFormData.get("contact_phone"),
       contact_email: contactFormData.get("contact_email"),
     };
-    console.log(newWarehouse);
 
+    //backend integration
     try {
-      const response = await axios.post(`/warehouses/`, newWarehouse, {
+      const response = await axios.post(`${apiURL}/warehouses`, newWarehouse, {
         headers: {
           "Content-Type": "application/json",
         },
       });
+      navigate(`/warehouses`);
     } catch (error) {
-      console.error(error);
+      alert(
+        `Error: ${error.response.data.message} (Code: ${error.response.status})`
+      );
     }
   };
 

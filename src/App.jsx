@@ -22,21 +22,6 @@ const WEBAPI_URL = "http://localhost:8080/api";
 // import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
-  const [warehousesData, setWarehousesData] = useState([]);
-  useEffect(() => {
-    const fetchDataWarehouse = async () => {
-      try {
-        const response = await axios.get(WEBAPI_URL + "/warehouses");
-        setWarehousesData(response.data);
-      } catch (error) {
-        alert(
-          `App.useEffect().fetchDataWarehouse() requested failed with error: ${error}`
-        );
-      }
-    };
-    fetchDataWarehouse();
-  }, []);
-
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -45,7 +30,7 @@ function App() {
           <Route path="/" element={<SassExamplePage />}></Route>
           <Route
             path="/warehouses"
-            element={<WarehouseListPage warehousesData={warehousesData} />}
+            element={<WarehouseListPage apiURL={WEBAPI_URL} />}
           ></Route>
           {/* <Route
             path="/warehouses/:id"
@@ -53,9 +38,12 @@ function App() {
           ></Route> */}
           <Route
             path="/warehouses/:id/edit"
-            element={<EditWarehousePage warehouseData={warehousesData} />}
+            element={<EditWarehousePage />}
           ></Route>
-          <Route path="/warehouses/add" element={<AddWarehousePage />}></Route>
+          <Route
+            path="/warehouses/add"
+            element={<AddWarehousePage apiURL={WEBAPI_URL} />}
+          ></Route>
           <Route
             path="/warehouses/:id/delete"
             element={<DeleteWarehousePage />}
