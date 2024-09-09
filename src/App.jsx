@@ -22,7 +22,6 @@ import warehouseData from "./data/01_warehouses.json";
 // import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
-
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -31,7 +30,7 @@ function App() {
           <Route path="/" element={<SassExamplePage />}></Route>
           <Route
             path="/warehouses"
-            element={<WarehouseListPage warehouseData={warehouseData} />}
+            element={<WarehouseListPage apiURL={WEBAPI_URL} />}
           ></Route>
           <Route
             path="/warehouses/:id"
@@ -48,9 +47,12 @@ function App() {
           ></Route>
           <Route
             path="inventory"
-            element={<InventoryListPage apiURL = {WEBAPI_URL}/>}
+            element={<InventoryListPage apiURL={WEBAPI_URL} />}
           ></Route>
-          <Route path="inventory/:id" element={<InventoryDetailPage apiURL = {WEBAPI_URL}/>}></Route>
+          <Route
+            path="inventory/:id"
+            element={<InventoryDetailPage apiURL={WEBAPI_URL} />}
+          ></Route>
           <Route
             path="/inventory/:id/edit"
             element={<EditInventoryPage />}
@@ -60,9 +62,9 @@ function App() {
             path="/inventory/:id/delete"
             element={<DeleteInventoryPage />}
           ></Route>
-           <Route
+          <Route
             path="/warehouses/:id/inventories"
-            element={<InventoryListWarehousePage apiURL = {WEBAPI_URL}/>}
+            element={<InventoryListWarehousePage apiURL={WEBAPI_URL} />}
           ></Route>
         </Routes>
       </Router>
