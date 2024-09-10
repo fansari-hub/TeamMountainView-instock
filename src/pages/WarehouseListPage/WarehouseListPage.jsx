@@ -114,8 +114,11 @@ const WarehouseListPage = ({ apiURL }) => {
             <div>
               {warehousesData.map((warehouse, arrayIndex) => (
                 <WarehouseTableRow
+                  apiURL={apiURL}
+                  setWarehousesData={setWarehousesData}
                   key={warehouse.id}
                   warehouse={warehouse}
+                  warehouseData={warehousesData}
                   colSizes={colSizes}
                   arrayIndex={arrayIndex}
                 />

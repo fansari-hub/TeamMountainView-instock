@@ -108,7 +108,8 @@
               flex-grow: 1;
             }
             &__delete {
-              padding-right: $pad-3;
+              cursor: pointer;
+              margin-right: $pad-3;
               margin-left: -$pad-2;
             }
           }
