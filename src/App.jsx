@@ -38,7 +38,7 @@ function App() {
           ></Route> */}
           <Route
             path="/warehouses/:id/edit"
-            element={<EditWarehousePage />}
+            element={<EditWarehousePage apiURL={WEBAPI_URL} />}
           ></Route>
           <Route
             path="/warehouses/add"

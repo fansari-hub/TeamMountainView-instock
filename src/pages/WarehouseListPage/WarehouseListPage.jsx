@@ -23,6 +23,7 @@ const WarehouseListPage = ({ apiURL }) => {
     };
     fetchDataWarehouse();
   }, []);
+
   return (
     <>
       <HeaderComponent />

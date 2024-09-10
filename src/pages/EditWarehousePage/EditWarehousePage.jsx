@@ -1,19 +1,36 @@
 import "./EditWarehousePage.scss";
 import { useParams } from "react-router";
 import DetailsForm from "../../components/DetailsForm/DetailsForm";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const EditWarehousePage = ({ warehouseData }) => {
+const EditWarehousePage = ({ apiURL }) => {
   const { id } = useParams();
-  const warehouseToEdit = warehouseData.find((warehouse) => warehouse.id == id);
-  if (!warehouseToEdit) {
-    return <div>warehouse with set id not found</div>;
-  }
+  // here grab the warehouse data specifc to an id and set it to warehouseToEdit
+  const [warehouseToEdit, setWarehouseToEdit] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getSingleWarehouse = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/warehouses/${id}`);
+        setWarehouseToEdit(response.data);
+      } catch (error) {
+        alert(
+          `Error: ${error.response.data.message} (Code: ${error.response.status})`
+        );
+      }
+    };
+    getSingleWarehouse();
+  }, [id]);
 
   const warehouseFormRef = useRef();
   const contactFormRef = useRef();
 
+  const handleCancel = () => {
+    navigate(`/warehouses`);
+  };
   const handleSave = async () => {
     const warehouseFormData = new FormData(warehouseFormRef.current);
     const contactFormData = new FormData(contactFormRef.current);
@@ -29,18 +46,29 @@ const EditWarehousePage = ({ warehouseData }) => {
       contact_phone: contactFormData.get("contact_phone"),
       contact_email: contactFormData.get("contact_email"),
     };
-    console.log(updatedData);
 
     try {
-      const response = await axios.put(`/warehouses/${id}/edit`, updatedData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.put(
+        `${apiURL}/warehouses/${id}`,
+        updatedData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      navigate(`/warehouses`);
     } catch (error) {
-      console.error(error);
+      alert(
+        `Error: ${error.response.data.message} (Code: ${error.response.status})`
+      );
     }
   };
+
+  if (!warehouseToEdit) {
+    //this should work the same as if{!nextVideos || !selectedVideo} bc selectedVideo is always set after nextVideos
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className="main-container">
@@ -73,7 +101,10 @@ const EditWarehousePage = ({ warehouseData }) => {
       <div className="whitespace"></div>
 
       <div className="main-container__footer">
-        <button className="font-H3-label main-container__footer-cancel">
+        <button
+          className="font-H3-label main-container__footer-cancel"
+          onClick={handleCancel}
+        >
           Cancel
         </button>
         <button
