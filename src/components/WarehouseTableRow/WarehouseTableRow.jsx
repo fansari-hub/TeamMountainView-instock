@@ -2,11 +2,14 @@ import { useState } from "react";
 import "./WarehouseTableRow.scss";
 import { Link } from "react-router-dom";
 import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
+import axios from "axios";
 
-const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
+const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex, setWarehousesData, warehouseData }) => {
   const [isModalOpen, SetIsModalOpen] = useState(false);
+  const [selectWarehouseId, setSelectedWarehouseId] = useState(null);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (id) => {
+    setSelectedWarehouseId(id);
     SetIsModalOpen(true);
   };
 
@@ -14,9 +17,14 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
     SetIsModalOpen(false);
   };
 
-  const handleDeleteConfirm = () => {
-    console.log("you deleted the warhouse");
-    SetIsModalOpen(false);
+  const handleDeleteConfirm = async () => {
+    try{
+      await axios.delete(`http://localhost:8080/api/warehouses/${selectWarehouseId}`);
+      setWarehousesData(warehouseData.filter(warehouse => warehouse.id !== selectWarehouseId));
+      SetIsModalOpen(false);
+    }catch (error) {
+      console.error('Failed to delete the warehouse: ', error);
+    }
   };
 
   const warehouseName = warehouse.warehouse_name;
@@ -100,7 +108,7 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
               >
                 <div className="WarehouseTableRow__main__info__col__field__icons">
                   <img
-                    onClick={handleDeleteClick}
+                    onClick={() => {handleDeleteClick(warehouse.id)}}
                     className="WarehouseTableRow__main__info__col__field__icons__delete"
                     src="/src/assets/images/Icons/delete_outline-24px.svg"
                     alt="delete icon"
