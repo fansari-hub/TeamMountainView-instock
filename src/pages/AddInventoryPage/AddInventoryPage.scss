@@ -1,3 +1,22 @@
 @use "src/styles/partials/colors" as *;
 @use "src/styles/partials/functions" as *;
 @use "src/styles/partials/variables" as *;
+
+.cancelBtn{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $colSecondarySlate;
+    &:hover{
+        color: $colPrimaryInstock-Indigo
+    }
+    &--holder{
+        padding: 0;
+    }
+}
+
+.submitBtn{
+    cursor: pointer;
+}
