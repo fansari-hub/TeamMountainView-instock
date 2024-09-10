@@ -18,11 +18,10 @@ const WEBAPI_URL = "http://localhost:8080/api";
 
 // note that data were added only for testing UI;
 // to be replaced with backend calls after we build out backend
-import warehouseData from "./data/01_warehouses.json";
+// import warehouseData from "./data/01_warehouses.json";
 // import HeaderComponent from "./components/Header/headerComponent";
 
 function App() {
-
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -31,26 +30,32 @@ function App() {
           <Route path="/" element={<SassExamplePage />}></Route>
           <Route
             path="/warehouses"
-            element={<WarehouseListPage warehouseData={warehouseData} />}
+            element={<WarehouseListPage apiURL={WEBAPI_URL} />}
           ></Route>
-          <Route
+          {/* <Route
             path="/warehouses/:id"
             element={<WarehouseDetailPage />}
-          ></Route>
+          ></Route> */}
           <Route
             path="/warehouses/:id/edit"
-            element={<EditWarehousePage warehouseData={warehouseData} />}
+            element={<EditWarehousePage apiURL={WEBAPI_URL} />}
           ></Route>
-          <Route path="/warehouses/add" element={<AddWarehousePage />}></Route>
+          <Route
+            path="/warehouses/add"
+            element={<AddWarehousePage apiURL={WEBAPI_URL} />}
+          ></Route>
           <Route
             path="/warehouses/:id/delete"
             element={<DeleteWarehousePage />}
           ></Route>
           <Route
             path="inventory"
-            element={<InventoryListPage apiURL = {WEBAPI_URL}/>}
+            element={<InventoryListPage apiURL={WEBAPI_URL} />}
           ></Route>
-          <Route path="inventory/:id" element={<InventoryDetailPage apiURL = {WEBAPI_URL}/>}></Route>
+          <Route
+            path="inventory/:id"
+            element={<InventoryDetailPage apiURL={WEBAPI_URL} />}
+          ></Route>
           <Route
             path="/inventory/:id/edit"
             element={<EditInventoryPage />}
@@ -60,9 +65,9 @@ function App() {
             path="/inventory/:id/delete"
             element={<DeleteInventoryPage />}
           ></Route>
-           <Route
+          <Route
             path="/warehouses/:id/inventories"
-            element={<InventoryListWarehousePage apiURL = {WEBAPI_URL}/>}
+            element={<InventoryListWarehousePage apiURL={WEBAPI_URL} />}
           ></Route>
         </Routes>
       </Router>
