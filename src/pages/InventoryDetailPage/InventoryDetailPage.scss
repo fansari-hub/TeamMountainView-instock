@@ -4,7 +4,27 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryDetailPage {
+  display: flex;
+  background-color: $colBackgroundGraphite;
+  &-spacer{
+    background-color: $colBackgroundGraphite;
+    width: $pad-3;
+    height: 105px;
+    @include displayTablet{
+      width: $pad-5;
+    }
+    @include displayDesktop{
+      width: toRem(140);
+    }
+  }
+  &__left{
+    background: $colBackgroundLight-Gray;
+  }
+  &__right{
+    background: $colBackgroundLight-Gray;
+  }
   &__main {
+    flex-grow: 1;
     background: $colPrimaryWhite;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 3px;
