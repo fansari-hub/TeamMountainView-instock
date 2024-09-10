@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import axios from "axios";
 
-const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex, setWarehousesData, warehouseData }) => {
+const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex, setWarehousesData, warehouseData, apiURL }) => {
   const [isModalOpen, SetIsModalOpen] = useState(false);
   const [selectWarehouseId, setSelectedWarehouseId] = useState(null);
 
@@ -19,7 +19,7 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex, setWarehousesData,
 
   const handleDeleteConfirm = async () => {
     try{
-      await axios.delete(`http://localhost:8080/api/warehouses/${selectWarehouseId}`);
+      await axios.delete(`${apiURL}/warehouses/${selectWarehouseId}`);
       setWarehousesData(warehouseData.filter(warehouse => warehouse.id !== selectWarehouseId));
       SetIsModalOpen(false);
     }catch (error) {
