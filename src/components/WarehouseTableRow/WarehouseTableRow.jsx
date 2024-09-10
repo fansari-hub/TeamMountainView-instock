@@ -20,7 +20,7 @@ const WarehouseTableRow = ({ warehouse, colSizes, arrayIndex }) => {
   };
 
   const warehouseName = warehouse.warehouse_name;
-  let dividerClass = "InventoryTableRow__divider";
+  let dividerClass = "WarehouseTableRow__divider";
 
   if (arrayIndex === 0) {
     dividerClass += " WarehouseTableRow__divider--firstrow";
