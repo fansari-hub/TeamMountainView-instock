@@ -73,7 +73,8 @@ const InventoryAdd = forwardRef(
         formType === "inventory" ? "Item Details" : "Item Availability";
   
       return (
-        <form ref={ref} className={`form ${className}`}>
+        <form ref={ref} 
+        className={`form ${className}`}>
           <h2 className="font-H2-SubHeader form__title">{formTitle}</h2>
           {fieldsToRender.map((field, index) => { 
                           if (field.name ==="status") {
@@ -108,7 +109,7 @@ const InventoryAdd = forwardRef(
                           }
                           if (field.name === "quantity") {
                             return(
-                              <div key={index}>
+                              <div key={index} className={`${selectedStatus === "out_of_stock" ? "hide-quantity" : ""}`}>
                               <h3 className="font-H3-label form__field-title">{field.title}</h3>
                               <input
                               className="form__input-placeholder"
@@ -159,6 +160,17 @@ const InventoryAdd = forwardRef(
                                      </select>
                                 </div>
                              )
+                          }
+                          if (field.name ==="description"){
+                            return (<div key={index}>
+                              <h3 className="font-H3-label form__field-title ">{field.title}</h3>
+                                          <textarea
+                                className="font-P2-BodyMedium form__input-placeholder form__description"
+                                name={field.name}
+                                                placeholder={field.value}
+                                onChange={handleChange}
+                              ></textarea>
+                            </div>)
                           }
             return (<div key={index}>
               <h3 className="font-H3-label form__field-title">{field.title}</h3>

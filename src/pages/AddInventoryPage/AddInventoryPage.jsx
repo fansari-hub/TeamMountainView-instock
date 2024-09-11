@@ -3,6 +3,8 @@ import axios from "axios";
 import InventoryAdd from "../../components/InventoryAdd/InventoryAdd";
 import { Link, useNavigate } from "react-router-dom";
 import "./AddInventoryPage.scss";
+import HeaderComponent from "../../components/Header/HeaderComponent";
+import FooterComponent from "../../components/Footer/FooterComponent";
 
 const AddInventoryPage = ({apiURL}) => {
     const inventoryFormRef = useRef();
@@ -50,16 +52,19 @@ const AddInventoryPage = ({apiURL}) => {
           const response = await axios.post(`${apiURL}/inventory`, newInventoryItem, {
           });
           Navigate('/inventory');
-          console.log(newInventoryItem);
         } catch (error) {
           console.error(error);
-          console.log(typeof newInventoryItem.quantity);
-          console.log(newInventoryItem);
         }
     }
 
   return (
-    <main className="main-container">
+    <>
+    <HeaderComponent />
+    <div className="InventoryListPage">
+        <div className="InventoryListPage__left">
+          <div className="AddInventoryPage-spacer"></div>
+        </div>
+        <main className="main-container shiftDown">
     <div className="main-container__header">
      <Link to="/inventory"><img
         src="/src/assets/images/Icons/arrow_back-24px.svg"
@@ -104,6 +109,13 @@ const AddInventoryPage = ({apiURL}) => {
       </div>
     </div>
   </main>
+        <div className="InventoryListPage__right">
+          <div className="AddInventoryPage-spacer"></div>
+        </div>
+        </div>
+
+  <FooterComponent />
+  </>
 );
 };
 

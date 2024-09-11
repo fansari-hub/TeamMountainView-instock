@@ -1,6 +1,7 @@
 @use "src/styles/partials/colors" as *;
 @use "src/styles/partials/functions" as *;
 @use "src/styles/partials/variables" as *;
+@use "src/styles/partials/mixins" as *;
 
 .cancelBtn{
     display: flex;
@@ -19,4 +20,24 @@
 
 .submitBtn{
     cursor: pointer;
+}
+
+.AddInventoryPage {
+    display: flex;
+    background-color: $colBackgroundGraphite;
+    &-spacer{
+        background-color: $colBackgroundGraphite;
+    width: $pad-3;
+    height: 4.25em;
+    @include displayTablet{
+      width: $pad-5;
+      height: 6.3em;
+    }
+    @include displayDesktop{
+      width: toRem(140);
+    }
+    }
+}
+.shiftDown{
+//   margin-bottom: 1em;  
 }

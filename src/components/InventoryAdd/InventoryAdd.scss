@@ -13,8 +13,18 @@
     font-size: 0.75em;
     color: $colSecondarySlate;
   }
+  &__description{
+    height: 10em;
+    resize: none;
+    @include displayTablet{
+      height: 8em;
+    }
+  }
 }
 
+.hide-quantity{
+  display: none;
+}
 .activeSelect {
     color: $colPrimaryInstock-Black;
 }
