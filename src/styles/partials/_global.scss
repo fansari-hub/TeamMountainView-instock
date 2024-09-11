@@ -121,7 +121,10 @@ a {
       @include displayTablet{
           width: 10%;
       }
-      
+      &:hover{
+        color: $colPrimaryInstock-Indigo;
+        border: 1px solid $colPrimaryInstock-Indigo;
+      }
   }
   &--delete{
       background-color: $colSupportRed;
@@ -134,6 +137,9 @@ a {
       cursor: pointer;
       @include displayTablet{
           width: 10%;
+      }
+      &:hover{
+        background-color: $colPrimaryInstock-Black;
       }
   }
 }

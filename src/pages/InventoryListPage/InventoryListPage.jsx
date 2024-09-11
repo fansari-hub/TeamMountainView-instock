@@ -126,8 +126,11 @@ const InventoryListPage = ({ apiURL }) => {
             <tbody>
               {inventoryData.map((inventory, arrayIndex) => (
                 <InventoryTableRow
+                  apiURL={apiURL}
+                  setInventoryData={setInventoryData}
                   key={inventory.id}
                   inventory={inventory}
+                  inventoryData={inventoryData}
                   warehouse_filtered={false}
                   colSizes={colSizes}
                   arrayIndex={arrayIndex}

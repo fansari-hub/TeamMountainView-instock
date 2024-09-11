@@ -2,11 +2,14 @@ import { useState } from "react";
 import "./InventoryTableRow.scss";
 import { NavLink } from "react-router-dom";
 import DeleteInventoryComponent from "../DeleteInventoryComponent/DeleteInventoryComponent";
+import axios from "axios";
 
-const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex }) => {
+const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex, setInventoryData, inventoryData, apiURL }) => {
   const [isModalOpen, SetIsModalOpen] = useState(false);
+  const [selectInventoryId, setSelectInventoryId] = useState(null);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (id) => {
+    setSelectInventoryId(id)
     SetIsModalOpen(true);
   };
 
@@ -14,9 +17,14 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
     SetIsModalOpen(false);
   };
 
-  const handleDeleteConfirm = () => {
-    console.log("you deleted the warhouse");
-    SetIsModalOpen(false);
+  const handleDeleteConfirm = async() => {
+    try{
+      await axios.delete(`${apiURL}/inventory/${selectInventoryId}`);
+      setInventoryData(inventoryData.filter(inventory => inventory.id !== selectInventoryId));
+      SetIsModalOpen(false);
+    }catch (error) {
+      console.error('Failed to delete the inventory item: ', error);
+    }
   };
 
   const inventoryItem = inventory.item_name;
@@ -81,7 +89,7 @@ const InventoryTableRow = ({ inventory, warehouse_filtered, colSizes, arrayIndex
             <div className="InventoryTableRow__main__info__col InventoryTableRow__main__info__col--actions">
               <div className="InventoryTableRow__main__info__col__field" style={{width : colSizes[5]}}>
                 <div className="InventoryTableRow__main__info__col__field__icons">
-                  <img onClick={handleDeleteClick} className="InventoryTableRow__main__info__col__field__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
+                  <img onClick={()=>{handleDeleteClick(inventory.id)}} className="InventoryTableRow__main__info__col__field__icons__delete" src="/src/assets/images/Icons/delete_outline-24px.svg" alt="delete icon" />
                   <NavLink to={parentPathPrefix + inventory.id + "/edit/"}>
                     <img src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
                   </NavLink>
