@@ -4,13 +4,24 @@ import "./InventoryAdd.scss";
 const InventoryAdd = forwardRef(
     ({ inventoryToEdit, formType, className, warehouses}, ref) => {
 
-      const [formData, setFormData] = useState({ ...inventoryToEdit });
-      const [selectedStatus, setSelectedStatus] = useState(formData.status || "");  
+      const [formData, setFormData] = useState({ 
+        ...inventoryToEdit,
+      warehouse: inventoryToEdit.warehouse ? inventoryToEdit.warehouse.id : ""
+      });
+      const [selectedStatus, setSelectedStatus] = useState(
+        formData.status || "out_of_stock"
+      );  
     
       const handleChange = (e) => {
         const { name, value } = e.target;
-        //below we're updating formData with the latest value for each field (identified by name)
-        setFormData({ ...formData, [name]: value });
+        //convert quantity to a number
+        if (name === "quantity"){
+          setFormData({...formData, [name]: Number(value)});
+        } else {
+          //below we're updating formData with the latest value for each field (identified by name)
+          setFormData({ ...formData, [name]: value });
+        }
+        
 
         // Updates the selected status if the status radio button is changed
         if (name === "status"){
@@ -86,14 +97,27 @@ const InventoryAdd = forwardRef(
                                                 type="radio"
                                                 name="status"
                                                 value="out_of_stock"
-                                                checked={formData.status === "out_of_stock"}
+                                                checked={selectedStatus === "out_of_stock"}
                                                 onChange={handleChange}
-                                                
                                             />
                                             Out of stock
                                         </label>
                                     </div>
                                </div>
+                            )
+                          }
+                          if (field.name === "quantity") {
+                            return(
+                              <div key={index}>
+                              <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                              <input
+                              className="form__input-placeholder"
+                                 name={field.name}
+                                 placeholder="0"
+                                 
+                                 onChange={handleChange}
+                                           />
+                                 </div>
                             )
                           }
                           if (field.name ==="category") {
@@ -127,9 +151,9 @@ const InventoryAdd = forwardRef(
                                         className="form__input-placeholder"
                                      >
                                         <option value="">Please select</option>
-                                        {warehouses.map((warehouse, id) => (
-                                            <option key={id} value={warehouse.warehouse_name}>
-                                                {warehouse}
+                                        {warehouses.map((warehouse) => (
+                                            <option key={warehouse.id} value={warehouse.id}>
+                                                {warehouse.warehouse_name}
                                             </option>
                                         ))}
                                      </select>
@@ -138,10 +162,10 @@ const InventoryAdd = forwardRef(
                           }
             return (<div key={index}>
               <h3 className="font-H3-label form__field-title">{field.title}</h3>
-             <input
+                          <input
                 className="form__input-placeholder"
                 name={field.name}
-                defaultValue={field.value}
+                                placeholder={field.value}
                 onChange={handleChange}
               />
             </div>)

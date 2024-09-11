@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import InventoryAdd from "../../components/InventoryAdd/InventoryAdd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AddInventoryPage.scss";
 
-const AddInventoryPage = () => {
+const AddInventoryPage = ({apiURL}) => {
     const inventoryFormRef = useRef();
     const itemAvailabilityFormRef = useRef();
+    const Navigate = useNavigate();
 
-    const [warehousesNames, setWarehousesNames] = useState([]); 
+    const [warehouses, setWarehouses] = useState([]);
+
                  
         useEffect(() => {
             const getWarehouses = async () => {
                 try{
-                    const response = await axios.get("http://localhost:8080/api/warehouses");
-                    const warehouseDataName = response.data.map(warehouse => warehouse.warehouse_name);
-                    setWarehousesNames(warehouseDataName);
+                    const response = await axios.get(`${apiURL}/warehouses`);
+                    setWarehouses(response.data);
                 } catch (error) {
                     console.error(error);
                 }
@@ -28,28 +29,32 @@ const AddInventoryPage = () => {
       item_name: "Item Name",
       description: "Please enter a brief item description...",
       category: "Please Select",
-      status: "In Stock?",
+      // status: "In Stock?",
       quantity: "0",
-      warehouse: "Please Select"
+      warehouse_id: "Please Select"
     };
 
     const handleSave = async () => {
       const inventoryFormData = new FormData(inventoryFormRef.current);
       const itemAvailabilityFormData = new FormData(itemAvailabilityFormRef.current)
+      
       const newInventoryItem = {
         item_name: inventoryFormData.get("item_name"),
         description: inventoryFormData.get("description"),
         category: inventoryFormData.get("category"),
-        status: itemAvailabilityFormData.get("status"),
-        quantity: itemAvailabilityFormData.get("quanity"),
-        warehouse: itemAvailabilityFormData.get("warehouse"),
+        // status: itemAvailabilityFormData.get("status"),
+        quantity: Number(itemAvailabilityFormData.get("quantity")),
+        warehouse_id: itemAvailabilityFormData.get("warehouse"),
       };
-        console.log(newInventoryItem);
         try {
-          const response = await axios.post('http://localhost:8080/api/inventory', newInventoryItem);
-        console.log(response.data);
+          const response = await axios.post(`${apiURL}/inventory`, newInventoryItem, {
+          });
+          Navigate('/inventory');
+          console.log(newInventoryItem);
         } catch (error) {
           console.error(error);
+          console.log(typeof newInventoryItem.quantity);
+          console.log(newInventoryItem);
         }
     }
 
@@ -79,13 +84,14 @@ const AddInventoryPage = () => {
         inventoryToEdit={placeholderText}
         formType="item availability"
         ref={itemAvailabilityFormRef}
-        warehouses={warehousesNames}
+        warehouses={warehouses}
       />
     </div>
     <div className="whitespace"></div>
 
     <div className="main-container__footer">
-    <button 
+      <div className="main-container__footerHolder">
+      <button 
       className="font-H3-label main-container__footer-cancel cancelBtn--holder"
       ><Link className="cancelBtn" to="/inventory">Cancel</Link>
       </button>
@@ -95,6 +101,7 @@ const AddInventoryPage = () => {
       >
         + Add Item
       </button>
+      </div>
     </div>
   </main>
 );
