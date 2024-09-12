@@ -1,6 +1,6 @@
 import "./InfoInventoryItem.scss";
 
-const InfoInventoryItem = ({ SingleInventoryDetails, warehouseName }) => {
+const InfoInventoryItem = ({ SingleInventoryDetails }) => {
   return (
     <>
       <hr className="InfoInventoryItem__ruler" />
@@ -28,7 +28,7 @@ const InfoInventoryItem = ({ SingleInventoryDetails, warehouseName }) => {
           </div>
           <div className="InfoInventoryItem__col__group">
             <div className="InfoInventoryItem__col__group__label font-H4-TableHeader">WAREHOUSE:</div>
-            <p className="InfoInventoryItem__col__group__value font-P2-BodyMedium">{warehouseName}</p>
+            <p className="InfoInventoryItem__col__group__value font-P2-BodyMedium">{SingleInventoryDetails.warehouse_name}</p>
           </div>
         </div>
       </div>

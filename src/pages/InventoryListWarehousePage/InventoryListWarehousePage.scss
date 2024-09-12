@@ -4,12 +4,32 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryListWarehousePage {
+  display: flex;
+  background-color: $colBackgroundGraphite;
+  &-spacer{
+    background-color: $colBackgroundGraphite;
+    width: $pad-3;
+    height: 105px;
+    @include displayTablet{
+      width: $pad-5;
+    }
+    @include displayDesktop{
+      width: toRem(140);
+    }
+  }
+  &__left{
+    background: $colBackgroundLight-Gray;
+  }
+  &__right{
+    background: $colBackgroundLight-Gray;
+  }
   &__main {
+    flex-grow: 1;
     background: $colPrimaryWhite;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 3px;
     &__header {
-      padding: $pad-5 $pad-4 $pad-4 $pad-4;
+      padding: $pad-5 $pad-4 $pad-3 $pad-4;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -51,26 +71,32 @@
       }
     }
   }
-
   &__table {
-    &__container {
-      width: 100%;
-    }
+    width: 100%;
     &__header {
       display: none;
       @include displayTablet {
         display: flex;
-        align-items: center;
-        &-container {
-          height: 36px;
+        justify-content: flex-start;
+        background: rgba(247, 248, 249, 0.7);
+        padding-left: $pad-4;
+        padding-right: $pad-4;
+        &__col {
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 $pad-4;
-          background: rgba(247, 248, 249, 0.7);
+          justify-content: flex-start;
+          &__group {
+            height: toRem(36);
+            display: flex;
+            align-items: center;
+            width: 100%;
+            &--actions {
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
         }
       }
     }
   }
+
 }

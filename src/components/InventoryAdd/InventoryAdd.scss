@@ -1,0 +1,30 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.form {
+    &__labelHolder {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  &--fontSize {
+    font-size: 0.75em;
+    color: $colSecondarySlate;
+  }
+  &__description{
+    height: 10em;
+    resize: none;
+    @include displayTablet{
+      height: 8em;
+    }
+  }
+}
+
+.hide-quantity{
+  display: none;
+}
+.activeSelect {
+    color: $colPrimaryInstock-Black;
+}

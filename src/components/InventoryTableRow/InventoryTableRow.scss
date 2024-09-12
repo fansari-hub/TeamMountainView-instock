@@ -4,85 +4,126 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryTableRow {
+  @include displayTablet{
+    &:hover{
+      background-color: rgba(156, 201, 238, 0.118);
+    }
+  }
   &__divider {
     width: 100%;
-    height: 1px;
-    border: none;
-    background-color: $colSecondaryCloud;
-    margin-bottom: 16px;
+    border: 0.5px solid $colSecondaryCloud;
+    @include displayTablet{
+      margin: 0px;
+      padding: 0px;
+    }
+    &--firstrow{
+      margin-top: $pad-1;
+      @include displayTablet{
+        border: none;
+      }
+    }
   }
   &__main {
     display: flex;
     flex-direction: column;
-    padding-right: $pad-5;
+    padding-left: $pad-4;
     width: 100%;
     @include displayTablet {
+      padding-top: $pad-3;
+      padding-right: $pad-4;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
     &__info {
       display: flex;
-      flex-direction: row;
       justify-content: flex-start;
-      gap: $pad-9;
-      width: 100%;
-      padding: 0 24px;
-
+      flex-wrap: wrap;
       @include displayTablet {
         display: contents;
       }
       &__col {
         display: flex;
         flex-direction: column;
+        gap: $pad-1;
         @include displayTablet {
-          flex-direction: row;
           display: contents;
         }
+        &--actions{
+          flex-grow: 1;
+          width: 100%;
+          display: flex;
+          @include displayTablet{
+            display: contents;
+          }
+        }
         &__field {
+          display: contents;
+          @include displayTablet{
+            display:block;
+          }
           &__label {
             color: $colSecondarySlate;
             margin-bottom: $pad-1;
+            padding-right: $pad-7;
             @include displayTablet {
               display: none;
             }
-            &__link{
+            &__link {
               display: flex;
               align-items: flex-start;
-              &__icon{
+              &__icon {
                 display: flex;
-            }
-
+              }
             }
           }
           &__data {
-            margin-bottom: $pad-3;
+            padding-bottom: $pad-3;
             text-align: left;
             @include displayTablet {
-              width: toRem(105);
-              margin-left: toRem(40);
             }
-            &--link{
+            &--link {
               color: $colPrimaryInstock-Indigo;
+            }
+          }
+          &__icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-right: $pad-4;
+            @include displayTablet {
+              padding: 0px;
+              justify-content: flex-end;
+              margin: 0;
+              flex-grow: 1;
+            }
+            &__delete {
+              cursor: pointer;
+              margin-right: $pad-3;
+              margin-left: -$pad-2;
             }
           }
         }
       }
     }
   }
-  &__actionContainer {
-    &__icons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0 24px;
-      margin: 12px 0 16px 0;
-      @include displayTablet {
-        padding: 0;
-        margin: 0;
-      }
-      &__delete {
-        margin: 0 8px 0 -8px;
-      }
+  &-stockTicker{
+    background-color: rgb(225, 250, 226);
+    color: $colSupportGreen;
+    border-radius: 20px;
+    height: toRem(22);
+    margin-bottom: toRem(10);
+    display: flex;
+    justify-content: center;
+    padding-top: toRem(2);
+    padding-left: toRem(10);
+    padding-right: toRem(10);
+    width: max-content;
+    @include displayTablet{
+      margin-bottom: 0;
+    }
+    &--nostock{
+      background-color: rgb(250, 225, 225);
+      color: $colSupportRed;
     }
   }
 }

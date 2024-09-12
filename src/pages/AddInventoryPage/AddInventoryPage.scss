@@ -1,3 +1,43 @@
 @use "src/styles/partials/colors" as *;
 @use "src/styles/partials/functions" as *;
 @use "src/styles/partials/variables" as *;
+@use "src/styles/partials/mixins" as *;
+
+.cancelBtn{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $colSecondarySlate;
+    &:hover{
+        color: $colPrimaryInstock-Indigo
+    }
+    &--holder{
+        padding: 0;
+    }
+}
+
+.submitBtn{
+    cursor: pointer;
+}
+
+.AddInventoryPage {
+    display: flex;
+    background-color: $colBackgroundGraphite;
+    &-spacer{
+        background-color: $colBackgroundGraphite;
+    width: $pad-3;
+    height: 4.25em;
+    @include displayTablet{
+      width: $pad-5;
+      height: 6.3em;
+    }
+    @include displayDesktop{
+      width: toRem(140);
+    }
+    }
+}
+.shiftDown{
+//   margin-bottom: 1em;  
+}

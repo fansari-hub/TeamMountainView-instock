@@ -5,15 +5,12 @@
 
 .main-container {
   //comment out the next 4 lines when combined with rest of page
-  position: absolute;
-  left: 4.27%;
-  right: 4.27%;
-  top: 7.53%;
-
   background: $colPrimaryWhite;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
-
+  @include displayTablet{
+    width: 100%;
+  }
   &__header {
     display: flex;
     flex-direction: row;
@@ -56,7 +53,7 @@
 
       @include displayTablet {
         height: 38px;
-        width: 72px;
+        width: 100%;
         margin-right: 16px;
       }
     }
@@ -73,8 +70,20 @@
       }
       @include displayTablet {
         height: 38px;
-        width: 72px;
+        width: 100%;
       }
+    }
+  }
+  &__footerHolder{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    @include displayTablet{
+      width: 40%;
+    }
+    @include displayDesktop{
+      width: 25%;
     }
   }
 }
