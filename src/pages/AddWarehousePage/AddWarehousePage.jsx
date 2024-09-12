@@ -4,6 +4,8 @@ import NewWarehouseForm from "../../components/NewWarehouseForm/NewWarehouseForm
 import { useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import HeaderComponent from "../../components/Header/HeaderComponent";
+import FooterComponent from "../../components/Footer/FooterComponent";
 
 const AddWarehousePage = ({ apiURL }) => {
   const warehouseFormRef = useRef();
@@ -56,6 +58,8 @@ const AddWarehousePage = ({ apiURL }) => {
   };
 
   return (
+    <>
+    <HeaderComponent />
     <main className="main-container">
       <div className="main-container__header">
         <img
@@ -100,6 +104,8 @@ const AddWarehousePage = ({ apiURL }) => {
         </button>
       </div>
     </main>
+    <FooterComponent />
+    </>
   );
 };
 

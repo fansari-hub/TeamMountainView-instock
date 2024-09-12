@@ -60,7 +60,7 @@ function App() {
             path="/inventory/:id/edit"
             element={<EditInventoryPage />}
           ></Route>
-          <Route path="/inventory/add" element={<AddInventoryPage />}></Route>
+          <Route path="/inventory/add" element={<AddInventoryPage apiURL={WEBAPI_URL} />}></Route>
           <Route
             path="/inventory/:id/delete"
             element={<DeleteInventoryPage />}
