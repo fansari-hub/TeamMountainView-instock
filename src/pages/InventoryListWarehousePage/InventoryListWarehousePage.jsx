@@ -63,7 +63,7 @@ const InventoryListWarehousePage = ({ apiURL }) => {
             <NavLink to={"/warehouses/" + id + "/edit"}>
               <button className="InventoryListWarehousePage__main__header__button">
                 <img className="InventoryListWarehousePage__main__header__button__icon" src="/src/assets/images/Icons/edit-24px.svg" alt="edit icon" />
-                <div className="InventoryListWarehousePage__main__header__button__label">Edit</div>
+                <div className="InventoryListWarehousePage__main__header__button__label font-H3-label">Edit</div>
               </button>
             </NavLink>
           </div>

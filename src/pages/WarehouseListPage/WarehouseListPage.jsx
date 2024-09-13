@@ -37,11 +37,11 @@ const WarehouseListPage = ({ apiURL }) => {
               Warehouses
             </h2>
             <input
-              className="WarehouseListPage__main__search"
+              className="WarehouseListPage__main__search font-P3-BodySmall"
               placeholder="Search..."
             />
             <Link to="/warehouses/add" style={{ display: "contents" }}>
-              <button className="WarehouseListPage__main__button">
+              <button className="WarehouseListPage__main__button font-H3-label">
                 +Add New Warehouse
               </button>
             </Link>
