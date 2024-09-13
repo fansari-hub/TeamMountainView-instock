@@ -53,7 +53,6 @@ const InventoryEdit = forwardRef(
               value: formData.warehouse_id,
             }
           ];
-          console.log(itemAvailabilityFields[2].value);
           const fieldsToRender =
         formType === "inventory" ? inventoryFields : itemAvailabilityFields;
   
