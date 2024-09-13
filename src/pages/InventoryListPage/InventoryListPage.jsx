@@ -16,9 +16,7 @@ const InventoryListPage = ({ apiURL }) => {
         response = await axios.get(apiURL + "/inventory");
         setInventoryData(response.data);
       } catch (error) {
-        alert(
-          `App.useEffect().fetchDataInventory() requested failed with error: ${error}`
-        );
+        alert(`App.useEffect().fetchDataInventory() requested failed with error: ${error}`);
         return -1;
       }
     };
@@ -36,108 +34,57 @@ const InventoryListPage = ({ apiURL }) => {
         </div>
         <main className="InventoryListPage__main">
           <div className="InventoryListPage__main__header">
-            <h2 className="InventoryListPage__main__title font-H1-PageHeader">
-              Inventory
-            </h2>
-            <input
-              className="InventoryListPage__main__search"
-              placeholder="Search..."
-            />
+            <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
+            <input className="InventoryListPage__main__search" placeholder="Search..." />
             <NavLink to="/inventory/add" style={{ display: "contents" }}>
-              <button className="InventoryListPage__main__button">
-                +Add New Item
-              </button>
+              <button className="InventoryListPage__main__button">+Add New Item</button>
             </NavLink>
           </div>
-          <table className="InventoryListPage__table">
-            <thead>
-              <tr className="InventoryListPage__table__header">
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[0] }}
-                >
+          <div className="InventoryListPage__table">
+              <div className="InventoryListPage__table__header">
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
                   <div className="InventoryListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                    <img
-                      src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
-                    />
+                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                   </div>
-                </th>
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[1] }}
-                >
+                </div>
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[1] }}>
                   <div className="InventoryListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">CATEGORY</div>
-                    <img
-                      src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
-                    />
+                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                   </div>
-                </th>
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[2] }}
-                >
+                </div>
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[2] }}>
                   <div className="InventoryListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">STATUS</div>
-                    <img
-                      src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
-                    />
+                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                   </div>
-                </th>
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[3] }}
-                >
+                </div>
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[3] }}>
                   <div className="InventoryListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">QTY</div>
-                    <img
-                      src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
-                    />
+                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                   </div>
-                </th>
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[4] }}
-                >
+                </div>
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[4] }}>
                   <div className="InventoryListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">WAREHOUSE</div>
-                    <img
-                      src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
-                    />
+                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
                   </div>
-                </th>
-                <th
-                  className="InventoryListPage__table__header__col"
-                  style={{ width: colSizes[5] }}
-                >
+                </div>
+                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[5] }}>
                   <div className="InventoryListPage__table__header__col__group InventoryListPage__table__header__col__group--actions">
                     <div className="font-H4-TableHeader">ACTIONS</div>
                   </div>
-                </th>
-              </tr>
-            </thead>
+                </div>
+              </div>
 
-            <tbody>
+            <div>
               {inventoryData.map((inventory, arrayIndex) => (
-                <InventoryTableRow
-                  apiURL={apiURL}
-                  setInventoryData={setInventoryData}
-                  key={inventory.id}
-                  inventory={inventory}
-                  inventoryData={inventoryData}
-                  warehouse_filtered={false}
-                  colSizes={colSizes}
-                  arrayIndex={arrayIndex}
-                />
+                <InventoryTableRow apiURL={apiURL} setInventoryData={setInventoryData} key={inventory.id} inventory={inventory} inventoryData={inventoryData} warehouse_filtered={false} colSizes={colSizes} arrayIndex={arrayIndex} />
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </main>
         <div className="InventoryListPage__right">
           <div className="InventoryListPage-spacer"></div>
