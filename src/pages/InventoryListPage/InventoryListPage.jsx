@@ -8,12 +8,53 @@ import axios from "axios";
 
 const InventoryListPage = ({ apiURL }) => {
   let [inventoryData, setInventoryData] = useState([]);
+  const colSizes = ["22%", "18%", "20%", "10%", "20%", "10%"];
+  let [sortQuery, setSortQuery] = useState("");
+  let [orderBy, setOrderBy] = useState("ASC");
+  let [sortByCol, setSortByCol] = useState(0);
+  const colNames = ["item_name", "category", "status", "quantity", "warehouse_name"];
+
+  useEffect(() => {
+    function generateSortQuery() {
+      if (orderBy !== "" && sortByCol !== "") {
+        setSortQuery(`?sort_by=${colNames[sortByCol]}&order_by=${orderBy}`);
+      }
+    }
+    generateSortQuery();
+  }, [sortByCol, orderBy]);
+
+  const handleSort = (colNum) => {
+    function flipOrder() {
+      if (orderBy === "ASC") {
+        setOrderBy("DESC");
+      } else {
+        setOrderBy("ASC");
+      }
+    }
+
+    if (colNum < 0 || typeof colNum !== "number") {
+      console.log("sortObj.setSort(): " + "You must provide a positive integer for column number!");
+      return -1;
+    }
+
+    if (colNum > colNames.length) {
+      console.log("sortObj.setSort(): " + "Provided column number exceeds maximum value, maximum value is " + colNames.length);
+      return -1;
+    }
+
+    if (colNum === sortByCol) {
+      flipOrder();
+    } else {
+      setSortByCol(colNum);
+      setOrderBy("ASC");
+    }
+  };
 
   useEffect(() => {
     const fetchDataInventory = async () => {
       let response;
       try {
-        response = await axios.get(apiURL + "/inventory");
+        response = await axios.get(apiURL + "/inventory" + sortQuery);
         setInventoryData(response.data);
       } catch (error) {
         alert(`App.useEffect().fetchDataInventory() requested failed with error: ${error}`);
@@ -21,9 +62,7 @@ const InventoryListPage = ({ apiURL }) => {
       }
     };
     fetchDataInventory();
-  }, [apiURL]);
-
-  let colSizes = ["22%", "18%", "20%", "10%", "20%", "10%"];
+  }, [apiURL, sortQuery]);
 
   return (
     <>
@@ -41,43 +80,73 @@ const InventoryListPage = ({ apiURL }) => {
             </NavLink>
           </div>
           <div className="InventoryListPage__table">
-              <div className="InventoryListPage__table__header">
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
-                  <div className="InventoryListPage__table__header__col__group">
-                    <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
-                  </div>
-                </div>
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[1] }}>
-                  <div className="InventoryListPage__table__header__col__group">
-                    <div className="font-H4-TableHeader">CATEGORY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
-                  </div>
-                </div>
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[2] }}>
-                  <div className="InventoryListPage__table__header__col__group">
-                    <div className="font-H4-TableHeader">STATUS</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
-                  </div>
-                </div>
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[3] }}>
-                  <div className="InventoryListPage__table__header__col__group">
-                    <div className="font-H4-TableHeader">QTY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
-                  </div>
-                </div>
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[4] }}>
-                  <div className="InventoryListPage__table__header__col__group">
-                    <div className="font-H4-TableHeader">WAREHOUSE</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
-                  </div>
-                </div>
-                <div className="InventoryListPage__table__header__col" style={{ width: colSizes[5] }}>
-                  <div className="InventoryListPage__table__header__col__group InventoryListPage__table__header__col__group--actions">
-                    <div className="font-H4-TableHeader">ACTIONS</div>
-                  </div>
+            <div className="InventoryListPage__table__header">
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>
+                  <img
+                    src="/src/assets/images/Icons/sort-24px.svg"
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(0);
+                    }}
+                  />
                 </div>
               </div>
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[1] }}>
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">CATEGORY</div>
+                  <img
+                    src="/src/assets/images/Icons/sort-24px.svg"
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(1);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[2] }}>
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">STATUS</div>
+                  <img
+                    src="/src/assets/images/Icons/sort-24px.svg"
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(2);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[3] }}>
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">QTY</div>
+                  <img
+                    src="/src/assets/images/Icons/sort-24px.svg"
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(3);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[4] }}>
+                <div className="InventoryListPage__table__header__col__group">
+                  <div className="font-H4-TableHeader">WAREHOUSE</div>
+                  <img
+                    src="/src/assets/images/Icons/sort-24px.svg"
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(4);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[5] }}>
+                <div className="InventoryListPage__table__header__col__group InventoryListPage__table__header__col__group--actions">
+                  <div className="font-H4-TableHeader">ACTIONS</div>
+                </div>
+              </div>
+            </div>
 
             <div>
               {inventoryData.map((inventory, arrayIndex) => (
