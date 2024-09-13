@@ -22,7 +22,10 @@ const InventoryListWarehousePage = ({ apiURL }) => {
         response = await axios.get(apiURL + "/warehouses/" + id + "/inventories");
         setWarehouseInventoryData(response.data);
       } catch (error) {
-        alert(`InventoryWarehousePage.useEffect().fetchDataWarehouseInventory() requested failed with error: ${error}`);
+        //we don't know to display any errors if the warehouse has no inventory (since it can be a new warehouse without inventory assigned)
+        if (error.response.status !== 404){
+          alert(`InventoryWarehousePage.useEffect().fetchDataWarehouseInventory() requested failed with error: ${error}`);
+        }
         return -1;
       }
     };
