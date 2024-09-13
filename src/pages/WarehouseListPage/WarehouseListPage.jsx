@@ -97,7 +97,7 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">WAREHOUSE</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
                       alt="sort icon" onClick={() => {handleSort(0);}}
                     />
@@ -109,7 +109,7 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">ADDRESS</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
                       alt="sort icon" onClick={() => {handleSort(1);}}
                     />
@@ -121,7 +121,7 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">CONTACT NAME</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
                       alt="sort icon" onClick={() => {handleSort(2);}}
                     />
@@ -135,7 +135,7 @@ const WarehouseListPage = ({ apiURL }) => {
                     <div className="font-H4-TableHeader">
                       CONTACT INFORMATION
                     </div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
                       alt="sort icon" onClick={() => {handleSort(3);}}
                     />

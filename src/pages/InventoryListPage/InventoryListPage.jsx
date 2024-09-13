@@ -84,7 +84,7 @@ const InventoryListPage = ({ apiURL }) => {
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                  <img
+                  <img className="InventoryListPage__table__header__col__group__sortIcon"
                     src="/src/assets/images/Icons/sort-24px.svg"
                     alt="sort icon"
                     onClick={() => {
@@ -96,7 +96,7 @@ const InventoryListPage = ({ apiURL }) => {
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[1] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">CATEGORY</div>
-                  <img
+                  <img className="InventoryListPage__table__header__col__group__sortIcon"
                     src="/src/assets/images/Icons/sort-24px.svg"
                     alt="sort icon"
                     onClick={() => {
@@ -108,7 +108,7 @@ const InventoryListPage = ({ apiURL }) => {
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[2] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">STATUS</div>
-                  <img
+                  <img className="InventoryListPage__table__header__col__group__sortIcon"
                     src="/src/assets/images/Icons/sort-24px.svg"
                     alt="sort icon"
                     onClick={() => {
@@ -120,7 +120,7 @@ const InventoryListPage = ({ apiURL }) => {
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[3] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">QTY</div>
-                  <img
+                  <img className="InventoryListPage__table__header__col__group__sortIcon"
                     src="/src/assets/images/Icons/sort-24px.svg"
                     alt="sort icon"
                     onClick={() => {
@@ -132,7 +132,7 @@ const InventoryListPage = ({ apiURL }) => {
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[4] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">WAREHOUSE</div>
-                  <img
+                  <img className="InventoryListPage__table__header__col__group__sortIcon"
                     src="/src/assets/images/Icons/sort-24px.svg"
                     alt="sort icon"
                     onClick={() => {

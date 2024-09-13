@@ -116,25 +116,25 @@ const InventoryListWarehousePage = ({ apiURL }) => {
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[0] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(0);}} />
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(0);}} />
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[1] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">CATEGORY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(1);}}/>
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(1);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[2] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">STATUS</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(2);}}/>
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(2);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[3] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">QUANTITY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(3);}}/>
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(3);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[5] }}>
