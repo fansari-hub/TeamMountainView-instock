@@ -26,6 +26,10 @@ const InventoryDetailPage = ({ apiURL }) => {
     fetchDataInventory();
   }, [apiURL]);
 
+  const navigateBack = (() =>{
+    history.back();
+  })
+
   return (
     <>
       <HeaderComponent />
@@ -36,7 +40,7 @@ const InventoryDetailPage = ({ apiURL }) => {
         <main className="InventoryDetailPage__main">
           <div className="InventoryDetailPage__main__header">
             <div className="InventoryDetailPage__main__header__titlegroup">
-              <NavLink to={"/inventory"}>
+              <NavLink onClick={navigateBack}>
                 <img className="InventoryDetailPage__main__header__titlegroup__backarrow" src="/src/assets/images/Icons/arrow_back-24px.svg" alt="back arrow" />
               </NavLink>
               <h2 className="InventoryDetailPage__main__header__titlegroup__title font-H1-PageHeader">{inventoryData.item_name}</h2>
