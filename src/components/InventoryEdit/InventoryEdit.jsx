@@ -2,6 +2,7 @@ import { forwardRef, useState } from "react";
 
 const InventoryEdit = forwardRef(
     ({inventoryToEdit, formType, className, warehouses}, ref) => {
+      console.log(warehouses);
         const [formData, setFormData] = useState({
             ...inventoryToEdit
         });
@@ -50,7 +51,7 @@ const InventoryEdit = forwardRef(
             {
               title: "Warehouse",
               name: "warehouse",
-              value: formData.warehouse_id,
+              value: formData.warehouse_id,             
             }
           ];
           const fieldsToRender =
@@ -133,16 +134,18 @@ const InventoryEdit = forwardRef(
                                          <h3 className="font-H3-label form__field-title">{field.title}</h3>
                                          <select
                                             name="warehouse"
-                                            defaultValue={field.value}
+                                          
                                             onChange={handleChange}
                                             className="form__input-placeholder"
                                          >
-                                            <option value="">Please select</option>
-                                            {warehouses.map((warehouse) => (
+                                            <option value={inventoryToEdit.warehouse_id}>{inventoryToEdit.warehouse_name}</option>
+                                            {warehouses.filter((warehouse) => {
+                                              return warehouse.warehouse_name !== inventoryToEdit.warehouse_name;
+                                                }).map((warehouse) => (
                                                 <option key={warehouse.id} value={warehouse.id}>
                                                     {warehouse.warehouse_name}
                                                 </option>
-                                            ))}
+                                            ))};
                                          </select>
                                     </div>
                                  )
