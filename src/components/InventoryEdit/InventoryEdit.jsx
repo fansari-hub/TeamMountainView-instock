@@ -3,8 +3,7 @@ import { forwardRef, useState } from "react";
 const InventoryEdit = forwardRef(
     ({inventoryToEdit, formType, className, warehouses}, ref) => {
         const [formData, setFormData] = useState({
-            ...inventoryToEdit,
-            warehouse: inventoryToEdit.warehouse ? inventoryToEdit.warehouse.id : ""
+            ...inventoryToEdit
         });
         const [selectedStatus, setSelectedStatus] = useState(
             formData.status || "out_of_stock"
@@ -13,8 +12,7 @@ const InventoryEdit = forwardRef(
         const handleChange = (e) => {
             const {name, value} = e.target;
             setFormData({...formData, [name]: value});
-            console.log({...formData, [name]: value});
-            //Updates the selected status if the status radio button is changed
+                        //Updates the selected status if the status radio button is changed
             if (name==="status"){
                 setSelectedStatus(value);
             }
@@ -52,9 +50,10 @@ const InventoryEdit = forwardRef(
             {
               title: "Warehouse",
               name: "warehouse",
-              value: formData.warehouse,
+              value: formData.warehouse_id,
             }
           ];
+          console.log(itemAvailabilityFields[2].value);
           const fieldsToRender =
         formType === "inventory" ? inventoryFields : itemAvailabilityFields;
   
@@ -135,7 +134,7 @@ const InventoryEdit = forwardRef(
                                          <h3 className="font-H3-label form__field-title">{field.title}</h3>
                                          <select
                                             name="warehouse"
-                                            value={formData.warehouse || ""}
+                                            defaultValue={field.value}
                                             onChange={handleChange}
                                             className="form__input-placeholder"
                                          >
