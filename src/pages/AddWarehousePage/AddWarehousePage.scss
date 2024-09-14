@@ -8,7 +8,7 @@
   background: $colPrimaryWhite;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
-  @include displayTablet{
+  @include displayTablet {
     width: 100%;
   }
   &__header {
@@ -74,15 +74,15 @@
       }
     }
   }
-  &__footerHolder{
+  &__footerHolder {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    @include displayTablet{
+    @include displayTablet {
       width: 40%;
     }
-    @include displayDesktop{
+    @include displayDesktop {
       width: 25%;
     }
   }
