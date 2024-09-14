@@ -11,12 +11,14 @@ const InventoryListPage = ({ apiURL }) => {
   const colSizes = ["22%", "18%", "20%", "10%", "20%", "10%"];
   let [sortQuery, setSortQuery] = useState("");
   let [orderBy, setOrderBy] = useState("ASC");
-  let [sortByCol, setSortByCol] = useState(0);
+  let [sortByCol, setSortByCol] = useState(null);
   const colNames = ["item_name", "category", "status", "quantity", "warehouse_name"];
+  const sortIconNotActive = "/src/assets/images/Icons/sort-24px.svg";
+  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg"
 
   useEffect(() => {
     function generateSortQuery() {
-      if (orderBy !== "" && sortByCol !== "") {
+      if (orderBy !== "" && sortByCol !== null) {
         setSortQuery(`?sort_by=${colNames[sortByCol]}&order_by=${orderBy}`);
       }
     }
@@ -83,9 +85,9 @@ const InventoryListPage = ({ apiURL }) => {
             <div className="InventoryListPage__table__header">
               <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
                 <div className="InventoryListPage__table__header__col__group">
-                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>
+                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>                  
                   <img className="InventoryListPage__table__header__col__group__sortIcon"
-                    src="/src/assets/images/Icons/sort-24px.svg"
+                    src={(sortByCol === 0) ? sortIconActive : sortIconNotActive}
                     alt="sort icon"
                     onClick={() => {
                       handleSort(0);
@@ -97,7 +99,7 @@ const InventoryListPage = ({ apiURL }) => {
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">CATEGORY</div>
                   <img className="InventoryListPage__table__header__col__group__sortIcon"
-                    src="/src/assets/images/Icons/sort-24px.svg"
+                    src={(sortByCol === 1) ? sortIconActive : sortIconNotActive}
                     alt="sort icon"
                     onClick={() => {
                       handleSort(1);
@@ -109,7 +111,7 @@ const InventoryListPage = ({ apiURL }) => {
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">STATUS</div>
                   <img className="InventoryListPage__table__header__col__group__sortIcon"
-                    src="/src/assets/images/Icons/sort-24px.svg"
+                    src={(sortByCol === 2) ? sortIconActive : sortIconNotActive}
                     alt="sort icon"
                     onClick={() => {
                       handleSort(2);
@@ -121,7 +123,7 @@ const InventoryListPage = ({ apiURL }) => {
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">QTY</div>
                   <img className="InventoryListPage__table__header__col__group__sortIcon"
-                    src="/src/assets/images/Icons/sort-24px.svg"
+                    src={(sortByCol === 3) ? sortIconActive : sortIconNotActive}
                     alt="sort icon"
                     onClick={() => {
                       handleSort(3);
@@ -133,7 +135,7 @@ const InventoryListPage = ({ apiURL }) => {
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">WAREHOUSE</div>
                   <img className="InventoryListPage__table__header__col__group__sortIcon"
-                    src="/src/assets/images/Icons/sort-24px.svg"
+                    src={(sortByCol === 4) ? sortIconActive : sortIconNotActive}
                     alt="sort icon"
                     onClick={() => {
                       handleSort(4);

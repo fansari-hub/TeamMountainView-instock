@@ -13,12 +13,14 @@ const WarehouseListPage = ({ apiURL }) => {
 
   let [sortQuery, setSortQuery] = useState("");
   let [orderBy, setOrderBy] = useState("ASC");
-  let [sortByCol, setSortByCol] = useState(0);
+  let [sortByCol, setSortByCol] = useState(null);
   const colNames = ["warehouse_name", "address", "contact_name", "contact_email"];
+  const sortIconNotActive = "/src/assets/images/Icons/sort-24px.svg";
+  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg"
 
   useEffect(() => {
     function generateSortQuery() {
-      if (orderBy !== "" && sortByCol !== "") {
+      if (orderBy !== "" && sortByCol !== null) {
         setSortQuery(`?sort_by=${colNames[sortByCol]}&order_by=${orderBy}`);
       }
     }
@@ -98,7 +100,7 @@ const WarehouseListPage = ({ apiURL }) => {
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">WAREHOUSE</div>
                     <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src="/src/assets/images/Icons/sort-24px.svg"
+                      src={(sortByCol === 0) ? sortIconActive : sortIconNotActive} 
                       alt="sort icon" onClick={() => {handleSort(0);}}
                     />
                   </div>
@@ -110,7 +112,7 @@ const WarehouseListPage = ({ apiURL }) => {
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">ADDRESS</div>
                     <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src="/src/assets/images/Icons/sort-24px.svg"
+                      src={(sortByCol === 1) ? sortIconActive : sortIconNotActive} 
                       alt="sort icon" onClick={() => {handleSort(1);}}
                     />
                   </div>
@@ -122,7 +124,7 @@ const WarehouseListPage = ({ apiURL }) => {
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">CONTACT NAME</div>
                     <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src="/src/assets/images/Icons/sort-24px.svg"
+                      src={(sortByCol === 2) ? sortIconActive : sortIconNotActive} 
                       alt="sort icon" onClick={() => {handleSort(2);}}
                     />
                   </div>
@@ -136,7 +138,7 @@ const WarehouseListPage = ({ apiURL }) => {
                       CONTACT INFORMATION
                     </div>
                     <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src="/src/assets/images/Icons/sort-24px.svg"
+                      src={(sortByCol === 3) ? sortIconActive : sortIconNotActive} 
                       alt="sort icon" onClick={() => {handleSort(3);}}
                     />
                   </div>
