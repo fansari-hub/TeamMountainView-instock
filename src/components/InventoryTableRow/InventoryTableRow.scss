@@ -108,22 +108,23 @@
     }
   }
   &-stockTicker{
-    background-color: rgb(225, 250, 226);
+    background-color: #15846325;
     color: $colSupportGreen;
     border-radius: 20px;
-    height: toRem(22);
+    height: toRem(24);
     margin-bottom: toRem(10);
     display: flex;
     justify-content: center;
-    padding-top: toRem(2);
-    padding-left: toRem(10);
-    padding-right: toRem(10);
+    padding-top: toRem(4);
+    padding-left: toRem(8);
+    padding-right: toRem(8);
     width: max-content;
     @include displayTablet{
       margin-bottom: 0;
+      height: toRem(26);
     }
     &--nostock{
-      background-color: rgb(250, 225, 225);
+      background-color:  #c9451525;
       color: $colSupportRed;
     }
   }
