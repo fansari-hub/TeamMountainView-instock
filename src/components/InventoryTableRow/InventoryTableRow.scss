@@ -37,6 +37,7 @@
     &__info {
       display: flex;
       justify-content: flex-start;
+      column-gap: 8vw;
       flex-wrap: wrap;
       @include displayTablet {
         display: contents;
