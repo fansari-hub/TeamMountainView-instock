@@ -57,7 +57,7 @@ const NewWarehouseForm = forwardRef(
             <input
               className="form__input-placeholder"
               name={field.name}
-              defaultValue={field.value}
+              placeholder={field.value}
               onChange={handleChange}
             />
           </div>
