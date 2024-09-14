@@ -3,7 +3,7 @@ import "./AddWarehousePage.scss";
 import NewWarehouseForm from "../../components/NewWarehouseForm/NewWarehouseForm";
 import { useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 
@@ -66,10 +66,12 @@ const AddWarehousePage = ({ apiURL }) => {
         </div>
         <main className="main-container">
           <div className="main-container__header">
-            <img
-              src="/src/assets/images/Icons/arrow_back-24px.svg"
-              alt="search icon"
-            />
+            <Link to="/warehouses">
+              <img
+                src="/src/assets/images/Icons/arrow_back-24px.svg"
+                alt="back arrow"
+              />
+            </Link>
             <h1 className="font-H1-PageHeader main-container__header-title">
               Add New Warehouse
             </h1>
