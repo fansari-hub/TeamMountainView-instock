@@ -37,12 +37,14 @@
     &__info {
       display: flex;
       justify-content: flex-start;
-      column-gap: 8vw;
       flex-wrap: wrap;
       @include displayTablet {
         display: contents;
       }
       &__col {
+        &:first-child{
+          width: 50%;
+        }
         display: flex;
         flex-direction: column;
         gap: $pad-1;

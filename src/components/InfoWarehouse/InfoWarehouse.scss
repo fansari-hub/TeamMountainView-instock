@@ -5,11 +5,14 @@
 
 .InfoWarehouse {
   margin: $pad-4;
+  margin-top: 0;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   @include displayTablet {
     margin-right: $pad-10;
+    margin-top: $pad-4;
   }
   &__ruler {
     width: 100%;
@@ -27,6 +30,7 @@
   }
   &__section {
     &--top {
+      margin-top: 0px;
       flex-grow: 1;
       width: 100%;
       margin-bottom: $pad-4;
@@ -40,7 +44,8 @@
     &__label {
       color: $colSecondarySlate;
       margin: 0px;
-      margin-bottom: $pad-2;
+      margin-bottom: $pad-1;
+      margin-top: $pad-2;
     }
     &__group {
         &--top{
