@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import DetailsForm from "../../components/DetailsForm/DetailsForm";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EditWarehousePage = ({ apiURL }) => {
   const { id } = useParams();
@@ -73,10 +73,12 @@ const EditWarehousePage = ({ apiURL }) => {
   return (
     <main className="main-container">
       <div className="main-container__header">
-        <img
-          src="/src/assets/images/Icons/arrow_back-24px.svg"
-          alt="search icon"
-        />
+        <Link to="/warehouses">
+          <img
+            src="/src/assets/images/Icons/arrow_back-24px.svg"
+            alt="back arrow"
+          />
+        </Link>
         <h1 className="font-H1-PageHeader main-container__header-title">
           Edit Warehouse
         </h1>
