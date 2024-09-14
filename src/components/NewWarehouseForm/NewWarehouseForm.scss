@@ -26,4 +26,17 @@
     text-indent: 4%;
     color: $colSecondarySlate;
   }
+  &__input-user {
+    box-sizing: border-box;
+    height: 36px;
+    width: 100%;
+    background-color: $colPrimaryWhite;
+    border: 1px solid $colSecondaryCloud;
+    border-radius: 20px;
+    text-indent: 4%;
+    color: $colPrimaryInstock-Black;
+    &::placeholder {
+      color: $colSecondarySlate;
+    }
+  }
 }
