@@ -35,9 +35,9 @@ const InventoryListPage = ({ apiURL }) => {
         <main className="InventoryListPage__main">
           <div className="InventoryListPage__main__header">
             <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
-            <input className="InventoryListPage__main__search" placeholder="Search..." />
+            <input className="InventoryListPage__main__search font-P3-BodySmall" placeholder="Search..." />
             <NavLink to="/inventory/add" style={{ display: "contents" }}>
-              <button className="InventoryListPage__main__button">+Add New Item</button>
+              <button className="InventoryListPage__main__button font-H3-label">+Add New Item</button>
             </NavLink>
           </div>
           <div className="InventoryListPage__table">

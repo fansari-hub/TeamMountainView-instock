@@ -4,7 +4,7 @@
 @use "functions" as *;
 
 @font-face {
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   src: url("../../assets/fonts/TitilliumWeb-Regular.ttf");
   font-weight: 400;
   font-style: normal;
@@ -12,7 +12,7 @@
 }
 
 @font-face {
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   src: url("../../assets/fonts/TitilliumWeb-SemiBold.ttf");
   font-weight: 600;
   font-style: normal;
@@ -22,7 +22,7 @@
 .font-H1-PageHeader {
   font-size: toRem(28);
   line-height: toRem(36);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 600;
   margin: 0px;
   @include displayTablet {
@@ -53,7 +53,7 @@
 .font-H3-label {
   font-size: tomRem(13);
   line-height: toRem(20);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 600;
   @include displayTablet {
     font-size: toRem(14);
@@ -68,7 +68,7 @@
 .font-H4-TableHeader {
   font-size: toRem(11);
   line-height: toRem(16);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 400;
   color: $colSecondarySlate;
   @include displayTablet {
@@ -84,7 +84,7 @@
 .font-P1-BodyLarge {
   font-size: toRem(15);
   line-height: toRem(26);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 400;
   @include displayTablet {
     font-size: toRem(16);
@@ -99,7 +99,7 @@
 .font-P2-BodyMedium {
   font-size: toRem(13);
   line-height: toRem(20);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 400;
   @include displayTablet {
     font-size: toRem(14);
@@ -114,7 +114,7 @@
 .font-P3-BodySmall {
   font-size: toRem(11);
   line-height: toRem(16);
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web";
   font-weight: 400;
   @include displayTablet {
     font-size: toRem(12);
