@@ -10,10 +10,52 @@ const WarehouseListPage = ({ apiURL }) => {
   const colSizes = ["22%", "22%", "22%", "24%", "0%", "10%"];
 
   const [warehousesData, setWarehousesData] = useState([]);
+
+  let [sortQuery, setSortQuery] = useState("");
+  let [orderBy, setOrderBy] = useState("ASC");
+  let [sortByCol, setSortByCol] = useState(0);
+  const colNames = ["warehouse_name", "address", "contact_name", "contact_email"];
+
+  useEffect(() => {
+    function generateSortQuery() {
+      if (orderBy !== "" && sortByCol !== "") {
+        setSortQuery(`?sort_by=${colNames[sortByCol]}&order_by=${orderBy}`);
+      }
+    }
+    generateSortQuery();
+  }, [sortByCol, orderBy]);
+
+  const handleSort = (colNum) => {
+    function flipOrder() {
+      if (orderBy === "ASC") {
+        setOrderBy("DESC");
+      } else {
+        setOrderBy("ASC");
+      }
+    }
+
+    if (colNum < 0 || typeof colNum !== "number") {
+      console.log("sortObj.setSort(): " + "You must provide a positive integer for column number!");
+      return -1;
+    }
+
+    if (colNum > colNames.length) {
+      console.log("sortObj.setSort(): " + "Provided column number exceeds maximum value, maximum value is " + colNames.length);
+      return -1;
+    }
+
+    if (colNum === sortByCol) {
+      flipOrder();
+    } else {
+      setSortByCol(colNum);
+      setOrderBy("ASC");
+    }
+  };
+
   useEffect(() => {
     const fetchDataWarehouse = async () => {
       try {
-        const response = await axios.get(apiURL + "/warehouses");
+        const response = await axios.get(apiURL + "/warehouses" + sortQuery);
         setWarehousesData(response.data);
       } catch (error) {
         alert(
@@ -22,7 +64,7 @@ const WarehouseListPage = ({ apiURL }) => {
       }
     };
     fetchDataWarehouse();
-  }, []);
+  }, [apiURL, sortQuery]);
 
   return (
     <>
@@ -55,9 +97,9 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">WAREHOUSE</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
+                      alt="sort icon" onClick={() => {handleSort(0);}}
                     />
                   </div>
                 </div>
@@ -67,9 +109,9 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">ADDRESS</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
+                      alt="sort icon" onClick={() => {handleSort(1);}}
                     />
                   </div>
                 </div>
@@ -79,9 +121,9 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">CONTACT NAME</div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
+                      alt="sort icon" onClick={() => {handleSort(2);}}
                     />
                   </div>
                 </div>
@@ -93,9 +135,9 @@ const WarehouseListPage = ({ apiURL }) => {
                     <div className="font-H4-TableHeader">
                       CONTACT INFORMATION
                     </div>
-                    <img
+                    <img className="InventoryListPage__table__header__col__group__sortIcon"
                       src="/src/assets/images/Icons/sort-24px.svg"
-                      alt="sort icon"
+                      alt="sort icon" onClick={() => {handleSort(3);}}
                     />
                   </div>
                 </div>

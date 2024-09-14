@@ -15,11 +15,52 @@ const InventoryListWarehousePage = ({ apiURL }) => {
   let [warehouseInventoryData, setWarehouseInventoryData] = useState([]);
   let [warehouseData, setWarehouseData] = useState({});
 
+  let [sortQuery, setSortQuery] = useState("");
+  let [orderBy, setOrderBy] = useState("ASC");
+  let [sortByCol, setSortByCol] = useState(0);
+  const colNames = ["item_name", "category", "status", "quantity"];
+
+  useEffect(() => {
+    function generateSortQuery() {
+      if (orderBy !== "" && sortByCol !== "") {
+        setSortQuery(`?sort_by=${colNames[sortByCol]}&order_by=${orderBy}`);
+      }
+    }
+    generateSortQuery();
+  }, [sortByCol, orderBy]);
+
+  const handleSort = (colNum) => {
+    function flipOrder() {
+      if (orderBy === "ASC") {
+        setOrderBy("DESC");
+      } else {
+        setOrderBy("ASC");
+      }
+    }
+
+    if (colNum < 0 || typeof colNum !== "number") {
+      console.log("sortObj.setSort(): " + "You must provide a positive integer for column number!");
+      return -1;
+    }
+
+    if (colNum > colNames.length) {
+      console.log("sortObj.setSort(): " + "Provided column number exceeds maximum value, maximum value is " + colNames.length);
+      return -1;
+    }
+
+    if (colNum === sortByCol) {
+      flipOrder();
+    } else {
+      setSortByCol(colNum);
+      setOrderBy("ASC");
+    }
+  };
+
   useEffect(() => {
     const fetchDataWarehouseInventory = async () => {
       let response;
       try {
-        response = await axios.get(apiURL + "/warehouses/" + id + "/inventories");
+        response = await axios.get(apiURL + "/warehouses/" + id + "/inventories" + sortQuery);
         setWarehouseInventoryData(response.data);
       } catch (error) {
         //we don't know to display any errors if the warehouse has no inventory (since it can be a new warehouse without inventory assigned)
@@ -43,7 +84,7 @@ const InventoryListWarehousePage = ({ apiURL }) => {
 
     fetchDataWarehouseInventory();
     fetchDataWarehouse();
-  }, [apiURL]);
+  }, [apiURL, sortQuery]);
 
   return (
     <>
@@ -75,25 +116,25 @@ const InventoryListWarehousePage = ({ apiURL }) => {
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[0] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(0);}} />
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[1] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">CATEGORY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(1);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[2] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">STATUS</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(2);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[3] }}>
                   <div className="InventoryListWarehousePage__table__header__col__group">
                     <div className="font-H4-TableHeader">QUANTITY</div>
-                    <img src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" />
+                    <img className="InventoryListPage__table__header__col__group__sortIcon" src="/src/assets/images/Icons/sort-24px.svg" alt="sort icon" onClick={() => {handleSort(3);}}/>
                   </div>
                 </div>
                 <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[5] }}>
