@@ -55,9 +55,9 @@ const NewWarehouseForm = forwardRef(
           <div key={index}>
             <h3 className="font-H3-label form__field-title">{field.title}</h3>
             <input
-              className="form__input-placeholder"
+              className="form__input-user"
               name={field.name}
-              defaultValue={field.value}
+              placeholder={field.value}
               onChange={handleChange}
             />
           </div>

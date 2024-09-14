@@ -57,7 +57,7 @@ const DetailsForm = forwardRef(
             <input
               className="form__input"
               name={field.name}
-              placeholder={field.value}
+              defaultValue={field.value}
               onChange={handleChange}
             />
           </div>

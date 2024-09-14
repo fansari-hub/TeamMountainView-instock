@@ -16,7 +16,7 @@
       font-size: toRem(14);
     }
   }
-  &__input-placeholder {
+  &__input-user {
     box-sizing: border-box;
     height: 36px;
     width: 100%;
@@ -24,6 +24,9 @@
     border: 1px solid $colSecondaryCloud;
     border-radius: 20px;
     text-indent: 4%;
-    color: $colSecondarySlate;
+    color: $colPrimaryInstock-Black;
+    &::placeholder {
+      color: $colSecondarySlate;
+    }
   }
 }
