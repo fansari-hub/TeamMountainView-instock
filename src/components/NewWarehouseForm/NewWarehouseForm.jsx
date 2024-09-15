@@ -1,5 +1,6 @@
 import { useState, forwardRef } from "react";
 import "./NewWarehouseForm.scss";
+import errorImage from "../../assets/images/Icons/error-24px.svg";
 
 const NewWarehouseForm = forwardRef(({ warehouesToEdit, formType, className }, ref) => {
   const [formData, setFormData] = useState({ ...warehouesToEdit });
@@ -48,12 +49,22 @@ const NewWarehouseForm = forwardRef(({ warehouesToEdit, formType, className }, r
   return (
     <form ref={ref} className={`NewWarehouseForm ${className}`}>
       <h2 className="font-H2-SubHeader NewWarehouseForm__title">{formTitle}</h2>
-      {fieldsToRender.map((field, index) => (
-        <div key={index}>
-          <h3 className="font-H3-label NewWarehouseForm__field-title">{field.title}</h3>
-          <input className="NewWarehouseForm__input-placeholder" name={field.name} placeholder={field.value} onChange={handleChange} />
-        </div>
-      ))}
+      {fieldsToRender.map((field, index) => {
+        const hasError = !formData[field.name] || (field.name === "quantity" && selectedStatus === "in_stock" && formData.quantity <= 0);
+        const errorMessage = hasError ? "This field is required" : "";
+        return (
+          <div key={index}>
+            <h3 className="font-H3-label NewWarehouseForm__field-title">{field.title}</h3>
+            <input className={`NewWarehouseForm__input-placeholder ${field.value === "" ? "NewWarehouseForm-fieldBlank" : ""}`} name={field.name} placeholder={field.value} onChange={handleChange} />
+            {hasError && (
+              <div className="NewWarehouseForm-fieldError__container">
+                <img src={errorImage} alt="error" className="error-image" />
+                <p className="NewWarehouseForm-fieldError__message font-P2-BodyMedium">{errorMessage}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </form>
   );
 });

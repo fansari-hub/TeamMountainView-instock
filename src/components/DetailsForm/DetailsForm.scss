@@ -30,4 +30,18 @@
       outline: none;
     }
   }
+  &-fieldBlank {
+    border-color: $colSupportRed !important;
+  }
+  
+  &-fieldError {
+    &__container {
+      display: flex;
+    }
+    &__message {
+      font-size: 1em;
+      margin-left: 0.5em;
+      color: $colSupportRed;
+    }
+  }
 }
