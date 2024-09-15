@@ -3,7 +3,6 @@
 @use "/src/styles/partials/variables" as *;
 @use "/src/styles/partials/mixins" as *;
 
-
 .inventoryAddForm {
   padding: 0 24px;
   &__title {
@@ -18,7 +17,7 @@
     }
   }
   &__input-placeholder {
-        box-sizing: border-box;
+    box-sizing: border-box;
     height: 36px;
     width: 100%;
     background-color: $colPrimaryWhite;
@@ -26,53 +25,55 @@
     border-radius: 20px;
     text-indent: 4%;
     color: $colSecondarySlate;
-    &:focus{
+    &:focus {
       color: $colPrimaryInstock-Black;
       border-color: $colPrimaryInstock-Indigo;
       outline: none;
     }
-    &--dropDown{
+    &--dropDown {
       appearance: none;
-    background: url('../../assets/images/Icons/arrow_drop_down-24px.svg') no-repeat right 0.5em center;
+      background: url("../../assets/images/Icons/arrow_drop_down-24px.svg") no-repeat right 0.5em center;
     }
-    &--shrink{
-      @include displayDesktop{
-      width: 25%;}
+    &--shrink {
+      @include displayDesktop {
+        width: 25%;
+      }
     }
   }
-    &__labelHolder {
+  &__labelHolder {
     display: flex;
     justify-content: space-between;
     width: 85%;
-    &--shrink{
-      @include displayTablet{
+    &--shrink {
+      @include displayTablet {
         width: 75%;
+      }
+      @include displayDesktop {
+        width: 50%;
+      }
     }
-    @include displayDesktop{
-    width: 50%;}
-  }
   }
   &--fontSize {
     font-size: 0.75em;
     color: $colSecondarySlate;
   }
-  &__description{
+  &__description {
     height: 10em;
     resize: none;
-    @include displayTablet{
+    @include displayTablet {
       height: 8em;
     }
   }
 }
 
-.hide-quantity{
+.hide-quantity {
   display: none;
 }
 
 .addActiveSelect {
-    color: $colPrimaryInstock-Black;
+  color: $colPrimaryInstock-Black;
 }
 
-.addNoData{
+.addNoData {
   border-color: $colSupportRed !important;
 }

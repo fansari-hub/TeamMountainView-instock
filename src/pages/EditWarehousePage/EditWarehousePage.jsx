@@ -19,9 +19,7 @@ const EditWarehousePage = ({ apiURL }) => {
         const response = await axios.get(`${apiURL}/warehouses/${id}`);
         setWarehouseToEdit(response.data);
       } catch (error) {
-        alert(
-          `Error: ${error.response.data.message} (Code: ${error.response.status})`
-        );
+        alert(`Error: ${error.response.data.message} (Code: ${error.response.status})`);
       }
     };
     getSingleWarehouse();
@@ -50,20 +48,14 @@ const EditWarehousePage = ({ apiURL }) => {
     };
 
     try {
-      const response = await axios.put(
-        `${apiURL}/warehouses/${id}`,
-        updatedData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.put(`${apiURL}/warehouses/${id}`, updatedData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       navigate(`/warehouses`);
     } catch (error) {
-      alert(
-        `Error: ${error.response.data.message} (Code: ${error.response.status})`
-      );
+      alert(`Error: ${error.response.data.message} (Code: ${error.response.status})`);
     }
   };
 
@@ -82,45 +74,24 @@ const EditWarehousePage = ({ apiURL }) => {
         <main className="EditWarehousePage__container">
           <div className="EditWarehousePage__container__header">
             <Link to="/warehouses">
-              <img
-                src="/src/assets/images/Icons/arrow_back-24px.svg"
-                alt="back arrow"
-              />
+              <img src="/src/assets/images/Icons/arrow_back-24px.svg" alt="back arrow" />
             </Link>
-            <h1 className="font-H1-PageHeader EditWarehousePage__container__header-title">
-              Edit Warehouse
-            </h1>
+            <h1 className="font-H1-PageHeader EditWarehousePage__container__header-title">Edit Warehouse</h1>
           </div>
           <hr className="EditWarehousePage__container__divider" />
 
           <div className="EditWarehousePage__two-forms">
-            <DetailsForm
-              className="EditWarehousePage__two-forms__first"
-              warehouesToEdit={warehouseToEdit}
-              formType="warehouse"
-              ref={warehouseFormRef}
-            />
+            <DetailsForm className="EditWarehousePage__two-forms__first" warehouesToEdit={warehouseToEdit} formType="warehouse" ref={warehouseFormRef} />
             <hr className="EditWarehousePage__two-forms__divider" />
-            <DetailsForm
-              className="EditWarehousePage__two-forms__second"
-              warehouesToEdit={warehouseToEdit}
-              formType="contact"
-              ref={contactFormRef}
-            />
+            <DetailsForm className="EditWarehousePage__two-forms__second" warehouesToEdit={warehouseToEdit} formType="contact" ref={contactFormRef} />
           </div>
           <div className="EditWarehousePage__whitespace"></div>
 
           <div className="EditWarehousePage__container__footer">
-            <button
-              className="font-H3-label EditWarehousePage__container__footer-cancel"
-              onClick={handleCancel}
-            >
+            <button className="font-H3-label EditWarehousePage__container__footer-cancel" onClick={handleCancel}>
               Cancel
             </button>
-            <button
-              className="font-H3-label EditWarehousePage__container__footer-save"
-              onClick={handleSave}
-            >
+            <button className="font-H3-label EditWarehousePage__container__footer-save" onClick={handleSave}>
               Save
             </button>
           </div>

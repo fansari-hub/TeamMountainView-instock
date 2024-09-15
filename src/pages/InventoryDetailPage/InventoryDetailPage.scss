@@ -6,21 +6,21 @@
 .InventoryDetailPage {
   display: flex;
   background-color: $colBackgroundGraphite;
-  &-spacer{
+  &-spacer {
     background-color: $colBackgroundGraphite;
     width: $pad-3;
     height: 105px;
-    @include displayTablet{
+    @include displayTablet {
       width: $pad-5;
     }
-    @include displayDesktop{
+    @include displayDesktop {
       width: toRem(140);
     }
   }
-  &__left{
+  &__left {
     background: $colBackgroundLight-Gray;
   }
-  &__right{
+  &__right {
     background: $colBackgroundLight-Gray;
   }
   &__main {

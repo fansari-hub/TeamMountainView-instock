@@ -1,10 +1,9 @@
 import "./InfoWarehouse.scss";
 
 const InfoWarehouse = ({ SingleWarehouseDetails }) => {
-
   return (
     <>
-    <hr className="InfoWarehouse__ruler" />
+      <hr className="InfoWarehouse__ruler" />
       <div className="InfoWarehouse">
         <div className="InfoWarehouse__section InfoWarehouse__section--top">
           <div className="InfoWarehouse__section__label font-H4-TableHeader">WAREHOUSE ADDRESS:</div>

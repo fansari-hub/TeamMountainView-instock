@@ -20,7 +20,7 @@ const InventoryListWarehousePage = ({ apiURL }) => {
   let [sortByCol, setSortByCol] = useState(null);
   const colNames = ["item_name", "category", "status", "quantity"];
   const sortIconNotActive = "/src/assets/images/Icons/sort-24px.svg";
-  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg"
+  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg";
 
   useEffect(() => {
     function generateSortQuery() {
@@ -66,7 +66,7 @@ const InventoryListWarehousePage = ({ apiURL }) => {
         setWarehouseInventoryData(response.data);
       } catch (error) {
         //we don't know to display any errors if the warehouse has no inventory (since it can be a new warehouse without inventory assigned)
-        if (error.response.status !== 404){
+        if (error.response.status !== 404) {
           alert(`InventoryWarehousePage.useEffect().fetchDataWarehouseInventory() requested failed with error: ${error}`);
         }
         return -1;
@@ -114,37 +114,65 @@ const InventoryListWarehousePage = ({ apiURL }) => {
             <InfoWarehouse SingleWarehouseDetails={warehouseData} />
           </div>
           <div className="InventoryListWarehousePage__table">
-              <div className="InventoryListWarehousePage__table__header">
-                <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[0] }}>
-                  <div className="InventoryListWarehousePage__table__header__col__group">
-                    <div className="font-H4-TableHeader">INVENTORY ITEM</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon" src={(sortByCol === 0) ? sortIconActive : sortIconNotActive} alt="sort icon" onClick={() => {handleSort(0);}} />
-                  </div>
-                </div>
-                <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[1] }}>
-                  <div className="InventoryListWarehousePage__table__header__col__group">
-                    <div className="font-H4-TableHeader">CATEGORY</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon" src={(sortByCol === 1) ? sortIconActive : sortIconNotActive} alt="sort icon" onClick={() => {handleSort(1);}}/>
-                  </div>
-                </div>
-                <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[2] }}>
-                  <div className="InventoryListWarehousePage__table__header__col__group">
-                    <div className="font-H4-TableHeader">STATUS</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon" src={(sortByCol === 2) ? sortIconActive : sortIconNotActive} alt="sort icon" onClick={() => {handleSort(2);}}/>
-                  </div>
-                </div>
-                <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[3] }}>
-                  <div className="InventoryListWarehousePage__table__header__col__group">
-                    <div className="font-H4-TableHeader">QUANTITY</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon" src={(sortByCol === 3) ? sortIconActive : sortIconNotActive} alt="sort icon" onClick={() => {handleSort(3);}}/>
-                  </div>
-                </div>
-                <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[5] }}>
-                  <div className="InventoryListWarehousePage__table__header__col__group InventoryListWarehousePage__table__header__col__group--actions">
-                    <div className="font-H4-TableHeader">ACTIONS</div>
-                  </div>
+            <div className="InventoryListWarehousePage__table__header">
+              <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[0] }}>
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">INVENTORY ITEM</div>
+                  <img
+                    className="InventoryListPage__table__header__col__group__sortIcon"
+                    src={sortByCol === 0 ? sortIconActive : sortIconNotActive}
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(0);
+                    }}
+                  />
                 </div>
               </div>
+              <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[1] }}>
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">CATEGORY</div>
+                  <img
+                    className="InventoryListPage__table__header__col__group__sortIcon"
+                    src={sortByCol === 1 ? sortIconActive : sortIconNotActive}
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(1);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[2] }}>
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">STATUS</div>
+                  <img
+                    className="InventoryListPage__table__header__col__group__sortIcon"
+                    src={sortByCol === 2 ? sortIconActive : sortIconNotActive}
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(2);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[3] }}>
+                <div className="InventoryListWarehousePage__table__header__col__group">
+                  <div className="font-H4-TableHeader">QUANTITY</div>
+                  <img
+                    className="InventoryListPage__table__header__col__group__sortIcon"
+                    src={sortByCol === 3 ? sortIconActive : sortIconNotActive}
+                    alt="sort icon"
+                    onClick={() => {
+                      handleSort(3);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="InventoryListWarehousePage__table__header__col" style={{ width: colSizes[5] }}>
+                <div className="InventoryListWarehousePage__table__header__col__group InventoryListWarehousePage__table__header__col__group--actions">
+                  <div className="font-H4-TableHeader">ACTIONS</div>
+                </div>
+              </div>
+            </div>
 
             <div>
               {warehouseInventoryData.map((inventory, arrayIndex) => (

@@ -13,13 +13,7 @@ const InventoryListPage = ({ apiURL }) => {
   let [orderBy, setOrderBy] = useState("ASC");
   let [sortByCol, setSortByCol] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const colNames = [
-    "item_name",
-    "category",
-    "status",
-    "quantity",
-    "warehouse_name",
-  ];
+  const colNames = ["item_name", "category", "status", "quantity", "warehouse_name"];
   const sortIconNotActive = "/src/assets/images/Icons/sort-24px.svg";
   const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg";
 
@@ -32,11 +26,7 @@ const InventoryListPage = ({ apiURL }) => {
     generateSortQuery();
   }, [sortByCol, orderBy]);
 
-  const filteredResults = inventoryData.filter((item) =>
-    ["item_name", "category", "warehouse_name", "status"].some((key) =>
-      item[key]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  const filteredResults = inventoryData.filter((item) => ["item_name", "category", "warehouse_name", "status"].some((key) => item[key]?.toString().toLowerCase().includes(searchTerm.toLowerCase())));
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -52,19 +42,12 @@ const InventoryListPage = ({ apiURL }) => {
     }
 
     if (colNum < 0 || typeof colNum !== "number") {
-      console.log(
-        "sortObj.setSort(): " +
-          "You must provide a positive integer for column number!"
-      );
+      console.log("sortObj.setSort(): " + "You must provide a positive integer for column number!");
       return -1;
     }
 
     if (colNum > colNames.length) {
-      console.log(
-        "sortObj.setSort(): " +
-          "Provided column number exceeds maximum value, maximum value is " +
-          colNames.length
-      );
+      console.log("sortObj.setSort(): " + "Provided column number exceeds maximum value, maximum value is " + colNames.length);
       return -1;
     }
 
@@ -83,9 +66,7 @@ const InventoryListPage = ({ apiURL }) => {
         response = await axios.get(apiURL + "/inventory" + sortQuery);
         setInventoryData(response.data);
       } catch (error) {
-        alert(
-          `App.useEffect().fetchDataInventory() requested failed with error: ${error}`
-        );
+        alert(`App.useEffect().fetchDataInventory() requested failed with error: ${error}`);
         return -1;
       }
     };
@@ -101,26 +82,15 @@ const InventoryListPage = ({ apiURL }) => {
         </div>
         <main className="InventoryListPage__main">
           <div className="InventoryListPage__main__header">
-            <h2 className="InventoryListPage__main__title font-H1-PageHeader">
-              Inventory
-            </h2>
-            <input
-              className="InventoryListPage__main__search font-P3-BodySmall"
-              placeholder="Search..."
-              onChange={handleSearch}
-            />
+            <h2 className="InventoryListPage__main__title font-H1-PageHeader">Inventory</h2>
+            <input className="InventoryListPage__main__search font-P3-BodySmall" placeholder="Search..." onChange={handleSearch} />
             <NavLink to="/inventory/add" style={{ display: "contents" }}>
-              <button className="InventoryListPage__main__button font-H3-label">
-                +Add New Item
-              </button>
+              <button className="InventoryListPage__main__button font-H3-label">+Add New Item</button>
             </NavLink>
           </div>
           <div className="InventoryListPage__table">
             <div className="InventoryListPage__table__header">
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[0] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[0] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">INVENTORY ITEM</div>
                   <img
@@ -133,10 +103,7 @@ const InventoryListPage = ({ apiURL }) => {
                   />
                 </div>
               </div>
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[1] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[1] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">CATEGORY</div>
                   <img
@@ -149,10 +116,7 @@ const InventoryListPage = ({ apiURL }) => {
                   />
                 </div>
               </div>
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[2] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[2] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">STATUS</div>
                   <img
@@ -165,10 +129,7 @@ const InventoryListPage = ({ apiURL }) => {
                   />
                 </div>
               </div>
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[3] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[3] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">QTY</div>
                   <img
@@ -181,10 +142,7 @@ const InventoryListPage = ({ apiURL }) => {
                   />
                 </div>
               </div>
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[4] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[4] }}>
                 <div className="InventoryListPage__table__header__col__group">
                   <div className="font-H4-TableHeader">WAREHOUSE</div>
                   <img
@@ -197,10 +155,7 @@ const InventoryListPage = ({ apiURL }) => {
                   />
                 </div>
               </div>
-              <div
-                className="InventoryListPage__table__header__col"
-                style={{ width: colSizes[5] }}
-              >
+              <div className="InventoryListPage__table__header__col" style={{ width: colSizes[5] }}>
                 <div className="InventoryListPage__table__header__col__group InventoryListPage__table__header__col__group--actions">
                   <div className="font-H4-TableHeader">ACTIONS</div>
                 </div>
@@ -209,16 +164,7 @@ const InventoryListPage = ({ apiURL }) => {
 
             <div>
               {filteredResults.map((inventory, arrayIndex) => (
-                <InventoryTableRow
-                  apiURL={apiURL}
-                  setInventoryData={setInventoryData}
-                  key={inventory.id}
-                  inventory={inventory}
-                  inventoryData={inventoryData}
-                  warehouse_filtered={false}
-                  colSizes={colSizes}
-                  arrayIndex={arrayIndex}
-                />
+                <InventoryTableRow apiURL={apiURL} setInventoryData={setInventoryData} key={inventory.id} inventory={inventory} inventoryData={inventoryData} warehouse_filtered={false} colSizes={colSizes} arrayIndex={arrayIndex} />
               ))}
             </div>
           </div>

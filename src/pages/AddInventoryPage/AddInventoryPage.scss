@@ -4,157 +4,155 @@
 @use "src/styles/partials/mixins" as *;
 
 .AddInventoryPage {
-    display: flex;
+  display: flex;
+  background-color: $colBackgroundGraphite;
+  &--spacer {
     background-color: $colBackgroundGraphite;
-    &--spacer{
-        background-color: $colBackgroundGraphite;
     width: $pad-3;
     height: 4.25em;
-    @include displayTablet{
+    @include displayTablet {
       width: $pad-5;
       height: 6.3em;
     }
-    @include displayDesktop{
+    @include displayDesktop {
       width: toRem(140);
     }
-    }
-    &__left{
-        background: $colBackgroundLight-Gray;
+  }
+  &__left {
+    background: $colBackgroundLight-Gray;
+  }
+  &__right {
+    background: $colBackgroundLight-Gray;
+  }
+  &__container {
+    background: $colPrimaryWhite;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    width: 100%;
+    &__header {
+      display: flex;
+      flex-direction: row;
+      margin: 36px 24px 0 24px;
+      &-title {
+        padding-left: 16px;
       }
-      &__right{
-        background: $colBackgroundLight-Gray;
-      }
-      &__container{
-            //comment out the next 4 lines when combined with rest of page
-            background: $colPrimaryWhite;
-            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-            border-radius: 3px;
-            width: 100%;
-            &__header {
-              display: flex;
-              flex-direction: row;
-              margin: 36px 24px 0 24px;
-              &-title {
-                padding-left: 16px;
-              }
-            }
-            &__divider {
-              width: 100%;
-              height: 1px;
-              border: none;
-              background-color: $colSecondaryCloud;
-              margin: 24px 0;
-            }
-            &__footer {
-              background: rgba(247, 248, 249, 0.7);
-              border-radius: 0px 0px 3px 3px;
-          
-              padding: 24px 24px;
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              align-items: center;
-              @include displayTablet {
-                justify-content: flex-end;
-              }
-              &-cancel {
-                background: $colPrimaryWhite;
-                border: 1px solid $colSecondaryCloud;
-                border-radius: 20px;
-                width: 45%;
-                height: 36px;
-                flex-grow: 0;
-          
-                &:hover {
-                  border: 1px solid $colPrimaryInstock-Indigo;
-                  color: $colPrimaryInstock-Indigo;
-                }
-          
-                @include displayTablet {
-                  height: 38px;
-                  width: 100%;
-                  margin-right: 16px;
-                }
-              }
-              &-save {
-                background: $colPrimaryInstock-Indigo;
-                color: $colPrimaryWhite;
-                border: 1px solid $colSecondaryCloud;
-                border-radius: 20px;
-                width: 45%;
-                height: 36px;
-                flex-grow: 0;
-                &:hover {
-                  background: $colPrimaryInstock-Black;
-                }
-                @include displayTablet {
-                  height: 38px;
-                  width: 100%;
-                }
-              }
-            }
-            &__footerHolder{
-              display: flex;
-              flex-direction: row;
-              width: 100%;
-              justify-content: space-between;
-              @include displayTablet{
-                width: 40%;
-              }
-              @include displayDesktop{
-                width: 25%;
-              }
-            }
-          }
-    &--whitespace {
-        height: 24px;
-      }
-      &__cancelBtn{
-        display: flex;
-        height: 100%;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        color: $colSecondarySlate;
-        &:hover{
-            color: $colPrimaryInstock-Indigo
-        }
-        &--holder{
-            padding: 0;
-        }
     }
-    
-    &__submitBtn{
-        cursor: pointer;
+    &__divider {
+      width: 100%;
+      height: 1px;
+      border: none;
+      background-color: $colSecondaryCloud;
+      margin: 24px 0;
     }
+    &__footer {
+      background: rgba(247, 248, 249, 0.7);
+      border-radius: 0px 0px 3px 3px;
 
-    &__two-forms {
-        &__divider {
+      padding: 24px 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      @include displayTablet {
+        justify-content: flex-end;
+      }
+      &-cancel {
+        background: $colPrimaryWhite;
+        border: 1px solid $colSecondaryCloud;
+        border-radius: 20px;
+        width: 45%;
+        height: 36px;
+        flex-grow: 0;
+
+        &:hover {
+          border: 1px solid $colPrimaryInstock-Indigo;
+          color: $colPrimaryInstock-Indigo;
+        }
+
+        @include displayTablet {
+          height: 38px;
           width: 100%;
-          height: 1px;
-          border: none;
-          background-color: $colSecondaryCloud;
-          margin: 24px 0;
-          @include displayTablet {
-            width: 1px;
-            height: 380px;
-          }
+          margin-right: 16px;
+        }
+      }
+      &-save {
+        background: $colPrimaryInstock-Indigo;
+        color: $colPrimaryWhite;
+        border: 1px solid $colSecondaryCloud;
+        border-radius: 20px;
+        width: 45%;
+        height: 36px;
+        flex-grow: 0;
+        &:hover {
+          background: $colPrimaryInstock-Black;
         }
         @include displayTablet {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
-        &__first {
-          @include displayTablet {
-            width: 48%;
-          }
-        }
-        &__second {
-          @include displayTablet {
-            width: 48%;
-          }
+          height: 38px;
+          width: 100%;
         }
       }
-}
+    }
+    &__footerHolder {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      @include displayTablet {
+        width: 40%;
+      }
+      @include displayDesktop {
+        width: 25%;
+      }
+    }
+  }
+  &--whitespace {
+    height: 24px;
+  }
+  &__cancelBtn {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $colSecondarySlate;
+    &:hover {
+      color: $colPrimaryInstock-Indigo;
+    }
+    &--holder {
+      padding: 0;
+    }
+  }
 
+  &__submitBtn {
+    cursor: pointer;
+  }
+
+  &__two-forms {
+    &__divider {
+      width: 100%;
+      height: 1px;
+      border: none;
+      background-color: $colSecondaryCloud;
+      margin: 24px 0;
+      @include displayTablet {
+        width: 1px;
+        height: 380px;
+      }
+    }
+    @include displayTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__first {
+      @include displayTablet {
+        width: 48%;
+      }
+    }
+    &__second {
+      @include displayTablet {
+        width: 48%;
+      }
+    }
+  }
+}

@@ -18,12 +18,12 @@ const InfoInventoryItem = ({ SingleInventoryDetails }) => {
         <div className="InfoInventoryItem__col">
           <div className="InfoInventoryItem__col__group InfoInventoryItem__col__group--double">
             <div>
-            <div className="InfoInventoryItem__col__group__label font-H4-TableHeader">STATUS:</div>
-            <p className="InfoInventoryItem__col__group__value font-P2-BodyMedium">{SingleInventoryDetails.status}</p>
+              <div className="InfoInventoryItem__col__group__label font-H4-TableHeader">STATUS:</div>
+              <p className="InfoInventoryItem__col__group__value font-P2-BodyMedium">{SingleInventoryDetails.status}</p>
             </div>
             <div>
-            <div className="InfoInventoryItem__col__group__label font-H4-TableHeader">QUANTITY:</div>
-            <p className="InfoInventoryItem__col__group__value  font-P2-BodyMedium">{SingleInventoryDetails.quantity}</p>
+              <div className="InfoInventoryItem__col__group__label font-H4-TableHeader">QUANTITY:</div>
+              <p className="InfoInventoryItem__col__group__value  font-P2-BodyMedium">{SingleInventoryDetails.quantity}</p>
             </div>
           </div>
           <div className="InfoInventoryItem__col__group">
