@@ -10,13 +10,19 @@ const WarehouseListPage = ({ apiURL }) => {
   const colSizes = ["22%", "22%", "22%", "24%", "0%", "10%"];
 
   const [warehousesData, setWarehousesData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   let [sortQuery, setSortQuery] = useState("");
   let [orderBy, setOrderBy] = useState("ASC");
   let [sortByCol, setSortByCol] = useState(null);
-  const colNames = ["warehouse_name", "address", "contact_name", "contact_email"];
+  const colNames = [
+    "warehouse_name",
+    "address",
+    "contact_name",
+    "contact_email",
+  ];
   const sortIconNotActive = "/src/assets/images/Icons/sort-24px.svg";
-  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg"
+  const sortIconActive = "/src/assets/images/Icons/sort-24px-active.svg";
 
   useEffect(() => {
     function generateSortQuery() {
@@ -26,6 +32,24 @@ const WarehouseListPage = ({ apiURL }) => {
     }
     generateSortQuery();
   }, [sortByCol, orderBy]);
+
+  const filteredResults = warehousesData.filter((item) =>
+    [
+      "warehouse_name",
+      "address",
+      "city",
+      "contact_email",
+      "contact_name",
+      "contact_phone",
+      "country",
+    ].some((key) =>
+      item[key]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   const handleSort = (colNum) => {
     function flipOrder() {
@@ -37,12 +61,19 @@ const WarehouseListPage = ({ apiURL }) => {
     }
 
     if (colNum < 0 || typeof colNum !== "number") {
-      console.log("sortObj.setSort(): " + "You must provide a positive integer for column number!");
+      console.log(
+        "sortObj.setSort(): " +
+          "You must provide a positive integer for column number!"
+      );
       return -1;
     }
 
     if (colNum > colNames.length) {
-      console.log("sortObj.setSort(): " + "Provided column number exceeds maximum value, maximum value is " + colNames.length);
+      console.log(
+        "sortObj.setSort(): " +
+          "Provided column number exceeds maximum value, maximum value is " +
+          colNames.length
+      );
       return -1;
     }
 
@@ -83,6 +114,7 @@ const WarehouseListPage = ({ apiURL }) => {
             <input
               className="WarehouseListPage__main__search font-P3-BodySmall"
               placeholder="Search..."
+              onChange={handleSearch}
             />
             <Link to="/warehouses/add" style={{ display: "contents" }}>
               <button className="WarehouseListPage__main__button font-H3-label">
@@ -99,9 +131,13 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">WAREHOUSE</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src={(sortByCol === 0) ? sortIconActive : sortIconNotActive} 
-                      alt="sort icon" onClick={() => {handleSort(0);}}
+                    <img
+                      className="InventoryListPage__table__header__col__group__sortIcon"
+                      src={sortByCol === 0 ? sortIconActive : sortIconNotActive}
+                      alt="sort icon"
+                      onClick={() => {
+                        handleSort(0);
+                      }}
                     />
                   </div>
                 </div>
@@ -111,9 +147,13 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">ADDRESS</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src={(sortByCol === 1) ? sortIconActive : sortIconNotActive} 
-                      alt="sort icon" onClick={() => {handleSort(1);}}
+                    <img
+                      className="InventoryListPage__table__header__col__group__sortIcon"
+                      src={sortByCol === 1 ? sortIconActive : sortIconNotActive}
+                      alt="sort icon"
+                      onClick={() => {
+                        handleSort(1);
+                      }}
                     />
                   </div>
                 </div>
@@ -123,9 +163,13 @@ const WarehouseListPage = ({ apiURL }) => {
                 >
                   <div className="WarehouseListPage__table__header__col__group">
                     <div className="font-H4-TableHeader">CONTACT NAME</div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src={(sortByCol === 2) ? sortIconActive : sortIconNotActive} 
-                      alt="sort icon" onClick={() => {handleSort(2);}}
+                    <img
+                      className="InventoryListPage__table__header__col__group__sortIcon"
+                      src={sortByCol === 2 ? sortIconActive : sortIconNotActive}
+                      alt="sort icon"
+                      onClick={() => {
+                        handleSort(2);
+                      }}
                     />
                   </div>
                 </div>
@@ -137,9 +181,13 @@ const WarehouseListPage = ({ apiURL }) => {
                     <div className="font-H4-TableHeader">
                       CONTACT INFORMATION
                     </div>
-                    <img className="InventoryListPage__table__header__col__group__sortIcon"
-                      src={(sortByCol === 3) ? sortIconActive : sortIconNotActive} 
-                      alt="sort icon" onClick={() => {handleSort(3);}}
+                    <img
+                      className="InventoryListPage__table__header__col__group__sortIcon"
+                      src={sortByCol === 3 ? sortIconActive : sortIconNotActive}
+                      alt="sort icon"
+                      onClick={() => {
+                        handleSort(3);
+                      }}
                     />
                   </div>
                 </div>
@@ -156,7 +204,7 @@ const WarehouseListPage = ({ apiURL }) => {
             </div>
 
             <div>
-              {warehousesData.map((warehouse, arrayIndex) => (
+              {filteredResults.map((warehouse, arrayIndex) => (
                 <WarehouseTableRow
                   apiURL={apiURL}
                   setWarehousesData={setWarehousesData}
