@@ -50,7 +50,7 @@ const NewWarehouseForm = forwardRef(({ warehouesToEdit, formType, className }, r
     <form ref={ref} className={`NewWarehouseForm ${className}`}>
       <h2 className="font-H2-SubHeader NewWarehouseForm__title">{formTitle}</h2>
       {fieldsToRender.map((field, index) => {
-        const hasError = !formData[field.name] || (field.name === "quantity" && selectedStatus === "in_stock" && formData.quantity <= 0);
+        const hasError = !formData[field.name];
         const errorMessage = hasError ? "This field is required" : "";
         return (
           <div key={index}>

@@ -50,12 +50,12 @@ const DetailsForm = forwardRef(({ warehouesToEdit, formType, className }, ref) =
     <form ref={ref} className={`DetailsForm ${className}`}>
       <h2 className="font-H2-SubHeader DetailsForm__title">{formTitle}</h2>
       {fieldsToRender.map((field, index) => {
-        const hasError = !formData[field.name] || (field.name === "quantity" && selectedStatus === "in_stock" && formData.quantity <= 0);
+        const hasError = !formData[field.name];
         const errorMessage = hasError ? "This field is required" : "";
         return (
           <div key={index}>
             <h3 className="font-H3-label DetailsForm__field-title">{field.title}</h3>
-            <input className={`DetailsForm__input-placeholder ${field.value === "" ? "DetailsForm-fieldBlank" : ""}`} name={field.name} defaultValue={field.value} onChange={handleChange} />
+            <input className={`DetailsForm__input ${field.value === "" ? "DetailsForm-fieldBlank" : ""}`} name={field.name} defaultValue={field.value} onChange={handleChange} />
             {hasError && (
               <div className="DetailsForm-fieldError__container">
                 <img src={errorImage} alt="error" className="error-image" />
