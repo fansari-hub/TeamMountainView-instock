@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import InventoryEdit from "../../components/InventoryEdit/InventoryEdit";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 import axios from "axios";
+import "./EditInventoryPage.scss";
 
 
 const EditInventoryPage = ({apiURL}) => {
@@ -38,10 +39,6 @@ const EditInventoryPage = ({apiURL}) => {
 
   const inventoryFormRef = useRef();
   const itemAvailabilityFormRef = useRef();
-
-  const handleCancel = () => {
-    navigate("/inventory");
-  }
  
   const handleSave = async () => {
     const inventoryFormData = new FormData(inventoryFormRef.current);
@@ -63,61 +60,78 @@ const EditInventoryPage = ({apiURL}) => {
       );
       navigate('/inventory');
     }catch (error) {
-      console.error(error);
+      alert(
+        `
+        Error: ${error.response.data.message}
+        `
+      )
     }
   };
 
   if (!inventoryToEdit){
     return <div>Loading....</div>;
   }
+
   return (
     <>
     <HeaderComponent />
-  <main className="main-container">
-    <div className="main-container__header">
-      <img
+    <div className="editInventoryPage">
+        <div className="editInventoryPage__left">
+          <div className="editInventoryPage--spacer"></div>
+        </div>
+  <div className="editInventoryPage__container">
+    <div className="editInventoryPage__container__header">
+    <Link to=".." onClick={(e) => {
+      e.preventDefault();
+      navigate(-1);
+    }}><img
         src="/src/assets/images/Icons/arrow_back-24px.svg"
         alt="search icon"
-      />
-      <h1 className="font-H1-PageHeader main-container__header-title">
-        Edit Inventory
+      /></Link> 
+      <h1 className="font-H1-PageHeader editInventoryPage__container__header-title">
+        Edit Inventory Item
       </h1>
     </div>
-    <hr className="main-container__divider" />
+    <hr className="editInventoryPage__container__divider" />
 
-    <div className="two-forms">
+    <div className="editInventoryPage__two-forms">
       <InventoryEdit
-        className="two-forms__first"
+        className="editInventoryPage__two-forms__first"
         inventoryToEdit={inventoryToEdit}
         formType="inventory"
         ref={inventoryFormRef}
       />
-      <hr className="two-forms__divider" />
+      <hr className="editInventoryPage__two-forms__divider" />
       <InventoryEdit
-        className="two-forms__second"
+        className="editInventoryPage__two-forms__second"
         inventoryToEdit={inventoryToEdit}
         formType="item availability"
         ref={itemAvailabilityFormRef}
         warehouses={warehouses}
       />        
     </div>
-    <div className="whitespace"></div>
+    <div className="editInventoryPage__whitespace"></div>
 
-    <div className="main-container__footer">
+    <div className="editInventoryPage__container__footer">
+      <div className="editInventoryPage__container__footerHolder">
       <button
-        className="font-H3-label main-container__footer-cancel"
-        onClick={handleCancel}
+        className="font-H3-label editInventoryPage__container__footer-cancel"
       >
-        Cancel
+       <Link className="AddInventoryPage__cancelBtn" to="/inventory">Cancel</Link>
       </button>
       <button
-        className="font-H3-label main-container__footer-save"
+        className="font-H3-label editInventoryPage__container__footer-save editInventoryPage__submitBtn"
         onClick={handleSave}
       >
         Save
       </button>
+      </div>
     </div>
-  </main>
+  </div>
+  <div className="editInventoryPage__right">
+          <div className="editInventoryPage--spacer"></div>
+        </div>
+        </div>
   <FooterComponent />
   </>
   );

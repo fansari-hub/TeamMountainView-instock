@@ -53,55 +53,62 @@ const AddInventoryPage = ({apiURL}) => {
           });
           Navigate('/inventory');
         } catch (error) {
-          console.error(error);
+          alert(
+            `
+            Error: ${error.response.data.message}
+            `
+          ) 
         }
     }
 
   return (
     <>
     <HeaderComponent />
-    <div className="InventoryListPage">
-        <div className="InventoryListPage__left">
-          <div className="AddInventoryPage-spacer"></div>
+    <div className="AddInventoryPage">
+        <div className="AddInventoryPage__left">
+          <div className="AddInventoryPage--spacer"></div>
         </div>
-        <main className="main-container shiftDown">
-    <div className="main-container__header">
-     <Link to="/inventory"><img
+        <main className="AddInventoryPage__container">
+    <div className="AddInventoryPage__container__header">
+     <Link to=".." onClick={(e) => {
+      e.preventDefault();
+      Navigate(-1);
+    }}><img
         src="/src/assets/images/Icons/arrow_back-24px.svg"
         alt="search icon"
       /></Link> 
-      <h1 className="font-H1-PageHeader main-container__header-title">
+      <h1 className="font-H1-PageHeader AddInventoryPage__container__header-title">
         Add New Inventory Item
       </h1>
     </div>
-    <hr className="main-container__divider" />
+    <hr className="AddInventoryPage__container__divider" />
 
-    <div className="two-forms">
+    <div className="AddInventoryPage__two-forms">
       <InventoryAdd
-        className="two-forms__first"
+        className="AddInventoryPage__two-forms__first"
         inventoryToEdit={placeholderText}
         formType="inventory"
         ref={inventoryFormRef}
       />
-      <hr className="two-forms__divider" />
+      <hr className="AddInventoryPage__two-forms__divider" />
       <InventoryAdd
-        className="two-forms__second"
+        className="AddInventoryPage__two-forms__second"
         inventoryToEdit={placeholderText}
         formType="item availability"
         ref={itemAvailabilityFormRef}
         warehouses={warehouses}
       />
     </div>
-    <div className="whitespace"></div>
+    <div className="AddInventoryPage--whitespace"></div>
 
-    <div className="main-container__footer">
-      <div className="main-container__footerHolder">
+    <div className="AddInventoryPage__container__footer">
+      <div className="AddInventoryPage__container__footerHolder">
       <button 
-      className="font-H3-label main-container__footer-cancel cancelBtn--holder"
-      ><Link className="cancelBtn" to="/inventory">Cancel</Link>
+      className="font-H3-label AddInventoryPage__container__footer-cancel AddInventoryPage__cancelBtn--holder"
+      ><Link className="AddInventoryPage__cancelBtn" to="/inventory">Cancel</Link>
       </button>
       <button
-        className="font-H3-label main-container__footer-save submitBtn"
+        className="font-H3-label AddInventoryPage__container__footer-save AddInventoryPage__submitBtn"
         onClick={handleSave}
       >
         + Add Item
@@ -109,8 +116,8 @@ const AddInventoryPage = ({apiURL}) => {
       </div>
     </div>
   </main>
-        <div className="InventoryListPage__right">
-          <div className="AddInventoryPage-spacer"></div>
+        <div className="AddInventoryPage__right">
+          <div className="AddInventoryPage--spacer"></div>
         </div>
         </div>
 
