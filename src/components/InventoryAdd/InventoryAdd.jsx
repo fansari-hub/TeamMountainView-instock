@@ -79,7 +79,7 @@ const InventoryAdd = forwardRef(
                           if (field.name ==="status") {
                             return (
                                <div key={index}>
-                                    <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                                    <h3 className="font-H3-label inventoryAddForm__field-title">{field.title}</h3>
                                     <div className="inventoryAddForm__labelHolder inventoryAddForm__labelHolde--shrink">
                                         <label className={`font-P2-BodyMedium inventoryAddForm--fontSize ${selectedStatus === "in_stock" ? "addActiveSelect" : ""}`}>
                                             <input
