@@ -74,8 +74,13 @@
             &__link {
               display: flex;
               align-items: flex-start;
+              position: relative;
               &__icon {
                 display: flex;
+                
+                &:hover {
+                  animation: arrowHover 1s ease-in-out infinite;
+                    }
               }
             }
           }
@@ -129,5 +134,17 @@
       background-color:  #c9451525;
       color: $colSupportRed;
     }
+  }
+}
+
+@keyframes arrowHover {
+  0% {
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(4px);
+  }
+  100%{
+    transform: translateX(0);
   }
 }
