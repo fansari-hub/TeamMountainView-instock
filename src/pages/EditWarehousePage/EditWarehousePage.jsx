@@ -75,58 +75,58 @@ const EditWarehousePage = ({ apiURL }) => {
   return (
     <>
       <HeaderComponent />
-      <div className="InventoryListPage">
-        <div className="InventoryListPage__left">
-          <div className="AddInventoryPage-spacer"></div>
+      <div className="EditWarehousePage">
+        <div className="EditWarehousePage__left">
+          <div className="EditWarehousePage--spacer"></div>
         </div>
-        <main className="main-container">
-          <div className="main-container__header">
+        <main className="EditWarehousePage__container">
+          <div className="EditWarehousePage__container__header">
             <Link to="/warehouses">
               <img
                 src="/src/assets/images/Icons/arrow_back-24px.svg"
                 alt="back arrow"
               />
             </Link>
-            <h1 className="font-H1-PageHeader main-container__header-title">
+            <h1 className="font-H1-PageHeader EditWarehousePage__container__header-title">
               Edit Warehouse
             </h1>
           </div>
-          <hr className="main-container__divider" />
+          <hr className="EditWarehousePage__container__divider" />
 
-          <div className="two-forms">
+          <div className="EditWarehousePage__two-forms">
             <DetailsForm
-              className="two-forms__first"
+              className="EditWarehousePage__two-forms__first"
               warehouesToEdit={warehouseToEdit}
               formType="warehouse"
               ref={warehouseFormRef}
             />
-            <hr className="two-forms__divider" />
+            <hr className="EditWarehousePage__two-forms__divider" />
             <DetailsForm
-              className="two-forms__second"
+              className="EditWarehousePage__two-forms__second"
               warehouesToEdit={warehouseToEdit}
               formType="contact"
               ref={contactFormRef}
             />
           </div>
-          <div className="whitespace"></div>
+          <div className="EditWarehousePage__whitespace"></div>
 
-          <div className="main-container__footer">
+          <div className="EditWarehousePage__container__footer">
             <button
-              className="font-H3-label main-container__footer-cancel"
+              className="font-H3-label EditWarehousePage__container__footer-cancel"
               onClick={handleCancel}
             >
               Cancel
             </button>
             <button
-              className="font-H3-label main-container__footer-save"
+              className="font-H3-label EditWarehousePage__container__footer-save"
               onClick={handleSave}
             >
               Save
             </button>
           </div>
         </main>
-        <div className="InventoryListPage__right">
-          <div className="AddInventoryPage-spacer"></div>
+        <div className="EditWarehousePage__right">
+          <div className="EditWarehousePage--spacer"></div>
         </div>
       </div>
       <FooterComponent />

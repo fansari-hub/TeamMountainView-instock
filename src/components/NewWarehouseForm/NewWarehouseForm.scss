@@ -3,13 +3,12 @@
 @use "/src/styles/partials/variables" as *;
 @use "/src/styles/partials/mixins" as *;
 
-.form {
+.NewWarehouseForm {
   padding: 0 24px;
   &__title {
     margin-top: 24px;
   }
   &__field-title {
-    font-size: toRem(13); //for some reason defalut in font size didn't render
     margin-bottom: 4px;
     margin-top: 24px;
     @include displayTablet {
@@ -25,18 +24,24 @@
     border-radius: 20px;
     text-indent: 4%;
     color: $colSecondarySlate;
+    &:focus {
+      color: $colPrimaryInstock-Black;
+      border-color: $colPrimaryInstock-Indigo;
+      outline: none;
+    }
   }
-  &__input-user {
-    box-sizing: border-box;
-    height: 36px;
-    width: 100%;
-    background-color: $colPrimaryWhite;
-    border: 1px solid $colSecondaryCloud;
-    border-radius: 20px;
-    text-indent: 4%;
-    color: $colPrimaryInstock-Black;
-    &::placeholder {
-      color: $colSecondarySlate;
+  &-fieldBlank {
+    border-color: $colSupportRed !important;
+  }
+  
+  &-fieldError {
+    &__container {
+      display: flex;
+    }
+    &__message {
+      font-size: 1em;
+      margin-left: 0.5em;
+      color: $colSupportRed;
     }
   }
 }
