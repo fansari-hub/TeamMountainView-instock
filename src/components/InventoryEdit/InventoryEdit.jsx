@@ -1,22 +1,30 @@
 import { forwardRef, useState } from "react";
+import "./inventoryEdit.scss";
+import errorImage from "../../assets/images/Icons/error-24px.svg";
 
 const InventoryEdit = forwardRef(
     ({inventoryToEdit, formType, className, warehouses}, ref) => {
-      console.log(warehouses);
-        const [formData, setFormData] = useState({
-            ...inventoryToEdit
+      //Determines the initial status based on the quantity
+      const initialStatus = inventoryToEdit.quantity > 0 ? "in_stock" : "out_of_stock";
+      
+      const [formData, setFormData] = useState({
+            ...inventoryToEdit,
+            status: initialStatus,
         });
-        const [selectedStatus, setSelectedStatus] = useState(
-            formData.status || "out_of_stock"
-        )
+        const [selectedStatus, setSelectedStatus] = useState(initialStatus);
 
         const handleChange = (e) => {
             const {name, value} = e.target;
+            if(name === "status" && value === "out_of_stock" || value < 0){
+              setFormData({...formData, status: value, quantity: 0 });
+              setSelectedStatus(value);
+            }else{
             setFormData({...formData, [name]: value});
                         //Updates the selected status if the status radio button is changed
             if (name==="status"){
                 setSelectedStatus(value);
-            }
+            }}
+
         };
 
         const inventoryFields = [
@@ -59,29 +67,32 @@ const InventoryEdit = forwardRef(
   
       const formTitle =
         formType === "inventory" ? "Item Details" : "Item Availability";
-    
+
         return (
             <form ref={ref} 
-            className={`form ${className}`}>
-              <h2 className="font-H2-SubHeader form__title">{formTitle}</h2>
+            className={`inventoryEditForm ${className}`}>
+              <h2 className="font-H2-SubHeader inventoryEditForm__title">{formTitle}</h2>
               {fieldsToRender.map((field, index) => { 
+                   const hasError = (!formData[field.name] || (field.name === "quantity" && selectedStatus === "in_stock" && formData.quantity <= 0));
+                   const errorMessage = hasError ? "This field is required" : "";
+
                               if (field.name ==="status") {
                                 return (
                                    <div key={index}>
-                                        <h3 className="font-H3-label form__field-title">{field.title}</h3>
-                                        <div className="form__labelHolder">
-                                            <label className={`font-P2-BodyMedium form--fontSize ${selectedStatus === "in_stock" ? "activeSelect" : ""}`}>
+                                        <h3 className="font-H3-label inventoryEditForm__field-title">{field.title}</h3>
+                                        <div className="inventoryEditForm__labelHolder inventoryEditForm__labelHolder--shrink">
+                                            <label className={`font-P2-BodyMedium inventoryEditForm--fontSize ${selectedStatus === "in_stock" ? "activeSelect" : ""}`}>
                                                 <input
                                                     type="radio"
                                                     name="status"
                                                     value="in_stock"
-                                                    checked={formData.status === "in_stock"}
+                                                    checked={selectedStatus === "in_stock"}
                                                     onChange={handleChange}
                                                     className="font-H3-label"
                                                 />
                                                 In stock
                                             </label>
-                                            <label className={`font-P2-BodyMedium form--fontSize ${selectedStatus === "out_of_stock" ? "activeSelect" : ""}`}>
+                                            <label className={`font-P2-BodyMedium inventoryEditForm--fontSize ${selectedStatus === "out_of_stock" ? "activeSelect" : ""}`}>
                                                 <input
                                                     type="radio"
                                                     name="status"
@@ -98,25 +109,30 @@ const InventoryEdit = forwardRef(
                               if (field.name === "quantity") {
                                 return(
                                   <div key={index} className={`${selectedStatus === "out_of_stock" ? "hide-quantity" : ""}`}>
-                                  <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                                  <h3 className="font-H3-label inventoryEditForm__field-title">{field.title}</h3>
                                   <input
-                                  className="form__input-placeholder"
+                                  className={`${field.value === "" ? "editNoData" : ""} inventoryEditForm__input-placeholder inventoryEditForm__input-placeholder--shrink`}
                                      name={field.name}
-                                    defaultValue={field.value}
+                                    value={formData.quantity}
                                      onChange={handleChange}
                                                />
+                                     {hasError && (
+                    <div className="editError__container">
+                      <img src={errorImage} alt="error" className="editError-image" />
+                    <p className="editError__message font-P2-BodyMedium" >{errorMessage}</p>
+                    </div>)}
                                      </div>
                                 )
                               }
                               if (field.name ==="category") {
                                 return (
                                     <div key={index}>
-                                         <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                                         <h3 className="font-H3-label inventoryEditForm__field-title">{field.title}</h3>
                                          <select
                                             name="category"
-                                            defaultValue={field.value}
+                                            value={field.value}
                                             onChange={handleChange}
-                                            className="form__input-placeholder"
+                                            className={`inventoryEditForm__input-placeholder inventoryEditForm__input-placeholder--dropDown ${field.value === "" ? "editNoData" : ""}`}
                                          >
                                             <option value="">Please select</option>
                                             <option value="Gear">Gear</option>
@@ -125,18 +141,22 @@ const InventoryEdit = forwardRef(
                                             <option value="Health">Health</option>
                                             <option value="Electronics">Electronics</option>
                                          </select>
+                                         {hasError && (
+                    <div className="editError__container">
+                      <img src={errorImage} alt="error" className="error-image" />
+                    <p className="editError__message font-P2-BodyMedium" >{errorMessage}</p>
+                    </div>)}
                                     </div>
                                  )
                               }
                               if (field.name ==="warehouse") {
                                 return (
                                     <div key={index}>
-                                         <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                                         <h3 className="font-H3-label inventoryEditForm__field-title">{field.title}</h3>
                                          <select
                                             name="warehouse"
-                                          
                                             onChange={handleChange}
-                                            className="form__input-placeholder"
+                                            className="inventoryEditForm__input-placeholder inventoryEditForm__input-placeholder--dropDown"
                                          >
                                             <option value={inventoryToEdit.warehouse_id}>{inventoryToEdit.warehouse_name}</option>
                                             {warehouses.filter((warehouse) => {
@@ -152,24 +172,37 @@ const InventoryEdit = forwardRef(
                               }
                               if (field.name ==="description"){
                                 return (<div key={index}>
-                                  <h3 className="font-H3-label form__field-title ">{field.title}</h3>
+                                
+                                  <h3 className="font-H3-label inventoryEditForm__field-title ">{field.title}</h3>
                                               <textarea
-                                    className="font-P2-BodyMedium form__input-placeholder form__description"
+                                    className={`font-P2-BodyMedium inventoryEditForm__input-placeholder inventoryEditForm__description ${field.value === "" ? "editNoData" : ""}`}
                                     name={field.name}
                                     defaultValue={field.value}
                                     onChange={handleChange}
+                                    required
                                   ></textarea>
+                                  {hasError && (
+                    <div className="editError__container">
+                      <img src={errorImage} alt="error" className="error-image" />
+                    <p className="editError__message font-P2-BodyMedium" >{errorMessage}</p>
+                    </div>)}
                                 </div>)
                               }
                 return (<div key={index}>
-                  <h3 className="font-H3-label form__field-title">{field.title}</h3>
+                  <h3 className="font-H3-label inventoryEditForm__field-title">{field.title}</h3>
                               <input
-                    className="form__input-placeholder"
+                    className={`inventoryEditForm__input-placeholder ${field.value === "" ? "editNoData" : ""} ${hasError ? "error" : ""}`}
                     name={field.name}
                     defaultValue={field.value}
                     onChange={handleChange}
+                    required
                   />
-                </div>)
+                  {hasError && (
+                    <div className="error__container">
+                      <img src={errorImage} alt="error" className="error-image" />
+                    <p className="editError__message font-P2-BodyMedium" >{errorMessage}</p>
+                    </div>)}
+                    </div>)
               }
               )}
             </form>
