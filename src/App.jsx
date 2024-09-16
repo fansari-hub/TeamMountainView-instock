@@ -8,6 +8,7 @@ import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage";
 import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
+import HomePage from "./pages/HomePage/HomePage";
 const WEBAPI_URL = "http://localhost:8080/api";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<InventoryListPage apiURL={WEBAPI_URL} />}></Route>
+          <Route path="/" element={<HomePage/ >}></Route>
           <Route path="/warehouses" element={<WarehouseListPage apiURL={WEBAPI_URL} />}></Route>
           <Route path="/warehouses/:id/edit" element={<EditWarehousePage apiURL={WEBAPI_URL} />}></Route>
           <Route path="/warehouses/add" element={<AddWarehousePage apiURL={WEBAPI_URL} />}></Route>
