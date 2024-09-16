@@ -1,6 +1,5 @@
 @use "variables" as *;
 
-//Mixins used for controlling css content based on breakpoints
 @mixin displayDesktop {
   @media (min-width: $breakpoint-desktop-s) {
     @content;
@@ -11,8 +10,3 @@
     @content;
   }
 }
-// @mixin displayMobile {
-//   @media (min-width: $breakpoint-mobile-s) and (max-width: $breakpoint-mobile-e) {
-//     @content;
-//   }
-// }

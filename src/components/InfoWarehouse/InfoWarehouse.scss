@@ -6,7 +6,7 @@
 .InfoWarehouse {
   margin: $pad-4;
   margin-top: 0;
-  
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -48,12 +48,12 @@
       margin-top: $pad-2;
     }
     &__group {
-        &--top{
-            display: flex;
-            @include displayTablet{
-                display: block;
-            }
+      &--top {
+        display: flex;
+        @include displayTablet {
+          display: block;
         }
+      }
       &__value {
         margin: 0px;
       }

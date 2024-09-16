@@ -69,6 +69,4 @@ const DetailsForm = forwardRef(({ warehouesToEdit, formType, className }, ref) =
   );
 });
 
-
-
 export default DetailsForm;

@@ -4,21 +4,21 @@
 @use "/src/styles/partials/mixins" as *;
 
 .InventoryTableRow {
-  @include displayTablet{
-    &:hover{
+  @include displayTablet {
+    &:hover {
       background-color: rgba(156, 201, 238, 0.118);
     }
   }
   &__divider {
     width: 100%;
     border: 0.5px solid $colSecondaryCloud;
-    @include displayTablet{
+    @include displayTablet {
       margin: 0px;
       padding: 0px;
     }
-    &--firstrow{
+    &--firstrow {
       margin-top: $pad-1;
-      @include displayTablet{
+      @include displayTablet {
         border: none;
       }
     }
@@ -42,27 +42,27 @@
         display: contents;
       }
       &__col {
-        &:first-child{
-          width: 50%;
-        }
         display: flex;
         flex-direction: column;
         gap: $pad-1;
+        &:first-child {
+          width: 50%;
+        }
         @include displayTablet {
           display: contents;
         }
-        &--actions{
+        &--actions {
           flex-grow: 1;
           width: 100%;
           display: flex;
-          @include displayTablet{
+          @include displayTablet {
             display: contents;
           }
         }
         &__field {
           display: contents;
-          @include displayTablet{
-            display:block;
+          @include displayTablet {
+            display: block;
           }
           &__label {
             color: $colSecondarySlate;
@@ -77,10 +77,10 @@
               position: relative;
               &__icon {
                 display: flex;
-                
+
                 &:hover {
                   animation: arrowHover 1s ease-in-out infinite;
-                    }
+                }
               }
             }
           }
@@ -114,7 +114,7 @@
       }
     }
   }
-  &-stockTicker{
+  &-stockTicker {
     background-color: #15846325;
     color: $colSupportGreen;
     border-radius: 20px;
@@ -126,12 +126,12 @@
     padding-left: toRem(8);
     padding-right: toRem(8);
     width: max-content;
-    @include displayTablet{
+    @include displayTablet {
       margin-bottom: 0;
       height: toRem(26);
     }
-    &--nostock{
-      background-color:  #c9451525;
+    &--nostock {
+      background-color: #c9451525;
       color: $colSupportRed;
     }
   }
@@ -141,10 +141,10 @@
   0% {
     transform: translateX(0);
   }
-  50%{
+  50% {
     transform: translateX(4px);
   }
-  100%{
+  100% {
     transform: translateX(0);
   }
 }

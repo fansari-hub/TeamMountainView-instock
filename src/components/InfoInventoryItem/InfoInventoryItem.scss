@@ -28,7 +28,7 @@
   }
   &__col {
     width: 100%;
-    @include displayTablet{
+    @include displayTablet {
       width: 50%;
     }
     &__group {

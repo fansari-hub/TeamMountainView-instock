@@ -26,9 +26,9 @@ const InventoryDetailPage = ({ apiURL }) => {
     fetchDataInventory();
   }, [apiURL]);
 
-  const navigateBack = (() =>{
+  const navigateBack = () => {
     history.back();
-  })
+  };
 
   return (
     <>
