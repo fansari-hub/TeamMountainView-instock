@@ -6,13 +6,29 @@ const HeaderComponent = () => {
   return (
     <div className="headerConfig">
       <div className="headerConfig--logo">
-        <img src={logo} alt="InStock Logo" />
+        <NavLink to="/">
+          <img src={logo} alt="InStock Logo" />
+        </NavLink>
       </div>
       <div className="headerConfig--nav">
-        <NavLink className={({ isActive }) => (isActive ? "headerConfig__location activeLink font-P3-BodySmall" : "headerConfig__location font-P3-BodySmall")} to="/Warehouses">
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "headerConfig__location activeLink font-P3-BodySmall"
+              : "headerConfig__location font-P3-BodySmall"
+          }
+          to="/Warehouses"
+        >
           Warehouses
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? "headerConfig__location activeLink font-P3-BodySmall" : "headerConfig__location font-P3-BodySmall")} to="/Inventory">
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "headerConfig__location activeLink font-P3-BodySmall"
+              : "headerConfig__location font-P3-BodySmall"
+          }
+          to="/Inventory"
+        >
           Inventory
         </NavLink>
       </div>
