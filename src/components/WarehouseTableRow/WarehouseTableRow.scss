@@ -1,0 +1,136 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.WarehouseTableRow {
+  @include displayTablet {
+    &:hover {
+      background-color: rgba(156, 201, 238, 0.118);
+    }
+  }
+  &__divider {
+    width: 100%;
+    border: 0.5px solid $colSecondaryCloud;
+    @include displayTablet {
+      margin: 0px;
+      padding: 0px;
+    }
+    &--firstrow {
+      margin-top: $pad-1;
+      @include displayTablet {
+        border: none;
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    padding-left: $pad-4;
+    width: 100%;
+    @include displayTablet {
+      padding-top: $pad-3;
+      padding-right: $pad-4;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    &__info {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      @include displayTablet {
+        display: contents;
+      }
+      &__col {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        padding-right: $pad-3;
+        gap: $pad-1;
+        @include displayTablet {
+          display: contents;
+        }
+        &--actions {
+          flex-grow: 1;
+          width: 100%;
+          display: flex;
+          @include displayTablet {
+            display: contents;
+          }
+        }
+        &__field {
+          display: contents;
+          @include displayTablet {
+            display: block;
+          }
+          &__label {
+            color: $colSecondarySlate;
+            margin-bottom: $pad-1;
+            padding-right: $pad-7;
+            @include displayTablet {
+              display: none;
+            }
+            &__link {
+              display: flex;
+              align-items: flex-start;
+              &__icon {
+                display: flex;
+
+                &:hover {
+                  animation: arrowHover 1s ease-in-out infinite;
+                }
+              }
+            }
+          }
+          &__data {
+            padding-bottom: $pad-3;
+            padding-right: $pad-3;
+            text-align: left;
+            @include displayTablet {
+            }
+            &--concact {
+              line-height: 0;
+              margin-top: -0.4rem;
+            }
+            &--link {
+              font-size: toRem(13);
+              color: $colPrimaryInstock-Indigo;
+              @include displayTablet {
+                font-size: toRem(14);
+              }
+            }
+          }
+          &__icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-right: $pad-4;
+            @include displayTablet {
+              padding: 0px;
+              justify-content: flex-end;
+              margin: 0;
+              flex-grow: 1;
+            }
+            &__delete {
+              cursor: pointer;
+              margin-right: $pad-3;
+              margin-left: -$pad-2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes arrowHover {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

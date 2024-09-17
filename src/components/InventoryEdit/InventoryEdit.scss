@@ -1,0 +1,88 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.inventoryEditForm {
+  padding: 0 24px;
+  &__title {
+    margin-top: 24px;
+  }
+  &__field-title {
+    font-size: toRem(13); //for some reason defalut in font size didn't render
+    margin-bottom: 4px;
+    margin-top: 24px;
+    @include displayTablet {
+      font-size: toRem(14);
+    }
+  }
+  &__input-placeholder {
+    box-sizing: border-box;
+    height: 36px;
+    width: 100%;
+    background-color: $colPrimaryWhite;
+    border: 1px solid $colSecondaryCloud;
+    border-radius: 20px;
+    text-indent: 4%;
+    color: $colSecondarySlate;
+    &:focus {
+      color: $colPrimaryInstock-Black;
+      border-color: $colPrimaryInstock-Indigo;
+      outline: none;
+    }
+    &--dropDown {
+      appearance: none;
+      background: url("../../assets/images/Icons/arrow_drop_down-24px.svg") no-repeat right 0.5em center;
+    }
+    &--shrink {
+      @include displayDesktop {
+        width: 25%;
+      }
+    }
+  }
+  &__labelHolder {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    &--shrink {
+      @include displayTablet {
+        width: 75%;
+      }
+      @include displayDesktop {
+        width: 50%;
+      }
+    }
+  }
+  &--fontSize {
+    font-size: 0.9em;
+    color: $colSecondarySlate;
+  }
+  &__description {
+    height: 10em;
+    resize: none;
+    @include displayTablet {
+      height: 8em;
+    }
+  }
+}
+
+.hide-quantity {
+  display: none;
+}
+.activeSelect {
+  color: $colPrimaryInstock-Black;
+}
+.editNoData {
+  border-color: $colSupportRed !important;
+}
+
+.editError {
+  &__container {
+    display: flex;
+  }
+  &__message {
+    font-size: 1em;
+    margin-left: 0.5em;
+    color: $colSupportRed;
+  }
+}

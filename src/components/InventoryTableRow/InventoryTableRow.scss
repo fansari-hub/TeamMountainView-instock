@@ -1,0 +1,150 @@
+@use "/src/styles/partials/colors" as *;
+@use "/src/styles/partials/functions" as *;
+@use "/src/styles/partials/variables" as *;
+@use "/src/styles/partials/mixins" as *;
+
+.InventoryTableRow {
+  @include displayTablet {
+    &:hover {
+      background-color: rgba(156, 201, 238, 0.118);
+    }
+  }
+  &__divider {
+    width: 100%;
+    border: 0.5px solid $colSecondaryCloud;
+    @include displayTablet {
+      margin: 0px;
+      padding: 0px;
+    }
+    &--firstrow {
+      margin-top: $pad-1;
+      @include displayTablet {
+        border: none;
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    padding-left: $pad-4;
+    width: 100%;
+    @include displayTablet {
+      padding-top: $pad-3;
+      padding-right: $pad-4;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    &__info {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      @include displayTablet {
+        display: contents;
+      }
+      &__col {
+        display: flex;
+        flex-direction: column;
+        gap: $pad-1;
+        &:first-child {
+          width: 50%;
+        }
+        @include displayTablet {
+          display: contents;
+        }
+        &--actions {
+          flex-grow: 1;
+          width: 100%;
+          display: flex;
+          @include displayTablet {
+            display: contents;
+          }
+        }
+        &__field {
+          display: contents;
+          @include displayTablet {
+            display: block;
+          }
+          &__label {
+            color: $colSecondarySlate;
+            margin-bottom: $pad-1;
+            padding-right: $pad-6;
+            @include displayTablet {
+              display: none;
+            }
+            &__link {
+              display: flex;
+              align-items: flex-start;
+              position: relative;
+              &__icon {
+                display: flex;
+
+                &:hover {
+                  animation: arrowHover 1s ease-in-out infinite;
+                }
+              }
+            }
+          }
+          &__data {
+            padding-bottom: $pad-3;
+            text-align: left;
+            @include displayTablet {
+            }
+            &--link {
+              color: $colPrimaryInstock-Indigo;
+            }
+          }
+          &__icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-right: $pad-4;
+            @include displayTablet {
+              padding: 0px;
+              justify-content: flex-end;
+              margin: 0;
+              flex-grow: 1;
+            }
+            &__delete {
+              cursor: pointer;
+              margin-right: $pad-3;
+              margin-left: -$pad-2;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-stockTicker {
+    background-color: #15846325;
+    color: $colSupportGreen;
+    border-radius: 20px;
+    height: toRem(24);
+    margin-bottom: toRem(10);
+    display: flex;
+    justify-content: center;
+    padding-top: toRem(4);
+    padding-left: toRem(8);
+    padding-right: toRem(8);
+    width: max-content;
+    @include displayTablet {
+      margin-bottom: 0;
+      height: toRem(26);
+    }
+    &--nostock {
+      background-color: #c9451525;
+      color: $colSupportRed;
+    }
+  }
+}
+
+@keyframes arrowHover {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

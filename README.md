@@ -1,1 +1,1 @@
-Second Commit
+Instock Front-end -- Production-ready release.
